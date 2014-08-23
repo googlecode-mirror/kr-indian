@@ -1,0 +1,1 @@
+<?php define('PHPFOX_DEBUG', true); define('PHPFOX_DEBUG_LEVEL', 1); ?>
