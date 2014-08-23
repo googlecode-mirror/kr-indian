@@ -1,0 +1,5 @@
+<?php 
+
+App::setTitle('Photos');
+
+?>

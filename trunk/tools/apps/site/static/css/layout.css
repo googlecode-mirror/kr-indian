@@ -1,0 +1,637 @@
+/* @version $Id: layout.css 5147 2013-01-16 09:43:00Z Raymond_Benc $ */
+
+body
+{
+	color:#505050;
+	font-size:12px;
+	font-family:Helvetica, Arial, sans-serif;	
+	margin:0px;
+	padding:0px;	
+	background:#f8f8f8;
+}
+
+input, textarea
+{
+	background:#fff;
+	paddng:5px;
+	border:1px #dfdfdf solid;	
+}
+
+a
+{
+	color:#3084CA;
+	text-decoration:none;
+	outline:0;
+}
+
+a:hover
+{
+	color:#97C8EB;
+	text-decoration:underline;
+	outline:0;
+}
+
+.app_holder
+{
+	position:relative;
+	width:984px;
+	margin:auto;
+}
+
+#app_header
+{
+	background:url('img/bg.png');
+	color:#fff;
+	width:100%;
+	position:fixed;
+	top:0px;
+	left:0px;
+	height:55px;
+	line-height:55px;
+	z-index:1000;
+	/*border-bottom:5px #009AEF solid;*/
+}
+
+#app_header_inner
+{
+	border-bottom:5px #009AEF solid;
+	height:50px;
+	line-height:50px;	
+}
+
+#app_body
+{
+	padding-top:45px;
+}
+
+#app_body_left
+{
+	position:absolute;
+	left:0px;
+	top:70px;
+	width:180px;
+}
+
+#app_body_content
+{
+	margin-left:180px;
+	min-height:300px;	
+	background:#fff;
+	border-left:1px #dfdfdf solid;
+	border-right:1px #dfdfdf solid;
+	border-bottom:1px #dfdfdf solid;
+	width:624px;	
+}
+
+#app_body_padding
+{
+	padding:25px 10px 10px 10px;	
+}
+
+#app_footer
+{
+	padding:10px 0px 10px 0px;
+	color:#AFAFAF;
+	margin-left:180px;
+	position:relative;
+	width:624px;
+}
+
+/* ############################################################################# */
+
+a.app_logo,
+a.app_logo:hover
+{
+	display:block;
+	position:absolute;
+	left:-0px;
+	height:50px;
+	line-height:50px;	
+	color:#fff;
+	font-weight:bold;
+	text-decoration:none;
+	font-size:14px;
+	text-transform:uppercase;	
+	width:180px;
+	text-align:center;
+}
+
+a.app_logo:hover
+{
+	border-bottom:5px #007BBF solid;
+}
+
+.app_login_holder
+{
+	margin:30px auto 50px auto;
+	padding:20px;
+	border:1px #dfdfdf solid;
+	background:#fff;
+	width:400px;
+}
+
+a.app_login_link,
+a.app_login_link:hover
+{
+	display:block;	
+	height:50px;
+	line-height:50px;
+	color:#fff;
+	text-align:center;
+	text-decoration:none;
+	margin:auto;
+	width:70%;
+	margin-top:20px;
+	font-size:16px;
+	text-transform:uppercase;
+}
+
+.app_menu ul
+{
+	margin:0px;
+	padding:0px;
+	list-style-type:none;
+}
+
+.app_menu ul li
+{
+	display:inline;
+}
+
+.app_menu ul li.app_menu_header
+{
+	text-transform:uppercase;
+	font-weight:bold;
+	font-size:10px;
+	color:#9F9F9F;
+	display:block;
+	padding:0px 0px 10px 10px;
+}
+
+.app_menu ul li a,
+.app_menu ul li a:hover
+{
+	display:block;
+	color:#333;
+	height:25px;
+	line-height:25px;
+	text-decoration:none;
+	padding:0px 0px 0px 10px;
+}
+
+.app_menu ul li a:hover
+{
+	background:#6F6F6F;
+	color:#fff;
+}
+
+.app_menu ul li a.active,
+.app_menu ul li a.active:hover
+{
+	color:#fff;
+	font-weight:bold;
+}
+
+.app_footer_menu
+{
+	position:absolute;
+	right:0px;
+	top:10px;
+}
+
+.app_footer_menu ul
+{
+	margin:0px;
+	padding:0px;
+}
+
+.app_footer_menu ul li
+{
+	display:inline;	
+}
+
+.app_footer_menu ul li a,
+.app_footer_menu ul li a:hover
+{
+	color:#AFAFAF;
+	text-decoration:none;
+}
+
+.app_footer_menu ul li a:hover
+{
+	text-decoration:underline;
+}
+
+.app_item
+{
+	border-bottom:1px #dfdfdf solid;
+	position:relative;
+	margin-bottom:10px;
+	padding:10px 0px 10px 0px;
+}
+
+.app_item_new
+{
+	display:none;
+}
+
+.app_form_hidden
+{
+	display:none;
+}
+
+a.app_item_title,
+a.app_item_title:hover
+{
+	font-weight:bold;
+	font-size:14px;
+}
+
+.app_item_left
+{
+	position:absolute;
+	left:0px;
+	top:12px;	
+}
+
+.app_item_content
+{
+	margin-left:55px;
+	min-height:60px;
+	overflow:hidden;	
+}
+
+.app_item_data
+{
+	padding-top:10px;
+}
+
+.app_item_break
+{
+	padding-top:10px;
+	position:relative;
+}
+
+.app_item_play
+{
+	background:url('img/play.png') no-repeat;
+	position:absolute;
+	left:45px;
+	top:45px;
+	z-index:2px;
+	width:30px;
+	height:32px;
+}
+
+.app_item_img
+{
+	border:1px #dfdfdf solid;
+}
+
+.app_item_likes
+{
+	width:50px;
+	position:absolute;
+	right:-12px;
+	top:0px;
+	text-decoration:none;	
+	color:#808080;
+}
+
+.app_item_likes:hover
+{
+	color:#000;
+}
+
+a.app_item_likeit,
+a.app_item_likeit:hover
+{
+	border-right:3px #EFEFEF solid;
+	position:absolute;	
+	top:0px;
+	right:45px;	
+	display:block;
+	width:50px;
+	text-decoration:none;
+	text-align:right;
+	padding-right:8px;
+}
+
+a.app_item_likeit:hover
+{
+	border-right:3px #009AEF solid;
+}
+
+a#app_pager,
+a#app_pager:hover,
+.app_item_done
+{
+	display:block;	
+	height:50px;
+	line-height:50px;
+	text-align:center;
+	text-decoration:none;
+	margin:20px 0px 10px 0px;	
+	font-weight:bold;
+	font-size:13px;
+	tex-transform:uppercase;	
+}
+
+.app_item_done
+{
+	background:#fff;	
+}
+
+a.app_header_user,
+a.app_header_user:hover
+{
+	display:block;
+	position:absolute;	
+	right:0px;
+	top:0px;
+	height:50px;
+	line-height:50px;
+	text-decoration:none;
+	color:#fff;
+	font-size:13px;
+	font-weight:bold;
+	padding:0px 20px 0px 60px;
+}
+
+a.app_header_user:hover
+{
+	border-bottom:5px #007BBF solid;
+}
+
+a.app_header_user div
+{
+	background-repeat:no-repeat;
+	width:25px;
+	height:25px;
+	overflow:hidden;
+	position:absolute;
+	left:25px;
+	top:14px;
+}
+
+.app_item_time
+{
+	position:absolute;
+	right:10px;
+	top:10px;
+	color:#9F9F9F;
+	font-size:11px;
+}
+
+.app_item_comments
+{
+	margin:20px 0px 10px 0px;
+	position:relative;
+	padding-left:80px;
+	color:#808080;	
+}
+
+a.app_item_comments_link,
+a.app_item_comments_link:hover
+{
+	
+	display:block;
+	position:absolute;
+	border-right:3px #dfdfdf solid;
+	left:0px;
+	top:0px;	
+	padding-right:10px;
+	text-decoration:none;
+}
+
+a.app_item_comments_link:hover
+{
+	border-right:3px #009AEF solid;
+}
+
+.app_comment
+{
+	border-top:1px #dfdfdf solid;
+	padding:10px 0px 5px 0px;
+	margin:5px 0px 0px 0px;
+	position:relative;
+	min-height:50px;
+}
+
+.app_comment_no_border
+{
+	border-top:0px;
+	margin-top:0px;
+}
+
+.app_comment_image
+{
+	position:absolute;
+	left:0px;
+	top:10px;
+}
+
+.app_comment_body
+{
+	margin-left:34px;
+}
+
+.app_comment_time
+{
+	padding-top:10px;
+	color:#9F9F9F;
+}
+
+.app_comment_link
+{
+	font-weight:bold;
+}
+
+.app_item_comment_body
+{
+	margin-top:10px;
+	background:#f9f9f9;
+	border:1px #dfdfdf solid;
+	padding:10px;
+	display:none;
+}
+
+.app_comment_hidden
+{
+	display:none;
+}
+
+a.app_comment_view_all,
+a.app_comment_view_all:hover
+{
+	display:block;
+	height:30px;
+	line-height:30px;
+	text-align:center;
+}
+
+input.app_comment_text
+{
+	width:98%;
+	height:32px;
+	padding:0px 0px 0px 5px;
+}
+
+.app_dev
+{
+	padding-top:10px;
+	margin-bottom:20px;
+}
+
+.app_dev_method
+{
+	font-size:18px;
+	font-weight:bold;
+	padding:14px;
+	background:#5F5F5F;	
+	margin-bottom:8px;
+}
+
+.app_dev_sep
+{
+	text-transform:uppercase;
+	font-weight:bold;
+	padding:8px 0px 8px 0px;
+}
+
+.app_dev_holder
+{
+	top:0px;
+	left:0px;
+	background:#6F6F6F;
+	color:#fff;	
+	padding:10px 0px 10px 0px;
+	display:none;
+}
+
+.app_dev_return,
+.app_dev_post
+{
+	max-height:200px;
+	overflow:auto;
+	border:1px #4F4F4F solid;
+	padding:10px;
+	background:#fff;
+	color:#333;
+}
+
+.app_image
+{
+	width:100%;
+	height:500px;
+	background:url('img/bg.png');
+	text-align:center;	
+}
+
+.app_image_holder
+{
+	position:absolute; 
+	left:0px;
+	z-index:2000; 
+	text-align:center; 
+	width:100%; 
+	padding-top:100px;	
+}
+
+.app_image_holder img
+{
+	border:20px #2F2F2F solid;	
+}
+
+.app_form
+{
+	margin-bottom:5px;
+	padding-bottom:10px;
+	border-bottom:4px #009AEF solid;	
+}
+
+.app_form_padding
+{
+	padding-bottom:8px;	
+}
+
+.app_form_input
+{
+	color:#9F9F9F;
+	padding-bottom:5px;
+	text-transform:uppercase;
+	font-weight:bold;
+	font-size:10px;
+}
+
+.app_submit
+{
+	padding-top:10px;
+	position:relative;
+}
+
+.app_form_process
+{
+	position:absolute;
+	right:12px;
+	top:25px;
+	width:16px;
+	height:11px;
+	background:url('img/add.gif');	
+	display:none;
+}
+
+.app_form textarea
+{
+	width:95%;
+	height:15px;
+	padding:10px;
+}
+
+.app_form input#app_form_status
+{
+	width:95%;
+	padding:10px;
+	height:15px;
+}
+
+input.app_button
+{
+	padding:10px 20px 10px 20px;	
+	border:0px;
+	margin:0px;
+	font-weight:bold;
+	font-size:14px;
+	cursor:pointer;
+}
+
+.app_error_msg
+{
+	padding:10px;
+	background:#EF7777;
+	font-weight:bold;
+	color:#fff;
+	margin-bottom:10px;
+}
+
+/* ############################################################################# */
+
+a.app_login_link,
+.app_menu ul li a.active,
+a#app_pager,
+input.app_button
+{
+	color:#fff;
+	background:#009AEF;
+}
+
+a.app_login_link:hover,
+a#app_pager:hover,
+input.app_button:hover
+{
+	color:#fff;
+	background:#007BBF;
+	-webkit-transition: all 0.50s ease;
+	-moz-transition: all 0.50s ease;
+	-o-transition: all 0.50s ease;
+}

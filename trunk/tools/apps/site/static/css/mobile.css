@@ -1,0 +1,79 @@
+
+.app_holder
+{
+	width:auto;
+}
+
+#app_header
+{
+	position:static;
+	width:auto;
+}
+
+#app_body_left
+{
+	position:static;	
+	width:auto;
+}
+
+#app_body
+{
+	padding:0px;
+}
+
+#app_body_content
+{
+	width:auto;
+	margin:0px;
+	border:0px;
+	border-top:1px #dfdfdf solid;
+	border-bottom:1px #dfdfdf solid;
+}
+
+#app_footer
+{
+	width:auto;
+	margin:0px;
+	text-align:center;
+}
+
+.app_footer_menu
+{
+	position:static;
+	margin-bottom:10px;
+}
+
+a.app_logo,
+a.app_logo:hover
+{
+	width:auto;
+	position:static;
+}
+
+.app_menu ul li a,
+.app_menu ul li a:hover
+{
+	height:40px;
+	line-height:40px;
+	font-size:15px;
+}
+
+.app_item_time
+{
+	left:55px;
+	top:35px;
+	font-size:9px;
+	font-weight:normal;
+}
+
+.app_item_content
+{
+	margin:0px;
+}
+
+.app_item_title
+{
+	margin-left:55px;
+	margin-bottom:30px;
+	display:block;
+}

@@ -1,0 +1,33 @@
+<?php 
+
+/**
+ * Full HTTP URL to the App. Example: http://www.site.com/apps/1/test-app/
+ */
+define('APP_URL', '');
+
+/**
+ * Enter the full HTTP URL to the site where the App is located. Example: http://www.site.com/
+ */
+define('APP_BASE', '');
+
+/**
+ * Enter the full URL to where your App is located.
+ */
+define('APP_SITE', '');
+
+/**
+ * Enter APP ID here.
+ */
+define('APP_ID', '');
+
+/**
+ * Enter site title
+ */
+define('APP_SITE_NAME', '');
+
+/**
+ * Set to true if you enabled Apache mod_rewrite.
+ */
+define('APP_REWRITE', false);
+
+?>
