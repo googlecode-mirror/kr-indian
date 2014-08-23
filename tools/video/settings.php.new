@@ -1,0 +1,37 @@
+<?php
+
+$_SETTING['_V_MODULE_URL'] = '';
+$_SETTING['_V_THIS_URL'] = '';
+$_SETTING['_V_SECRET_KEY'] = '';
+$_SETTING['_V_UPLOAD_FOLDER'] = './uploads/';
+$_SETTING['_V_CONVERT_FOLDER'] = './view/';
+
+// Database
+$_SETTING['_V_DB_HOST'] = 'localhost';
+$_SETTING['_V_DB_USER'] = '';
+$_SETTING['_V_DB_PASS'] = '';
+$_SETTING['_V_DB_NAME'] = '';
+
+// Extensions
+$_SETTING['_V_EXTS'] = array(
+	'mpg',
+	'mpeg',
+	'wmv',
+	'avi',
+	'mov',
+	'flv',
+	'mp4',
+	'mov',
+	'flv',
+	'wmv',
+	'mpg',
+	'mpeg',
+	'm4v',
+	'avi',
+	'webm',
+	'ogv',
+	'mkv',
+	'mts'
+);
+
+?>
