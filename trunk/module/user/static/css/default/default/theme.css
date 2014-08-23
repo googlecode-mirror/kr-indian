@@ -1,0 +1,266 @@
+#footer_menu {
+    float: right !important;
+}
+
+#footer_menu li {
+    height: 50px !important;
+    line-height: 50px !important;
+}
+
+#footer_menu li a {
+    color: #FFF !important;
+}
+
+#js_controller_core_index-visitor {
+    background-color: #333 !important;
+    bottom: 0px !important;
+    left: 0px !important;
+    position: fixed !important;
+    width: 100% !important;
+	z-index:9999;
+}
+
+#js_registration_holder {
+    background-color: #FFF !important;
+    border-radius: 6px !important;
+    border-top-left-radius: 0 !important;
+    margin-top: 50px !important;
+	position:relative;
+	z-index:9999;
+	margin-bottom:70px;
+}
+
+#js_signup_block {
+    position: relative;
+}
+
+#logo {
+    background-image: url(http://kr.decodegroups.com/file/pic/icon.png) !important;
+    color: transparent !important;
+    height: 100px !important;
+    position: relative !important;
+    top: -30px !important;
+    width: 180px !important;
+}
+
+#main_content_padding {
+    display: none !important;
+}
+
+#nb_body_holder_guest {
+    background-color: transparent !important;
+}
+
+#nb_body_holder_guest #header {
+    background-color: #FFF !important;
+}
+
+#nb_body_holder_guest #header_holder {
+    height: 80px !important;
+}
+
+#nb_body_holder_guest #main_content_holder {
+    border: none !important;
+}
+
+#nb_copyright {
+    color: #FFF !important;
+    line-height: 30px !important;
+}
+
+#nb_copyright a {
+    color: #FFF !important;
+}
+
+#nb_header_menu {
+    display: none !important;
+}
+
+.active_tab_register {
+    background-color: #FFF !important;
+}
+
+.bg_image {
+    left: 0px !important;
+    position: absolute !important;
+    top: 0px !important;
+    width: 100% !important;
+    z-index: -1 !important;
+}
+
+.header_info {
+    background-color: #76B204 !important;
+    border-top: 5px solid #60A629 !important;
+    height: 74px !important;
+    text-align: center !important;
+}
+
+.header_info_content {
+    height: 78px;
+    margin: auto;
+    text-align: left;
+    width: 980px;
+}
+
+.header_info_left {
+    color: #FFF;
+    float: left;
+    font-size: 30px;
+    height: 78px;
+    line-height: 78px;
+    width: 220px;
+}
+
+.header_info_right {
+    float: right;
+    height: 78px;
+    text-align: center;
+    width: 740px;
+}
+
+.header_info_right p {
+    color: #FFF;
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 10px;
+}
+
+.header_line {
+    background-image: url(http://kr.decodegroups.com/file/pic/line.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    float: left;
+    height: 78px;
+    width: 1px;
+}
+
+.register_tab {
+    height: 50px;
+    left: 0px;
+    list-style: none;
+    margin: 0;
+    padding: 0px;
+    position: absolute;
+    top: -50px;
+}
+
+.register_tab li {
+    background-color: #CFD0D1;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    color: #666;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    height: 40px;
+    line-height: 40px;
+    margin-right: 5px;
+    padding: 0 12px;
+}
+
+.t_center {
+    left: -90px;
+    opacity: 0.9;
+    position: relative;
+}
+
+.t_center img{
+    width:700px;
+    margin-left:-20px
+}
+
+.user_register_form .table_right {
+    padding-right: 20px;
+}
+.user_register_intro{
+	position:relative;
+}
+.user_register_intro h1 {
+    color: #FFF;
+    font-size: 28px
+;
+    text-shadow: 0 0 1px #333;
+}
+
+.user_register_title {
+    border: none;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+div.extra_info {
+    display: none;
+}
+
+div.header_menu_login_button input {
+    background-color: #9BBA10;
+    border: none;
+    border-radius: 4px;
+}
+
+div.header_menu_login_sub a {
+    color: #3A6B94;
+}
+
+div.user_register_holder {
+    background-color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+	position:relative;
+}
+
+input.button_register {
+    background-color: #2092B8;
+    border: none;
+    border-radius: 5px;
+    font-weight: normal;
+    outline: none;
+    padding-bottom: 6px;
+    padding-top: 6px;
+}
+
+.swap_bg {
+    z-index: -1;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.bg_video{
+	position:absolute;
+	top:40px;
+	left:0px;
+	width:530px;
+	border:5px solid #FFF;
+	border-radius:4px;
+}
+
+.bg_video *{
+    width:100%;
+    height:298px;
+	margin-bottom:-4px;
+}
+.main_core_body_holder_guest{
+	margin-bottom:70px;
+}
+.separate{
+	border:none !important;
+	margin:0px !important;
+	padding:0px !important;
+}
+
+.organization_tab{
+	min-height:200px;
+	display:none;
+}
+
+#js_main_debug_holder{
+	display:none;
+}
+#js_register_accept .table_clear{
+	margin-left:40px !important;
+}
