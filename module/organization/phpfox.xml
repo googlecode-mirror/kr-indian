@@ -1,0 +1,137 @@
+<module>
+	<data>
+		<module_id>organization</module_id>
+		<product_id>organization</product_id>
+		<is_core>0</is_core>
+		<is_active>1</is_active>
+		<is_menu>0</is_menu>
+		<menu></menu>
+		<phrase_var_name>module_organization</phrase_var_name>
+	</data>
+	<setting_groups>
+		<name module_id="organization" version_id="3.7.7" var_name="setting_group_canmoderateorganization">canmoderateorganization</name>
+	</setting_groups>
+	<blocks>
+		<block type_id="0" m_connection="organization.view" module_id="organization" component="photo" location="1" is_active="1" ordering="1" disallow_access="" can_move="0">
+			<title>Photo</title>
+			<source_code />
+			<source_parsed />
+		</block>
+		<block type_id="0" m_connection="organization.view" module_id="organization" component="like" location="1" is_active="0" ordering="4" disallow_access="" can_move="0">
+			<title>Pages Likes/Members</title>
+			<source_code />
+			<source_parsed />
+		</block>
+		<block type_id="0" m_connection="organization.view" module_id="organization" component="menu" location="1" is_active="0" ordering="2" disallow_access="" can_move="0">
+			<title>Pages Mini Menu</title>
+			<source_code />
+			<source_parsed />
+		</block>
+	</blocks>
+	<components>
+		<component module_id="organization" component="photo" m_connection="" module="organization" is_controller="0" is_block="1" is_active="1" />
+		<component module_id="organization" component="index" m_connection="organization.index" module="organization" is_controller="1" is_block="0" is_active="1" />
+		<component module_id="organization" component="view" m_connection="organization.view" module="organization" is_controller="1" is_block="0" is_active="1" />
+		<component module_id="organization" component="add" m_connection="organization.add" module="organization" is_controller="1" is_block="0" is_active="1" />
+		<component module_id="organization" component="admin" m_connection="" module="organization" is_controller="0" is_block="1" is_active="1" />
+		<component module_id="organization" component="category" m_connection="" module="organization" is_controller="0" is_block="1" is_active="1" />
+		<component module_id="organization" component="header" m_connection="" module="organization" is_controller="0" is_block="1" is_active="1" />
+		<component module_id="organization" component="like" m_connection="" module="organization" is_controller="0" is_block="1" is_active="1" />
+		<component module_id="organization" component="login" m_connection="" module="organization" is_controller="0" is_block="1" is_active="1" />
+		<component module_id="organization" component="login-user" m_connection="" module="organization" is_controller="0" is_block="1" is_active="1" />
+		<component module_id="organization" component="menu" m_connection="" module="organization" is_controller="0" is_block="1" is_active="1" />
+		<component module_id="organization" component="profile" m_connection="" module="organization" is_controller="0" is_block="1" is_active="1" />
+		<component module_id="organization" component="widget" m_connection="" module="organization" is_controller="0" is_block="1" is_active="1" />
+	</components>
+	<phrases>
+		<phrase module_id="organization" version_id="3.7.7" var_name="module_organization" added="1408848583">organization</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="organization" added="1408849002">Organization</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="can_moderate_organization" added="1408849066">Can moderate organization? This will allow a user to edit/delete/approve organization added by other users.</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="most_liked" added="1408849097">Most Liked</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="latest" added="1408849170">Latest</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="all_organization" added="1408849190">All organization</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="my_organization" added="1408849209">My organization</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="friends_organization" added="1408849227">Friends organization</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="can_moderate" added="1408849266">Can moderate</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="delete" added="1408849352">Delete</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="approve" added="1408849370">Approve</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="no_organization_found" added="1408849405">No pages found.</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="search_organization" added="1408849442">Search organization</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="setting_group_canmoderateorganization" added="1408849554"><![CDATA[<title>can_moderate_organization</title><info>Can moderate organization</info>]]></phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="user_setting_can_moderate_organization" added="1408849666">Can moderate organization</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="user_setting_can_add_new_organization" added="1408849949">Can add new organization</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="creating_a_page" added="1408850040">Creating a page</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="connect_with_friends_associates_amp_fans" added="1408850110"><![CDATA[Connect with friends, associates & fans.]]></phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="name" added="1408850130">Name</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="user_setting_max_upload_size_organization" added="1408850245">Max upload size organization</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="get_started" added="1408850280">Get started</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="manage" added="1408853164">Manage</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="user_setting_can_design_organization" added="1408853216">Can design organization</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="are_you_sure" added="1408853249">Aare you sure</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="user_setting_can_add_cover_photo_organization" added="1408853313">Can add cover photo organization</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="actions" added="1408853341">Actions</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="moderate" added="1408853364">Moderate</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="control_who_can_see_this_organization" added="1408854249">Control who can see this page.</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="choose_a_category" added="1408861784">Choose a category</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="who_can_post_a_comment" added="1408862033">Who can post a comment?</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="who_can_view_browse_comments" added="1408862067">Who can view/browse comments?</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="can_view_widgets" added="1408862133">Can view widgets?</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="user_setting_approve_organization" added="1408862961">Approve organization</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="user_setting_points_organization" added="1408863057">Points organization</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="wall" added="1408864255">Wall</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="info" added="1408864273">Info</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="details" added="1408864791">Details</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="information" added="1408864806">Information</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="photo" added="1408864825">Photo</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="invite" added="1408864861">Invite</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="step_count" added="1408864886">Step {count}</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="skip_view_this_organization" added="1408865095">Skip view this organization</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="editing_organization" added="1408865117">Editing organization</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="category" added="1408865145">Category</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="use" added="1408865189">Use</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="use_timeline" added="1408865217">Use timeline</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="yes" added="1408865233">Yes</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="no" added="1408865251">No</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="landing_organization" added="1408865291">Landing organization</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="update" added="1408865310">Update</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="vanity_url" added="1408865345">Vanity URL</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="check_url" added="1408865384">Check URL</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="you_can_upload_a_jpg_gif_or_png_file" added="1408865781">You can upload a JPG, GIF or PNG file.</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="the_file_size_limit_is_filesize_if_your_upload_does_not_work_try_uploading_a_smaller_picture" added="1408865892">The file size limit is {filesize}. If your upload does not work, try uploading a smaller picture.</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="upload_photo" added="1408865925">Upload photo</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="organization_privacy" added="1408865958">Organization privacy</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="organization_privacy_information" added="1408865998">Organization privacy information</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="anyone" added="1408866055">Anyone</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="members_only" added="1408866111">Members only</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="admins_only" added="1408866145">Admins only</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="creating_a_organization" added="1408866218">Creating a organization</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="search_friends_by_their_name" added="1408866285">Search friends by their name</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="invite_friends" added="1408866320">Invite friends</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="send_invitations" added="1408866350">Send invitations</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="new_guest_list" added="1408866374">New guest list</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="create_new_widget" added="1408866402">Create new widget</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="after_updating" added="1408866431">After updating</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="go_to_the_next_step" added="1408866468">Go to the next step</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="view_this_organization_lower" added="1408866505">View this organization lower</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="can_view_browse_organization" added="1408866577">Can view browse organization</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="user_setting_can_view_browse_organization" added="1408872819">Can view browse organization</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="customize_design" added="1408873925">Customize design</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="admins" added="1408874063">Admins</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="widgets" added="1408874074">Widgets</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="view_this_organization" added="1408874096">View this organization</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="click_here_to_change_this_photo" added="1408879129"><![CDATA[Click <a href="#" id="js_pages_add_change_photo">here</a> to change this photo.]]></phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="likes" added="1408882091">Likes</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="person_likes_this" added="1408882566">Person likes this</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="liked_the_organization_link_title_title" added="1408889767">Liked the organization link title title</phrase>
+	</phrases>
+	<user_group_settings>
+		<setting is_admin_setting="0" module_id="organization" type="boolean" admin="1" user="1" guest="0" staff="1" module="organization" ordering="0">can_moderate_organization</setting>
+		<setting is_admin_setting="0" module_id="organization" type="boolean" admin="1" user="1" guest="0" staff="1" module="organization" ordering="0">can_add_new_organization</setting>
+		<setting is_admin_setting="0" module_id="organization" type="integer" admin="50000" user="50000" guest="50000" staff="50000" module="organization" ordering="0">max_upload_size_organization</setting>
+		<setting is_admin_setting="0" module_id="organization" type="boolean" admin="1" user="1" guest="0" staff="1" module="organization" ordering="0">can_design_organization</setting>
+		<setting is_admin_setting="0" module_id="organization" type="boolean" admin="1" user="1" guest="0" staff="1" module="organization" ordering="0">can_add_cover_photo_organization</setting>
+		<setting is_admin_setting="0" module_id="organization" type="boolean" admin="0" user="0" guest="0" staff="0" module="organization" ordering="0">approve_organization</setting>
+		<setting is_admin_setting="0" module_id="organization" type="boolean" admin="1" user="1" guest="0" staff="1" module="organization" ordering="0">points_organization</setting>
+		<setting is_admin_setting="0" module_id="organization" type="boolean" admin="1" user="1" guest="1" staff="1" module="organization" ordering="0">can_view_browse_organization</setting>
+	</user_group_settings>
+</module>
