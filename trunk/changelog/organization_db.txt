@@ -1,0 +1,285 @@
+CREATE TABLE IF NOT EXISTS `phpfox_organization` (
+  `organization_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `app_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `view_id` tinyint(1) NOT NULL DEFAULT '0',
+  `type_id` smallint(4) unsigned NOT NULL,
+  `category_id` mediumint(8) unsigned NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `reg_method` tinyint(1) NOT NULL DEFAULT '0',
+  `landing_page` varchar(50) DEFAULT NULL,
+  `time_stamp` int(10) unsigned DEFAULT NULL,
+  `image_path` varchar(75) DEFAULT NULL,
+  `image_server_id` tinyint(3) NOT NULL DEFAULT '0',
+  `total_like` int(10) unsigned NOT NULL DEFAULT '0',
+  `total_dislike` int(10) unsigned NOT NULL DEFAULT '0',
+  `total_comment` int(10) unsigned NOT NULL DEFAULT '0',
+  `privacy` tinyint(1) NOT NULL DEFAULT '0',
+  `designer_style_id` smallint(4) unsigned NOT NULL DEFAULT '0',
+  `cover_photo_id` int(11) unsigned DEFAULT NULL,
+  `cover_photo_position` varchar(4) DEFAULT NULL,
+  `location_latitude` decimal(30,27) DEFAULT NULL,
+  `location_longitude` decimal(30,27) DEFAULT NULL,
+  `location_name` varchar(255) DEFAULT NULL,
+  `use_timeline` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`organization_id`),
+  KEY `category_id` (`category_id`),
+  KEY `view_id_2` (`view_id`),
+  KEY `app_id` (`app_id`),
+  KEY `app_id_2` (`app_id`,`view_id`,`privacy`),
+  KEY `app_id_3` (`app_id`,`view_id`,`user_id`),
+  KEY `app_id_4` (`app_id`,`view_id`),
+  KEY `view_id` (`view_id`,`title`,`privacy`),
+  KEY `organization_id` (`organization_id`,`view_id`),
+  KEY `latitude` (`location_latitude`,`location_name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+
+CREATE TABLE IF NOT EXISTS `phpfox_organization_admin` (
+  `organization_id` int(10) unsigned NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
+  KEY `organization_id_2` (`organization_id`,`user_id`),
+  KEY `organization_id` (`organization_id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE IF NOT EXISTS `phpfox_organization_category` (
+  `category_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `type_id` smallint(4) unsigned NOT NULL,
+  `name` varchar(200) NOT NULL,
+  `organization_type` tinyint(1) NOT NULL DEFAULT '0',
+  `is_active` tinyint(1) NOT NULL DEFAULT '1',
+  `ordering` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`category_id`),
+  KEY `type_id` (`type_id`,`is_active`),
+  KEY `category_id` (`category_id`,`is_active`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=169 ;
+
+CREATE TABLE IF NOT EXISTS `phpfox_organization_claim` (
+  `claim_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `status_id` tinyint(1) NOT NULL DEFAULT '0',
+  `organization_id` int(11) unsigned NOT NULL,
+  `user_id` int(11) unsigned NOT NULL,
+  `time_stamp` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`claim_id`),
+  KEY `organization_id` (`organization_id`,`user_id`),
+  KEY `status_id` (`status_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS `phpfox_organization_design_order` (
+  `organization_id` int(11) unsigned NOT NULL,
+  `cache_id` varchar(255) NOT NULL,
+  `block_id` varchar(75) DEFAULT NULL,
+  `is_hidden` tinyint(1) NOT NULL DEFAULT '0',
+  `ordering` smallint(4) unsigned NOT NULL DEFAULT '0',
+  KEY `organization_id` (`organization_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `phpfox_organization_feed` (
+  `feed_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `privacy` tinyint(1) NOT NULL DEFAULT '0',
+  `privacy_comment` tinyint(1) NOT NULL DEFAULT '0',
+  `type_id` varchar(75) NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
+  `parent_user_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `item_id` int(10) unsigned NOT NULL,
+  `time_stamp` int(10) unsigned NOT NULL,
+  `parent_feed_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `parent_module_id` varchar(75) DEFAULT NULL,
+  `time_update` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`feed_id`),
+  KEY `parent_user_id` (`parent_user_id`),
+  KEY `time_update` (`time_update`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+CREATE TABLE IF NOT EXISTS `phpfox_organization_feed_comment` (
+  `feed_comment_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) unsigned NOT NULL,
+  `parent_user_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `privacy` tinyint(3) NOT NULL DEFAULT '0',
+  `privacy_comment` tinyint(3) NOT NULL DEFAULT '0',
+  `content` mediumtext,
+  `time_stamp` int(10) unsigned NOT NULL,
+  `total_comment` int(10) unsigned NOT NULL DEFAULT '0',
+  `total_like` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`feed_comment_id`),
+  KEY `parent_user_id` (`parent_user_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS `phpfox_organization_invite` (
+  `invite_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `organization_id` int(10) unsigned NOT NULL,
+  `type_id` tinyint(1) NOT NULL DEFAULT '0',
+  `visited_id` tinyint(1) NOT NULL DEFAULT '0',
+  `user_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `invited_user_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `invited_email` varchar(100) DEFAULT NULL,
+  `time_stamp` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`invite_id`),
+  KEY `listing_id` (`organization_id`),
+  KEY `listing_id_2` (`organization_id`,`invited_user_id`),
+  KEY `invited_user_id` (`invited_user_id`),
+  KEY `listing_id_3` (`organization_id`,`visited_id`),
+  KEY `listing_id_4` (`organization_id`,`visited_id`,`invited_user_id`),
+  KEY `visited_id` (`visited_id`,`invited_user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS `phpfox_organization_login` (
+  `login_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `organization_id` int(10) unsigned NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
+  `time_stamp` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`login_id`),
+  KEY `login_id` (`login_id`,`organization_id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS `phpfox_organization_perm` (
+  `organization_id` int(10) unsigned NOT NULL,
+  `var_name` varchar(150) NOT NULL,
+  `var_value` tinyint(1) NOT NULL DEFAULT '0',
+  KEY `organization_id` (`organization_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `phpfox_pages_perm`
+--
+
+INSERT INTO `phpfox_organization_perm` (`organization_id`, `var_name`, `var_value`) VALUES
+(1, 'blog.share_blogs', 0),
+(1, 'blog.view_browse_blogs', 0),
+(1, 'event.share_events', 0),
+(1, 'event.view_browse_events', 0),
+(1, 'forum.share_forum', 0),
+(1, 'forum.view_browse_forum', 0),
+(1, 'link.share_links', 0),
+(1, 'link.view_browse_links', 0),
+(1, 'music.share_music', 0),
+(1, 'music.view_browse_music', 0),
+(1, 'organization.share_updates', 0),
+(1, 'organization.view_browse_updates', 0),
+(1, 'organization.view_browse_widgets', 0),
+(1, 'photo.share_photos', 0),
+(1, 'photo.view_browse_photos', 0),
+(1, 'shoutbox.view_post_shoutbox', 0),
+(1, 'video.share_videos', 0),
+(1, 'video.view_browse_videos', 0),
+(2, 'blog.share_blogs', 0),
+(2, 'blog.view_browse_blogs', 0),
+(2, 'event.share_events', 0),
+(2, 'event.view_browse_events', 0),
+(2, 'forum.share_forum', 0),
+(2, 'forum.view_browse_forum', 0),
+(2, 'link.share_links', 0),
+(2, 'link.view_browse_links', 0),
+(2, 'music.share_music', 0),
+(2, 'music.view_browse_music', 0),
+(2, 'organization.share_updates', 0),
+(2, 'organization.view_browse_updates', 0),
+(2, 'organization.view_browse_widgets', 0),
+(2, 'photo.share_photos', 0),
+(2, 'photo.view_browse_photos', 0),
+(2, 'shoutbox.view_post_shoutbox', 0),
+(2, 'video.share_videos', 0),
+(2, 'video.view_browse_videos', 0),
+(3, 'blog.share_blogs', 0),
+(3, 'blog.view_browse_blogs', 0),
+(3, 'event.share_events', 0),
+(3, 'event.view_browse_events', 0),
+(3, 'forum.share_forum', 0),
+(3, 'forum.view_browse_forum', 0),
+(3, 'link.share_links', 0),
+(3, 'link.view_browse_links', 0),
+(3, 'music.share_music', 0),
+(3, 'music.view_browse_music', 0),
+(3, 'organization.share_updates', 0),
+(3, 'organization.view_browse_updates', 0),
+(3, 'organization.view_browse_widgets', 0),
+(3, 'photo.share_photos', 0),
+(3, 'photo.view_browse_photos', 0),
+(3, 'shoutbox.view_post_shoutbox', 0),
+(3, 'video.share_videos', 0),
+(3, 'video.view_browse_videos', 0);
+
+CREATE TABLE IF NOT EXISTS `phpfox_organization_shoutbox` (
+  `shout_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `item_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `user_id` int(10) unsigned NOT NULL,
+  `text` varchar(255) NOT NULL,
+  `time_stamp` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`shout_id`),
+  KEY `user_id` (`user_id`),
+  KEY `item_id` (`item_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+
+CREATE TABLE IF NOT EXISTS `phpfox_organization_signup` (
+  `signup_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `organization_id` int(10) unsigned NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
+  `time_stamp` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`signup_id`),
+  KEY `organization_id` (`organization_id`),
+  KEY `organization_id_2` (`organization_id`,`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS `phpfox_organization_text` (
+  `organization_id` int(10) unsigned NOT NULL,
+  `text` mediumtext,
+  `text_parsed` mediumtext,
+  UNIQUE KEY `organization_id` (`organization_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE IF NOT EXISTS `phpfox_organization_type` (
+  `type_id` smallint(4) unsigned NOT NULL AUTO_INCREMENT,
+  `is_active` tinyint(1) NOT NULL DEFAULT '1',
+  `name` varchar(200) NOT NULL,
+  `time_stamp` int(10) unsigned NOT NULL,
+  `ordering` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`type_id`),
+  KEY `is_active` (`is_active`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `phpfox_pages_type`
+--
+
+INSERT INTO `phpfox_organization_type` (`type_id`, `is_active`, `name`, `time_stamp`, `ordering`) VALUES
+(1, 1, 'Entertainment', 1408634465, 1),
+(2, 1, 'Brand or Product', 1408634465, 2),
+(3, 1, 'Group or Community', 1408634465, 3),
+(4, 1, 'Local Business or Place', 1408634465, 4),
+(5, 1, 'Company, Organization, or Institution', 1408634465, 5),
+(6, 1, 'Artist, Band or Public Figure', 1408634465, 6);
+
+CREATE TABLE IF NOT EXISTS `phpfox_organization_url` (
+  `vanity_url` varchar(255) NOT NULL,
+  `organization_id` int(10) unsigned NOT NULL,
+  KEY `organization_id` (`organization_id`),
+  KEY `vanity_url` (`vanity_url`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `phpfox_organization_widget` (
+  `widget_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `organization_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `title` varchar(200) NOT NULL,
+  `is_block` tinyint(1) NOT NULL DEFAULT '0',
+  `menu_title` varchar(75) DEFAULT NULL,
+  `url_title` varchar(255) DEFAULT NULL,
+  `time_stamp` int(10) unsigned NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
+  `image_path` varchar(75) DEFAULT NULL,
+  `image_server_id` tinyint(3) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`widget_id`),
+  KEY `organization_id` (`organization_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS `phpfox_organization_widget_text` (
+  `widget_id` int(11) unsigned NOT NULL,
+  `text` mediumtext,
+  `text_parsed` mediumtext,
+  KEY `widget_id` (`widget_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
