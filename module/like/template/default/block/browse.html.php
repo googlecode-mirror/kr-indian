@@ -20,6 +20,11 @@ defined('PHPFOX') or exit('NO DICE!');
 						<a href="#" onclick="$.ajaxCall('like.delete', 'type_id=pages&amp;item_id={$iItemId}&amp;force_user_id={$aLike.user_id}'); return false;">{img theme='layout/im_close.png'}</a>
 					</div>
 				{/if}
+                {if isset($bIsOrganizationAdmin) && $bIsOrganizationAdmin}
+                    <div style="position:absolute; right: 0px;">
+                        <a href="#" onclick="$.ajaxCall('like.delete', 'type_id=organization&amp;item_id={$iItemId}&amp;force_user_id={$aLike.user_id}'); return false;">{img theme='layout/im_close.png'}</a>
+                    </div>
+                {/if}
 				<div class="go_left" style="width:55px; text-align:center;">
 					{img user=$aLike suffix='_50_square' max_width=50 max_height=50}	
 				</div>

@@ -18,7 +18,7 @@ defined('PHPFOX') or exit('NO DICE!');
 		{/if}
 		{module name='share.link' type='organization' url=$aOrganization.link title=$aOrganization.title display='menu' sharefeedid=$aOrganization.organization_id sharemodule='organization'}
 		{if !Phpfox::getUserBy('profile_organization_id')}
-			<li id="js_add_pages_unlike" {if !$aOrganization.is_liked} style="display:none;"{/if}><a href="#" onclick="$(this).parent().hide(); $('#pages_like_join_position').show(); $.ajaxCall('like.delete', 'type_id=pages&amp;item_id={$aOrganization.organization_id}'); return false;">{if $aOrganization.organization_type == '1'}{phrase var='organization.remove_membership'}{else}{phrase var='organization.unlike'}{/if}</a></li>
+			<li id="js_add_pages_unlike" {if !$aOrganization.is_liked} style="display:none;"{/if}><a href="#" onclick="$(this).parent().hide(); $('#pages_like_join_position').show(); $.ajaxCall('like.delete', 'type_id=organization&amp;item_id={$aOrganization.organization_id}'); return false;">{if $aOrganization.organization_type == '1'}{phrase var='organization.remove_membership'}{else}{phrase var='organization.unlike'}{/if}</a></li>
 		{/if}		
 		{if !$aOrganization.is_admin && Phpfox::getUserParam('organization.can_claim_organization') && empty($aOrganization.claim_id)}
 			<li>
