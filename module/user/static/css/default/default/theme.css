@@ -35,7 +35,7 @@
 }
 
 #logo {
-    background-image: url(http://kr.decodegroups.com/file/pic/icon.png) !important;
+    background-image: url(../../../../../../file/pic/icon.png) !important;
     color: transparent !important;
     height: 100px !important;
     position: relative !important;
@@ -263,4 +263,8 @@ input.button_register {
 }
 #js_register_accept .table_clear{
 	margin-left:40px !important;
+}
+
+#header_menu_page_holder{
+    display: none;
 }

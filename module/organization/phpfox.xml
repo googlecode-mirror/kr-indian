@@ -5,7 +5,7 @@
 		<is_core>0</is_core>
 		<is_active>1</is_active>
 		<is_menu>0</is_menu>
-		<menu></menu>
+		<menu />
 		<phrase_var_name>module_organization</phrase_var_name>
 	</data>
 	<setting_groups>
@@ -122,12 +122,16 @@
 		<phrase module_id="organization" version_id="3.7.7" var_name="click_here_to_change_this_photo" added="1408879129"><![CDATA[Click <a href="#" id="js_pages_add_change_photo">here</a> to change this photo.]]></phrase>
 		<phrase module_id="organization" version_id="3.7.7" var_name="likes" added="1408882091">Likes</phrase>
 		<phrase module_id="organization" version_id="3.7.7" var_name="person_likes_this" added="1408882566">Person likes this</phrase>
-		<phrase module_id="organization" version_id="3.7.7" var_name="liked_the_organization_link_title_title" added="1408889767">Liked the organization link title title</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="liked_the_organization_link_title_title" added="1408889767"><![CDATA[liked the organization"<a href="{link}" title="{link_title}">{title}</a>".]]></phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="permissions" added="1408899031">Permissions</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="organization_s_successfully_deleted" added="1408976184">Organization (s) successfully deleted.</phrase>
 		<phrase module_id="organization" version_id="3.7.7" var_name="position_set_correctly" added="1408975353">Position set correctly</phrase>
 		<phrase module_id="organization" version_id="3.7.7" var_name="edit_organization" added="1408975870">Edit organization</phrase>
 		<phrase module_id="organization" version_id="3.7.7" var_name="remove_membership" added="1408975932">Remove membership</phrase>
 		<phrase module_id="organization" version_id="3.7.7" var_name="claim_page" added="1408975988">Claim page</phrase>
 		<phrase module_id="organization" version_id="3.7.7" var_name="claim_organization" added="1408976050">Claim organization</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="url" added="1408976965">Url</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="unlike" added="1408977315">Unlike</phrase>
 		<phrase module_id="organization" version_id="3.7.7" var_name="1_like" added="1408976573">1 like</phrase>
 		<phrase module_id="organization" version_id="3.7.7" var_name="item_phrase" added="1408977196">Item phrase</phrase>
 		<phrase module_id="organization" version_id="3.7.7" var_name="people_like_this" added="1408977254">People like this</phrase>
