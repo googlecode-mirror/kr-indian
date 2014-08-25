@@ -128,6 +128,9 @@
 		<phrase module_id="organization" version_id="3.7.7" var_name="remove_membership" added="1408975932">Remove membership</phrase>
 		<phrase module_id="organization" version_id="3.7.7" var_name="claim_page" added="1408975988">Claim page</phrase>
 		<phrase module_id="organization" version_id="3.7.7" var_name="claim_organization" added="1408976050">Claim organization</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="1_like" added="1408976573">1 like</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="item_phrase" added="1408977196">Item phrase</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="people_like_this" added="1408977254">People like this</phrase>
 	</phrases>
 	<user_group_settings>
 		<setting is_admin_setting="0" module_id="organization" type="boolean" admin="1" user="1" guest="0" staff="1" module="organization" ordering="0">can_moderate_organization</setting>

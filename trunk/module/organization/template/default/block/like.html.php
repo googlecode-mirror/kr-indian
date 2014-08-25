@@ -39,7 +39,7 @@ defined('PHPFOX') or exit('NO DICE!');
 		{$aOrganization.total_like|number_format}
 	</div>
 	<div class="global_like_link">	
-		<a href="#" onclick="return $Core.box('like.browse', 400, 'type_id=pages&amp;item_id={$aOrganization.organization_id}&amp;force_like=1');">{if $aOrganization.total_like == 1}{phrase var='organization.person_likes_this'}{else}{phrase var='organization.people_like_this'}{/if}</a>
+		<a href="#" onclick="return $Core.box('like.browse', 400, 'type_id=organization&amp;item_id={$aOrganization.organization_id}&amp;force_like=1');">{if $aOrganization.total_like == 1}{phrase var='organization.person_likes_this'}{else}{phrase var='organization.people_like_this'}{/if}</a>
 	</div>
 	{/if}
 {if !PHPFOX_IS_AJAX}
