@@ -17,12 +17,12 @@
 			<source_code />
 			<source_parsed />
 		</block>
-		<block type_id="0" m_connection="organization.view" module_id="organization" component="like" location="1" is_active="0" ordering="4" disallow_access="" can_move="0">
+		<block type_id="0" m_connection="organization.view" module_id="organization" component="like" location="1" is_active="1" ordering="4" disallow_access="" can_move="0">
 			<title>Pages Likes/Members</title>
 			<source_code />
 			<source_parsed />
 		</block>
-		<block type_id="0" m_connection="organization.view" module_id="organization" component="menu" location="1" is_active="0" ordering="2" disallow_access="" can_move="0">
+		<block type_id="0" m_connection="organization.view" module_id="organization" component="menu" location="1" is_active="1" ordering="2" disallow_access="" can_move="0">
 			<title>Pages Mini Menu</title>
 			<source_code />
 			<source_parsed />
@@ -123,6 +123,11 @@
 		<phrase module_id="organization" version_id="3.7.7" var_name="likes" added="1408882091">Likes</phrase>
 		<phrase module_id="organization" version_id="3.7.7" var_name="person_likes_this" added="1408882566">Person likes this</phrase>
 		<phrase module_id="organization" version_id="3.7.7" var_name="liked_the_organization_link_title_title" added="1408889767">Liked the organization link title title</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="position_set_correctly" added="1408975353">Position set correctly</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="edit_organization" added="1408975870">Edit organization</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="remove_membership" added="1408975932">Remove membership</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="claim_page" added="1408975988">Claim page</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="claim_organization" added="1408976050">Claim organization</phrase>
 	</phrases>
 	<user_group_settings>
 		<setting is_admin_setting="0" module_id="organization" type="boolean" admin="1" user="1" guest="0" staff="1" module="organization" ordering="0">can_moderate_organization</setting>

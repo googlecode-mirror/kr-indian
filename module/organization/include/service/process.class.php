@@ -978,7 +978,6 @@ class organization_Service_Process extends Phpfox_Service
 			}
 		}*/
 
-
 		if (!Phpfox::getService('organization')->isAdmin($iPageId) && !Phpfox::isAdmin())
 		{
 			return Phpfox_Error::set('User is not an admin');

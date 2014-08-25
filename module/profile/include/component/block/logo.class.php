@@ -20,7 +20,8 @@ class Profile_Component_Block_Logo extends Phpfox_Component
 	 */
 	public function process()
 	{	
-		$bIsPages = ((defined('PHPFOX_IS_PAGES_VIEW') && Phpfox::isModule('pages')) ? true : false);
+        $bIsPages = ((defined('PHPFOX_IS_PAGES_VIEW') && Phpfox::isModule('pages')) ? true : false);
+		$bIsOrganization = ((defined('PHPFOX_IS_ORGANIZATION_VIEW') && Phpfox::isModule('organization')) ? true : false);
 		// Used in the template to set the ajax call
 		$sModule = 'user';
 		$aUser = $this->getParam('aUser');
@@ -28,6 +29,10 @@ class Profile_Component_Block_Logo extends Phpfox_Component
 		{
 			$aUser = $this->getParam('aPage');
 		}
+        if(empty($aUser) && $bIsOrganization)
+        {
+            $aUser = $this->getParam('aOrganization');
+        }
 		
 		if ($bIsPages && !defined('loadedLogo') && isset($aUser['cover_photo_id']))
 		{			
@@ -41,6 +46,18 @@ class Profile_Component_Block_Logo extends Phpfox_Component
 			$sModule = 'pages';
 			define('loadedLogo', true);
 		}
+        else if ($bIsOrganization && !defined('loadedLogo') && isset($aUser['cover_photo_id']))
+        {            
+            $aUser['cover_photo'] = $aUser['cover_photo_id'];
+            $aUser['cover_photo_top'] = isset($aUser['cover_photo_position']) ? $aUser['cover_photo_position'] : 0;
+
+            $this->template()->assign(array(
+                // 'bNoPrefix' => true,
+                'sLogoPosition' => $aUser['cover_photo_top']
+            ));
+            $sModule = 'organization';
+            define('loadedLogo', true);
+        }
 		else
 		{						
 			if (!defined('PHPFOX_IS_USER_PROFILE'))
@@ -62,7 +79,7 @@ class Profile_Component_Block_Logo extends Phpfox_Component
 			return false;
 		}
 		
-		if (!$bIsPages && !Phpfox::getService('user.privacy')->hasAccess($aUser['user_id'], 'profile.view_profile'))
+		if (!$bIsOrganization && !$bIsPages && !Phpfox::getService('user.privacy')->hasAccess($aUser['user_id'], 'profile.view_profile'))
 		{
 			return false;
 		}		
@@ -74,13 +91,21 @@ class Profile_Component_Block_Logo extends Phpfox_Component
 			
 			$this->template()->assign('sPagesLink', $aPage['link']);
 		}
-
+        
+        if ($bIsOrganization)
+        {
+            $aOrganization = $this->getParam('aOrganization');
+            
+            $this->template()->assign('sOrganizationLink',$aOrganization['link']);
+        }
+    
 		$this->template()->assign(array(
 				'aCoverPhoto' => $aCoverPhoto,
 				'bRefreshPhoto' => ($this->request()->getInt('coverupdate') ? true : false),
 				'bNewCoverPhoto' => ($this->request()->getInt('newcoverphoto') ? true : false),
 				'sLogoPosition' => $aUser['cover_photo_top'],
-				'bIsPages' => $bIsPages
+                'bIsPages' => $bIsPages,
+				'bIsOrganization' => $bIsOrganization,
 			)
 		);
 	}

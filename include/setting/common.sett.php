@@ -107,4 +107,7 @@ $_CONF['core.url_misc'] = $_CONF['core.url_static_image'] . 'misc/';
 // Name of the thumbnail directory
 $_CONF['core.url_thumb'] = 'thumb/';
 
+$_CONF['organization.dir_image'] = $_CONF['core.dir_pic'] . 'organization' . PHPFOX_DS;
+$_CONF['organization.url_image'] = $_CONF['core.url_pic'] . 'organization/';
+
 ?>
