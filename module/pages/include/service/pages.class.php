@@ -565,7 +565,7 @@ class Pages_Service_Pages extends Phpfox_Service
 				$sSubUrl = rtrim(str_replace($sHomeUrl, '', $aMenu['url']), '/');
 				if(!empty($sSubUrl))
 				{
-					$aMenus[$iKey]['url'] = $sHomeUrl . Phpfox::getLib('url')->doRewrite($sSubUrl) . PHPFOX_DS;
+					$aMenus[$iKey]['url'] = $sHomeUrl . Phpfox::getLib('url')->doRewrite($sSubUrl) . '/';
 				}
 			}
 		}
