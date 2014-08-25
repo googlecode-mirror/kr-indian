@@ -19,7 +19,7 @@ class Profile_Component_Block_Pic extends Phpfox_Component
 	 * Class process method wnich is used to execute this component.
 	 */
 	public function process()
-	{				
+	{		
 		if (!defined('PHPFOX_IS_USER_PROFILE') && !defined('PAGE_TIME_LINE'))
 		{
 			return false;

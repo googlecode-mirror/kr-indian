@@ -1,10 +1,10 @@
 <li><a href="{url link='organization.add' id=$aOrganization.organization_id}">{phrase var='organization.manage'}</a></li>
 {if Phpfox::getUserParam('organization.can_design_organization') && isset($aOrganization.is_admin) && $aOrganization.is_admin}
-	<li>
+<!--	<li>
 		<a href="{$aOrganization.link}designer/" class="no_ajax_link">
 			{phrase var='organization.customize_design'}
 		</a>
-	</li>
+	</li>  -->
 {/if}
 {if Phpfox::getUserParam('organization.can_moderate_organization') || $aOrganization.user_id == Phpfox::getUserId()}
 	<li class="item_delete">

@@ -42,6 +42,11 @@ defined('PHPFOX') or exit('NO DICE!');
                         <a href="{$aPage.link}">{$aPage.title}</a>
 					</h1>
 				{/if}
+                {if isset($aOrganization.title)}
+                    <h1>
+                        <a href="{$aOrganization.link}">{$aOrganization.title}</a>
+                    </h1>
+                {/if}
 			{/if}
 			<div class="profile_header_inner{if Phpfox::getService('profile')->timeline()} profile_header_timeline{/if}">
 				<div id="section_menu">

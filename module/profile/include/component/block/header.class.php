@@ -25,12 +25,20 @@ class Profile_Component_Block_Header extends Phpfox_Component
 		{
 		    return false;
 		}
+        if (defined('PHPFOX_IS_ORGANIZATION_ADD'))
+        {
+            return false;
+        }
 		$aUser = $this->getParam('aUser');
 		
 		if ($aUser === null)
 		{
 			$aUser = $this->getParam('aPage');
 		}
+        if (!$aUser)
+        {
+            $aUser = $this->getParam('aOrganization');
+        }
 		else if (!isset($aUser['is_featured']))
 		{
 			// If for some reason this is happening too often check the caching in /file/cache/profile
@@ -50,7 +58,7 @@ class Profile_Component_Block_Header extends Phpfox_Component
 		}
 		
 		
-		if (!defined('PAGE_TIME_LINE') && !defined('PHPFOX_IS_PAGES_VIEW'))
+		if (!defined('PAGE_TIME_LINE') && !defined('PHPFOX_IS_PAGES_VIEW') && !defined('PHPFOX_IS_ORGANIZATION_VIEW'))
 		{
 			if (Phpfox::getParam('user.enable_relationship_status'))
             {
@@ -68,6 +76,7 @@ class Profile_Component_Block_Header extends Phpfox_Component
 		}
 		else if ((isset($aUser['use_timeline']) && $aUser['use_timeline']) || defined('PHPFOX_IS_PAGES_VIEW'))
 		{
+            
 			$sPagesSection = Phpfox::getNonRewritten('pages');
 		    $sModule = ($this->request()->get('req1') == $sPagesSection ? $this->request()->get('req3') : $this->request()->get('req2'));
 		    $sModule = Phpfox::getLib('url')->reverseRewrite($sModule);
@@ -125,8 +134,67 @@ class Profile_Component_Block_Header extends Phpfox_Component
 		    }
 		    
 		}
+        else if ((isset($aUser['use_timeline']) && $aUser['use_timeline']) || defined('PHPFOX_IS_ORGANIZATION_VIEW'))
+        {
+            
+            $sOrganizationsSection = Phpfox::getNonRewritten('organization');
+            $sModule = ($this->request()->get('req1') == $sOrganizationsSection ? $this->request()->get('req3') : $this->request()->get('req2'));
+            $sModule = Phpfox::getLib('url')->reverseRewrite($sModule);
+            if (Phpfox::isModule($sModule) && Phpfox::hasCallback($sModule, 'getOrganizationSubMenu'))
+            {
+                if (defined('PHPFOX_IS_ORGANIZATION_VIEW'))
+                {
+                    $aOrganization = $this->getParam('aOrganization');                    
+                }
+                
+                $aMenu = Phpfox::callback($sModule .'.getOrganizationSubmenu', (defined('PHPFOX_IS_ORGANIZATION_VIEW') ? $aOrganization : $aUser));
+                if (is_array($aMenu))
+                {
+                    foreach ($aMenu as $iKey => $aSubMenu)
+                    {
+                        $aMenu[$iKey]['module'] = $sModule;
+                        if (isset($aSubMenu['phrase']))
+                        {
+                            if (Phpfox::getLib('locale')->isPhrase($sModule . '.' . $aSubMenu['phrase']) )
+                            {
+                                $aMenu[$iKey]['var_name'] = $aSubMenu['phrase'];
+                            }
+                            else
+                            {
+                                $aMenu[$iKey]['text'] = $aSubMenu['phrase'];
+                            }
+                            continue;
+                        }
+                        switch ($sModule)
+                        {
+                            case 'event': 
+                                $aMenu[$iKey]['var_name'] = 'menu_create_new_'.$sModule;
+                                break;
+                            case 'forum':
+                                $aMenu[$iKey]['var_name'] = 'post_a_new_thread';
+                                break;
+                            case 'music':
+                                $aMenu[$iKey]['var_name'] = 'menu_upload_a_song';
+                                break;
+                            case 'photo':
+                                $aMenu[$iKey]['var_name'] = 'upload_a_new_image';
+                                break;
+                            case 'video':
+                                $aMenu[$iKey]['var_name'] = 'menu_upload_a_new_video';
+                                break;
+                            default:
+                                $aMenu[$iKey]['var_name'] = 'menu_add_new_'.$sModule;
+                        }                        
+                    }
+                }
+                
+                $this->template()->assign(array(
+                    'aSubMenus' => $aMenu
+                ));
+            }
+            
+        }
 
-		
 		$this->template()->assign(array(
 			'aUser' => $aUser
 		));
