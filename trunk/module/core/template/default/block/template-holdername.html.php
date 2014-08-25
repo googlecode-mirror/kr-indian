@@ -11,4 +11,4 @@
 defined('PHPFOX') or exit('NO DICE!'); 
 
 ?>
-{if defined('PHPFOX_IS_USER_PROFILE') || defined('PHPFOX_IS_PAGES_VIEW')}id="js_is_user_profile"{else}id="js_controller_{$sFullControllerName}"{/if}
+{if defined('PHPFOX_IS_USER_PROFILE') || defined('PHPFOX_IS_PAGES_VIEW') || defined('PHPFOX_IS_ORGANIZATION_VIEW')}id="js_is_user_profile"{else}id="js_controller_{$sFullControllerName}"{/if}

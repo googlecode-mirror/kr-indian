@@ -1294,7 +1294,7 @@ class Phpfox_Template_Cache extends Phpfox_Template
 				return '<?php Phpfox::getBlock(\'core.template-contentclass\'); ?>';
 				break;				
 			case 'is_page_view':
-				return '<?php echo (defined(\'PHPFOX_IS_PAGES_VIEW\') ? \'id="js_is_page"\' : \'\'); ?>';
+				return '<?php echo (defined(\'PHPFOX_IS_PAGES_VIEW\') || defined(\'PHPFOX_IS_ORGANIZATION_VIEW\') ? \'id="js_is_page"\' : \'\'); ?>';
 				break;
 			case 'item':
 				$aArgs = $this->_parseArgs($sArguments);

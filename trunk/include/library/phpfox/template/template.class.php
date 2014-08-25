@@ -374,9 +374,17 @@ class Phpfox_Template
 						Phpfox::getService('user.process')->saveData(array('theme' => $aTheme));
 					}
 				}
-				
+                
 				$this->_sThemeFolder = (isset($aTheme['theme_folder_name']) ? $aTheme['theme_folder_name'] : 'default');
-				$this->_sStyleFolder = (isset($aTheme['style_folder_name']) ? $aTheme['style_folder_name'] : 'default');									
+				$this->_sStyleFolder = (isset($aTheme['style_folder_name']) ? $aTheme['style_folder_name'] : 'default');			
+                
+                if(Phpfox::getLib('module')->getFullControllerName() == 'core.index' && !Phpfox::isUser())
+                {
+                    $this->_sThemeFolder = 'nebula';
+                    $this->_sStyleFolder = 'nebula';
+                    $aTheme['theme_folder_name'] = 'nebula';
+                    $aTheme['style_folder_name'] = 'nebula';
+                }						
 				$this->_aTheme = $aTheme;					
 			}
 
@@ -2567,7 +2575,7 @@ class Phpfox_Template
 	public function getTemplateFile($sTemplate, $bCheckDb = false)
 	{
 		(($sPlugin = Phpfox_Plugin::get('template_gettemplatefile')) ? eval($sPlugin) : false);
-
+        
 		$aParts = explode('.', $sTemplate);
 		
 		$sModule = $aParts[0];
