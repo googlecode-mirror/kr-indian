@@ -110,14 +110,18 @@ defined('PHPFOX') or exit('NO DICE!');
 								{/if}
 								<div id="main_content_padding">
 
-									{if defined('PHPFOX_IS_USER_PROFILE') || defined('PHPFOX_IS_PAGES_VIEW') || (isset($aPage) && isset($aPage.use_timeline) && $aPage.use_timeline)}
+									{if defined('PHPFOX_IS_USER_PROFILE') || defined('PHPFOX_IS_PAGES_VIEW') || defined('PHPFOX_IS_ORGANIZATION_VIEW') || (isset($aPage) && isset($aPage.use_timeline) && $aPage.use_timeline)}
 									    {if $bLoadedProfileHeader = true}{/if}
 									    {module name='profile.header'}
 									{/if}
 									{if defined('PHPFOX_IS_PAGES_VIEW') && !isset($bLoadedProfileHeader)}
 									    {block location='12'}
 									    {module name='pages.header'}
-									{/if}							
+									{/if}	
+                                    {if defined('PHPFOX_IS_ORGANIZATION_VIEW') && !isset($bLoadedProfileHeader)}
+                                        {block location='12'}
+                                        {module name='ogranization.header'}
+                                    {/if}						
 
 									<div id="content_load_data">
 										{if isset($bIsAjaxLoader) || defined('PHPFOX_IS_USER_PROFILE') || defined('PHPFOX_IS_PAGES_VIEW')}

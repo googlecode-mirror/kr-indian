@@ -35,5 +35,5 @@ defined('PHPFOX') or exit('NO DICE!');
 {/foreach}
 <div class="clear"></div>
 {if count($aPageDetails)}
-<a href="#" class="pages_profile_view_more" onclick="$('.pages_profile_block').show(); $(this).hide(); return false;">{phrase var='pages.more'}</a>
+<a href="#" class="pages_profile_view_more" onclick="$('.pages_profile_block').show(); $(this).hide(); return false;">{phrase var='organization.more'}</a>
 {/if}
