@@ -640,6 +640,10 @@ class Photo_Component_Ajax_Ajax extends Phpfox_Ajax
 			{
 				$this->call('window.location.href = "' . Phpfox::getLib('url')->permalink('pages', $this->get('page_id'), '') .'coverupdate_1";');
 			}
+            else if ( ($this->get('organization_id') > 0) )
+            {
+                $this->call('window.location.href = "' . Phpfox::getLib('url')->permalink('organization', $this->get('organization_id'), '') .'coverupdate_1";');
+            }
 			else if ($bIsPicup)
 			{
 				$this->call('window.location.href = "' . Phpfox::getLib('url')->permalink('mobile.photo', $aPhoto['photo_id'], $aPhoto['title']) . 'userid_' . Phpfox::getUserId() . '";');

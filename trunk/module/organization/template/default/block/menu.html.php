@@ -14,16 +14,16 @@ defined('PHPFOX') or exit('NO DICE!');
 <div class="pages_view_sub_menu" id="pages_menu">
 	<ul>
 		{if $aOrganization.is_admin}
-			<li><a href="{url link='pages.add' id=$aOrganization.organization_id}">{phrase var='pages.edit_page'}</a></li>		
+			<li><a href="{url link='organization.add' id=$aOrganization.organization_id}">{phrase var='organization.edit_organization'}</a></li>		
 		{/if}
-		{module name='share.link' type='pages' url=$aOrganization.link title=$aOrganization.title display='menu' sharefeedid=$aOrganization.organization_id sharemodule='pages'}
+		{module name='share.link' type='organization' url=$aOrganization.link title=$aOrganization.title display='menu' sharefeedid=$aOrganization.organization_id sharemodule='organization'}
 		{if !Phpfox::getUserBy('profile_organization_id')}
-			<li id="js_add_pages_unlike" {if !$aOrganization.is_liked} style="display:none;"{/if}><a href="#" onclick="$(this).parent().hide(); $('#pages_like_join_position').show(); $.ajaxCall('like.delete', 'type_id=pages&amp;item_id={$aOrganization.organization_id}'); return false;">{if $aOrganization.organization_type == '1'}{phrase var='pages.remove_membership'}{else}{phrase var='pages.unlike'}{/if}</a></li>
+			<li id="js_add_pages_unlike" {if !$aOrganization.is_liked} style="display:none;"{/if}><a href="#" onclick="$(this).parent().hide(); $('#pages_like_join_position').show(); $.ajaxCall('like.delete', 'type_id=pages&amp;item_id={$aOrganization.organization_id}'); return false;">{if $aOrganization.organization_type == '1'}{phrase var='organization.remove_membership'}{else}{phrase var='organization.unlike'}{/if}</a></li>
 		{/if}		
-		{if !$aOrganization.is_admin && Phpfox::getUserParam('pages.can_claim_page') && empty($aOrganization.claim_id)}
+		{if !$aOrganization.is_admin && Phpfox::getUserParam('organization.can_claim_organization') && empty($aOrganization.claim_id)}
 			<li>
-				<a href="#?call=contact.showQuickContact&amp;height=600&amp;width=600&amp;organization_id={$aOrganization.organization_id}" class="inlinePopup js_claim_page" title="{phrase var='pages.claim_page'}">
-					{phrase var='pages.claim_page'}
+				<a href="#?call=contact.showQuickContact&amp;height=600&amp;width=600&amp;organization_id={$aOrganization.organization_id}" class="inlinePopup js_claim_page" title="{phrase var='organization.claim_organization'}">
+					{phrase var='organization.claim_organization'}
 				</a>
 			</li>
 		{/if}

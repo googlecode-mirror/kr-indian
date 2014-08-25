@@ -18,7 +18,11 @@ class Profile_Component_Ajax_Ajax extends Phpfox_Ajax
 	public function logo()
 	{
 		$this->setTitle(Phpfox::getPhrase('profile.cover_photo'));
-		$aParams = array('page_id' => $this->get('page_id'));
+		$aParams = array(
+            'page_id' => $this->get('page_id'),
+            'type' => $this->get('type'),
+            'organization_id' => $this->get('organization_id'),
+        );
 		
 		Phpfox::getBlock('profile.cover', $aParams);
 	}

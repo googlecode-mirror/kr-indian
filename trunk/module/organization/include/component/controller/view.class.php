@@ -5,7 +5,7 @@
 
 defined('PHPFOX') or exit('NO DICE!');
 
-define('PHPFOX_IS_organization_VIEW', true);
+define('PHPFOX_IS_ORGANIZATION_VIEW', true);
 
 /**
  * 

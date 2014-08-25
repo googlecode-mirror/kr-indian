@@ -27,6 +27,14 @@ class Profile_Component_Block_Cover extends Phpfox_Component
 				'iPageId' => $iPageId
 			));
 		}
+        else if(($iType = $this->request()->get('type')))
+        { 
+            $organization = $this->request()->get('organization_id');
+            $this->template()->assign(array(
+                'IOrganization' => $organization
+            ));
+           // d($organization);die();
+        }
 	}
 	
 	/**

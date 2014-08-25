@@ -1,0 +1,14 @@
+<module>
+	<data>
+		<module_id>notification</module_id>
+		<product_id>phpfox</product_id>
+		<is_core>0</is_core>
+		<is_active>1</is_active>
+		<is_menu>0</is_menu>
+		<menu />
+		<phrase_var_name>module_notification</phrase_var_name>
+	</data>
+	<phrases>
+		<phrase module_id="notification" version_id="3.7.7" var_name="organization" added="1408848965">Organization</phrase>
+	</phrases>
+</module>

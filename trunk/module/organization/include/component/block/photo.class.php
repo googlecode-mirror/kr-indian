@@ -20,11 +20,11 @@ class organization_Component_Block_Photo extends Phpfox_Component
 	 */
 	public function process()
 	{
-		if (!defined('PHPFOX_IS_organization_VIEW'))
+        
+		if (!defined('PHPFOX_IS_ORGANIZATION_VIEW'))
 		{
 			return false;
 		}
-		
 		$aOrganization = $this->getParam('aOrganization');
 		if (empty($aOrganization))
         {

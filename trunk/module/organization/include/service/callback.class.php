@@ -446,7 +446,10 @@ class organization_Service_Callback extends Phpfox_Service
 			->leftJoin(Phpfox::getT('organization_url'), 'pu', 'pu.organization_id = p.organization_id')
 			->leftJoin(Phpfox::getT('like'), 'l', 'l.type_id = \'organization\' AND l.item_id = p.organization_id AND l.user_id = ' . Phpfox::getUserId())
 			->execute('getSlaveRow');
-
+        if(!isset($aRow['organization_id']))
+        {
+            return false;
+        }
 		$sLink = Phpfox::getService('organization')->getUrl($aRow['organization_id'], $aRow['title'], $aRow['vanity_url']);
 		
 		$aReturn = array(
