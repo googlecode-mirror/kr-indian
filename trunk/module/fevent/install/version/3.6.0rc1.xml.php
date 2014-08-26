@@ -1,0 +1,42 @@
+<upgrade>
+	<settings>
+		<setting>
+			<group>cache</group>
+			<module_id>fevent</module_id>
+			<is_hidden>0</is_hidden>
+			<type>boolean</type>
+			<var_name>cache_fevents_per_user</var_name>
+			<phrase_var_name>setting_cache_fevents_per_user</phrase_var_name>
+			<ordering>1</ordering>
+			<version_id>3.6.0rc1</version_id>
+			<value>0</value>
+		</setting>
+		<setting>
+			<group>cache</group>
+			<module_id>fevent</module_id>
+			<is_hidden>0</is_hidden>
+			<type>integer</type>
+			<var_name>cache_upcoming_fevents_info</var_name>
+			<phrase_var_name>setting_cache_upcoming_fevents_info</phrase_var_name>
+			<ordering>2</ordering>
+			<version_id>3.6.0rc1</version_id>
+			<value>8</value>
+		</setting>
+	</settings>
+	<phrases>
+		<phrase>
+			<module_id>fevent</module_id>
+			<version_id>3.6.0rc1</version_id>
+			<var_name>setting_cache_fevents_per_user</var_name>
+			<added>1371724255</added>
+			<value><![CDATA[<title>Profile fevent Count</title><info>Avoids querying for count in fevent.callback getTotalItemCount (called when going to a profile).</info>]]></value>
+		</phrase>
+		<phrase>
+			<module_id>fevent</module_id>
+			<version_id>3.6.0rc1</version_id>
+			<var_name>setting_cache_upcoming_fevents_info</var_name>
+			<added>1371731919</added>
+			<value><![CDATA[<title>Cache Upcoming fevents (Hours)</title><info>Cache the upcoming fevent in hours.</info>]]></value>
+		</phrase>
+	</phrases>
+</upgrade>

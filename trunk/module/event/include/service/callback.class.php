@@ -1312,6 +1312,7 @@
         // Get Menu for organization
         public function getOrganizationMenu($aOrganization)
         {
+            return null;
             if (!Phpfox::getService('organization')->hasPerm($aOrganization['organization_id'], 'event.view_browse_events'))
             {
                 return null;

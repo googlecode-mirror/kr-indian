@@ -26,6 +26,11 @@ defined('PHPFOX') or exit('NO DICE!');
             <input type="hidden" name="val[organization_id]" value="{$IOrganization}" />
         </div>
     {/if}
+    {if isset($iFevent) && !empty($iFevent)}
+        <div>
+            <input type="hidden" name="val[fevent_id]" value="{$iFevent}" />
+        </div>
+    {/if}
 	<div class="table">
 		<div class="table_left">
 			{phrase var='user.select_a_photo'}:

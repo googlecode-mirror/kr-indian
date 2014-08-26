@@ -62,7 +62,7 @@ defined('PHPFOX') or exit('NO DICE!');
 			<ul class="table_clear_button">
 				<li id="js_cover_update_loader_upload" style="display:none;">{img theme='ajax/add.gif' class='v_middle'}</li>		
 				<li class="js_cover_update_li"><div><input type="button" class="button button_off" value="{phrase var='user.cancel_cover_photo'}" name="cancel" onclick="window.location.href='{if $bIsPages}{$sPagesLink}{elseif $bIsOrganization}{$sOrganizationLink}{else}{url link='profile'}{/if}';" /></div></li>
-				<li class="js_cover_update_li"><div><input type="button" class="button" value="{phrase var='user.save_changes'}" name="save" onclick="$('.js_cover_update_li').hide(); $('#js_cover_update_loader_upload').show(); $.ajaxCall('{$sAjaxModule}.updateCoverPosition', 'position=' + sCoverPosition{if $sAjaxModule == 'pages'} + '&page_id={$aPage.page_id}'{else $sAjaxModule == 'organization'} + '&organization_id={$aOrganization.organization_id}'{/if}); return false;" /></div></li>
+				<li class="js_cover_update_li"><div><input type="button" class="button" value="{phrase var='user.save_changes'}" name="save" onclick="$('.js_cover_update_li').hide(); $('#js_cover_update_loader_upload').show(); $.ajaxCall('{$sAjaxModule}.updateCoverPosition', 'position=' + sCoverPosition{if $sAjaxModule == 'pages'} + '&page_id={$aPage.page_id}'{elseif $sAjaxModule == 'organization'} + '&organization_id={$aOrganization.organization_id}'{/if}); return false;" /></div></li>
 			</ul>
 			<div class="clear"></div>
 		</form>

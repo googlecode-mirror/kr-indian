@@ -33,7 +33,12 @@ class Profile_Component_Block_Cover extends Phpfox_Component
             $this->template()->assign(array(
                 'IOrganization' => $organization
             ));
-           // d($organization);die();
+        }
+        else if ( ($iFeventId = $this->request()->get('fevent_id') ))
+        {
+            $this->template()->assign(array(
+                'iFevent' => $iFeventId
+            ));
         }
 	}
 	

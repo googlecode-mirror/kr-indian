@@ -993,7 +993,7 @@ class Phpfox
 				return $bPass;	
 			}
 			else
-			{			
+			{		
 				return Phpfox::getService('user.group.setting')->getParam($sName);
 			}			
 		}
