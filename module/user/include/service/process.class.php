@@ -439,10 +439,33 @@ class User_Service_Process extends Phpfox_Service
 		
 		(($sPlugin = Phpfox_Plugin::get('user.service_process_add_start')) ? eval($sPlugin) : false);
 
+        // check community
+        if(isset($aVals['new_city_location']))
+        {
+            $aVals['title'] = $aVals['new_city_location'];
+            $iCommunityId = Phpfox::getService('community.process')->add($aVals);
+            if(!$iCommunityId)
+            {
+                return false;
+            }
+            $aInsert['community_id'] = $iCommunityId;
+        }
+        else if(isset($aVals['city_location']))
+        {
+            $aCommunity = Phpfox::getService('community')->getCommunityFromCity($aVals['city_location']);
+            $aInsert['community_id'] = $aCommunity['community_id'];
+        }
+        else
+        {
+            Phpfox_Error::set('City must be not null!');
+        }
+        // end check community
+        
 		if (!Phpfox_Error::isPassed())
 		{
 			return false;
 		}
+        
 		$iId = $this->database()->insert($this->_sTable, $aInsert);
 		$aInsert['user_id'] = $iId;
 		$aExtras = array(

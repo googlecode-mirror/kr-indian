@@ -92,7 +92,7 @@ defined('PHPFOX') or exit('NO DICE!');
 						<div id="content_holder"{if isset($sMicroPropType)} itemscope itemtype="http://schema.org/{$sMicroPropType}"{/if}>		
 							{block location='13'}
 							{block location='7'}				
-							{if !defined('PHPFOX_IS_USER_PROFILE') && !defined('PHPFOX_IS_PAGES_VIEW')}
+							{if !defined('PHPFOX_IS_USER_PROFILE') && !defined('PHPFOX_IS_PAGES_VIEW')&& !defined('PHPFOX_IS_ORGANIZATION_VIEW')}
 							{breadcrumb}
 							{block location='12'}
 							{/if}

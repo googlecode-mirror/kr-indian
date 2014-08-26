@@ -13,13 +13,21 @@ $(document).ready(function(e){
     $('.user_register_title').text('Sign up for free today!');
     $('#js_signup_block').prepend('<ul class="register_tab"><li class="active_tab_register" rel="individual_tab">Individual</li><li rel="organization_tab">Organization</li></ul>');
 	$('.user_register_intro').append('<div class="bg_video"><iframe src="//www.youtube.com/embed/UGuPtmxeCNQ?rel=0&controls=0&showinfo=0" frameborder="0" allowfullscreen></iframe></div>');
-	$('.swap_bg').css('min-height',($(window).height() - 60) + 'px');
-	$('#js_signup_block div').addClass('register_panel').addClass('individual_tab');
+	$('.swap_bg').css('min-height',($(window).height() - 50) + 'px');
+	$('#js_signup_block>div').addClass('register_panel').addClass('individual_tab');
 	$('#js_signup_block').append('<div class="organization_tab register_panel"></div>');
 	$('#js_signup_block').on('click','.register_tab li',function(e){
+        if($(this).attr('rel') == 'individual_tab'){
+            $('#type_register').val('individual');
+        }
+        else{
+            $('#type_register').val('organization');
+        }
 		$('.register_panel').hide();
 		$('.register_tab li').removeClass('active_tab_register');
 		$(this).addClass('active_tab_register');
 		$('.' + $(this).attr('rel')).show();
 	});
+    
+    $.ajaxCall('user.addOrganizationBlock','');
 });

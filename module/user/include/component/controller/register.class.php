@@ -185,7 +185,8 @@ class User_Component_Controller_Register extends Phpfox_Component
 				'sDobEnd' => Phpfox::getParam('user.date_of_birth_end'),
 				'sJanrainUrl' => (Phpfox::isModule('janrain') ? Phpfox::getService('janrain')->getUrl() : ''),
 				'sUserEmailCookie' => Phpfox::getCookie('invited_by_email_form'),
-				'sSiteTitle' => Phpfox::getParam('core.site_title')
+				'sSiteTitle' => Phpfox::getParam('core.site_title'),
+                'aCitys' => Phpfox::getService('community')->getAllCity()
 			)
 		);
 	}

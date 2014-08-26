@@ -67,7 +67,12 @@ class Event_Component_Controller_Add extends Phpfox_Component
 			if ($sModule == 'pages' && !Phpfox::getService('pages')->hasPerm($iItem, 'event.share_events'))
 			{
 				return Phpfox_Error::display(Phpfox::getPhrase('event.unable_to_view_this_item_due_to_privacy_settings'));
-			}				
+			}	
+            
+            if ($sModule == 'organization' && !Phpfox::getService('organization')->hasPerm($iItem, 'event.share_events'))
+            {
+                return Phpfox_Error::display(Phpfox::getPhrase('event.unable_to_view_this_item_due_to_privacy_settings'));
+            }    			
 		}		
 		
 		$aValidation = array(

@@ -510,7 +510,7 @@ class organization_Service_Callback extends Phpfox_Service
 			'item_id' => $aRow['organization_id'],
 			'title' => $aRow['title'],
 			'url_home' => $sLink,
-			'url_home_organization' => $sLink . 'event/'
+			'url_home_pages' => $sLink . 'event/'
 		);		
 	}
 	

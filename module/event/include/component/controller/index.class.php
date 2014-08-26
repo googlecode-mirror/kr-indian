@@ -215,7 +215,7 @@ class Event_Component_Controller_Index extends Phpfox_Component
 		$this->search()->browse()->params($aBrowseParams)->execute();
 		
 		$aFilterMenu = array();
-		$bSetFilterMenu = (!defined('PHPFOX_IS_USER_PROFILE') && !defined('PHPFOX_IS_PAGES_VIEW') );
+		$bSetFilterMenu = (!defined('PHPFOX_IS_USER_PROFILE') && !defined('PHPFOX_IS_PAGES_VIEW') && !defined('PHPFOX_IS_ORGANIZATION_VIEW'));
 		if ($sPlugin = Phpfox_Plugin::get('event.component_controller_index_set_filter_menu_1'))
 		{
 			eval($sPlugin);
