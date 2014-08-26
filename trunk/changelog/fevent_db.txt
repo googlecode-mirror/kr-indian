@@ -1,0 +1,127 @@
+CREATE TABLE IF NOT EXISTS `phpfox_fevent` (
+  `fevent_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `view_id` tinyint(1) NOT NULL DEFAULT '0',
+  `is_featured` tinyint(1) NOT NULL DEFAULT '0',
+  `is_sponsor` tinyint(1) NOT NULL DEFAULT '0',
+  `privacy` tinyint(1) NOT NULL DEFAULT '0',
+  `privacy_comment` tinyint(1) NOT NULL DEFAULT '0',
+  `module_id` varchar(75) NOT NULL DEFAULT 'fevent',
+  `item_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `user_id` int(10) unsigned NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `location` varchar(255) DEFAULT NULL,
+  `country_iso` char(2) DEFAULT NULL,
+  `country_child_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  `postal_code` varchar(20) DEFAULT NULL,
+  `city` varchar(255) DEFAULT NULL,
+  `time_stamp` int(10) unsigned NOT NULL,
+  `start_time` int(10) unsigned NOT NULL,
+  `end_time` int(10) unsigned NOT NULL,
+  `image_path` varchar(75) DEFAULT NULL,
+  `server_id` tinyint(1) NOT NULL DEFAULT '0',
+  `total_comment` int(10) unsigned NOT NULL DEFAULT '0',
+  `total_like` int(10) unsigned NOT NULL DEFAULT '0',
+  `total_dislike` int(10) unsigned NOT NULL DEFAULT '0',
+  `mass_email` int(10) unsigned NOT NULL DEFAULT '0',
+  `start_gmt_offset` varchar(15) DEFAULT NULL,
+  `end_gmt_offset` varchar(15) DEFAULT NULL,
+  `gmap` varchar(255) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`fevent_id`),
+  KEY `module_id` (`module_id`,`item_id`),
+  KEY `user_id` (`user_id`),
+  KEY `view_id` (`view_id`,`privacy`,`item_id`,`start_time`),
+  KEY `view_id_2` (`view_id`,`privacy`,`item_id`,`user_id`,`start_time`),
+  KEY `view_id_3` (`view_id`,`privacy`,`user_id`),
+  KEY `view_id_4` (`view_id`,`privacy`,`item_id`,`title`),
+  KEY `view_id_5` (`view_id`,`privacy`,`module_id`,`item_id`,`start_time`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+
+CREATE TABLE IF NOT EXISTS `phpfox_fevent_category` (
+  `category_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `parent_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  `is_active` tinyint(1) NOT NULL DEFAULT '0',
+  `name` varchar(255) NOT NULL,
+  `name_url` varchar(255) DEFAULT NULL,
+  `time_stamp` int(10) unsigned NOT NULL DEFAULT '0',
+  `used` int(10) unsigned NOT NULL DEFAULT '0',
+  `ordering` int(11) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`category_id`),
+  KEY `parent_id` (`parent_id`,`is_active`),
+  KEY `is_active` (`is_active`,`name_url`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS `phpfox_fevent_category_data` (
+  `fevent_id` int(10) unsigned NOT NULL,
+  `category_id` int(10) unsigned NOT NULL,
+  KEY `category_id` (`category_id`),
+  KEY `fevent_id` (`fevent_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `phpfox_fevent_feed` (
+  `feed_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `privacy` tinyint(1) NOT NULL DEFAULT '0',
+  `privacy_comment` tinyint(1) NOT NULL DEFAULT '0',
+  `type_id` varchar(75) NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
+  `parent_user_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `item_id` int(10) unsigned NOT NULL,
+  `time_stamp` int(10) unsigned NOT NULL,
+  `parent_feed_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `parent_module_id` varchar(75) DEFAULT NULL,
+  `time_update` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`feed_id`),
+  KEY `parent_user_id` (`parent_user_id`),
+  KEY `time_update` (`time_update`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS `phpfox_fevent_feed_comment` (
+  `feed_comment_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) unsigned NOT NULL,
+  `parent_user_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `privacy` tinyint(3) NOT NULL DEFAULT '0',
+  `privacy_comment` tinyint(3) NOT NULL DEFAULT '0',
+  `content` mediumtext,
+  `time_stamp` int(10) unsigned NOT NULL,
+  `total_comment` int(10) unsigned NOT NULL DEFAULT '0',
+  `total_like` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`feed_comment_id`),
+  KEY `parent_user_id` (`parent_user_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS `phpfox_fevent_invite` (
+  `invite_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `fevent_id` int(10) unsigned NOT NULL,
+  `type_id` tinyint(1) NOT NULL DEFAULT '0',
+  `rsvp_id` tinyint(1) NOT NULL DEFAULT '0',
+  `user_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `invited_user_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `invited_email` varchar(100) DEFAULT NULL,
+  `time_stamp` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`invite_id`),
+  KEY `fevent_id` (`fevent_id`),
+  KEY `fevent_id_2` (`fevent_id`,`invited_user_id`),
+  KEY `invited_user_id` (`invited_user_id`),
+  KEY `fevent_id_3` (`fevent_id`,`rsvp_id`,`invited_user_id`),
+  KEY `rsvp_id` (`rsvp_id`,`invited_user_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+
+CREATE TABLE IF NOT EXISTS `phpfox_fevent_text` (
+  `fevent_id` int(10) unsigned NOT NULL,
+  `description` mediumtext,
+  `description_parsed` mediumtext,
+  KEY `fevent_id` (`fevent_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+ALTER TABLE `phpfox_user_field` ADD `total_fevent` INT(10) NOT NULL DEFAULT '0' ;
+
+ALTER TABLE `phpfox_user_activity` ADD `activity_fevent` INT(10) NOT NULL DEFAULT '0' ;
+
+ALTER TABLE `phpfox_user_space` ADD `space_fevent` INT(10) NOT NULL DEFAULT '0' ;
+
+Phrase has been added: profile.fevents
+Phrase has been added: feed.created_an_fevent
+Phrase has been added: organization.fevents

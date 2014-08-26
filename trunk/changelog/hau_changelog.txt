@@ -1,0 +1,1 @@
+ALTER TABLE `phpfox_user` ADD `profile_organization_id` INT(10) NOT NULL DEFAULT '0' AFTER `profile_page_id`;
