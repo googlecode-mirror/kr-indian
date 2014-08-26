@@ -37,10 +37,19 @@
 	{if Phpfox::getParam('core.city_in_registration')}
 		<div class="table">
 			<div class="table_left">
-				<label for="city_location">{phrase var='user.city'}:</label>
+				<label for="city_location">{required}{phrase var='user.city'}:</label>
 			</div>
 			<div class="table_right">
-				<input type="text" name="val[city_location]" id="city_location" value="{value type='input' id='city_location'}" size="30" />
+                {if count($aCitys)}
+                <select name="val[city_location]">
+                <option value="0">Choose a City</option>
+                {foreach from=$aCitys item=aCity}
+                    <option value="{$aCity.city_id}">{$aCity.name}</option>
+                {/foreach}
+                </select>
+                {else}
+				<input type="text" name="val[new_city_location]" id="new_city_location" value="{value type='input' id='city_location'}" size="30" />
+                {/if}
 			</div>			
 		</div>		
 	{/if}

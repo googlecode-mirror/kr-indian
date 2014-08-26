@@ -37,7 +37,8 @@ class User_Component_Block_Register extends Phpfox_Component
 				'aPackages' => (Phpfox::isModule('subscribe') ? Phpfox::getService('subscribe')->getPackages(true) : null),
 				'sDobStart' => Phpfox::getParam('user.date_of_birth_start'),
 				'sDobEnd' => Phpfox::getParam('user.date_of_birth_end'),
-				'sSiteTitle' => Phpfox::getParam('core.site_title')
+				'sSiteTitle' => Phpfox::getParam('core.site_title'),
+                'aCitys' => Phpfox::getService('community')->getAllCity()
 			)
 		);
 		

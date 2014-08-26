@@ -103,7 +103,7 @@ class organization_Component_Controller_View extends Phpfox_Component
 		
 		if (isset($aOrganization['is_admin']) && $aOrganization['is_admin'])
 		{
-			define('PHPFOX_IS_PAGE_ADMIN', true);
+			define('PHPFOX_IS_ORGANIZATION_ADMIN', true);
 		}
 		
 		$sModule = $sCurrentModule; // http://www.phpfox.com/tracker/view/15190/
@@ -119,9 +119,9 @@ class organization_Component_Controller_View extends Phpfox_Component
 		if (isset($aOrganization['use_timeline']) && $aOrganization['use_timeline'])
 		{
 			$aPageMenus = Phpfox::getService('organization')->getMenu($aOrganization);
-			if (!defined('PAGE_TIME_LINE'))
+			if (!defined('ORGANIZATION_TIME_LINE'))
 			{
-				define('PAGE_TIME_LINE', true);
+				define('ORGANIZATION_TIME_LINE', true);
 			}
 			$aOrganization['user_name'] = $aOrganization['title'];
 
@@ -164,22 +164,22 @@ class organization_Component_Controller_View extends Phpfox_Component
 			)
 		);		
 		
-		if ($bCanViewPage && $sModule && Phpfox::isModule($sModule) && Phpfox::hasCallback($sModule, 'getorganizationubMenu') && !$this->request()->getInt('comment-id'))
+		if ($bCanViewPage && $sModule && Phpfox::isModule($sModule) && Phpfox::hasCallback($sModule, 'getOrganizationSubMenu') && !$this->request()->getInt('comment-id'))
 		{
-			if (Phpfox::hasCallback($sModule, 'canVieworganizationection') && !Phpfox::callback($sModule . '.canVieworganizationection', $aOrganization['organization_id']))
+			if (Phpfox::hasCallback($sModule, 'canViewOrganizationSection') && !Phpfox::callback($sModule . '.canViewOrganizationSection', $aOrganization['organization_id']))
 			{
 				return Phpfox_Error::display(Phpfox::getPhrase('organization.unable_to_view_this_section_due_to_privacy_settings'));
 			}
 			
-			$this->template()->assign('bIsorganizationViewSection', true);
-			$this->setParam('bIsorganizationViewSection', true);
+			$this->template()->assign('bIsOrganizationViewSection', true);
+			$this->setParam('bIsOrganizationViewSection', true);
 			$this->setParam('sCurrentOrganizationModule', $sModule);
 			
 			Phpfox::getComponent($sModule . '.index', array('bNoTemplate' => true), 'controller');
 		}
 		elseif ($bCanViewPage && $sModule && Phpfox::getService('organization')->isWidget($sModule) && !$this->request()->getInt('comment-id'))
 		{
-			define('PHPFOX_IS_organization_WIDGET', true);
+			define('PHPFOX_IS_ORGANIZATION_WIDGET', true);
 			$this->template()->assign(array(
 					'aWidget' => Phpfox::getService('organization')->getWidget($sModule)
 				)
@@ -225,7 +225,7 @@ class organization_Component_Controller_View extends Phpfox_Component
 			// http://www.phpfox.com/tracker/view/15316/
 			if($sCurrentModule != 'info')
 			{
-				define('PHPFOX_IS_organization_IS_INDEX', true);
+				define('PHPFOX_IS_ORGANIZATION_IS_INDEX', true);
 			}
 
 			$this->setParam('aFeedCallback', array(

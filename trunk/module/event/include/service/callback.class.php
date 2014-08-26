@@ -1341,7 +1341,18 @@
                     'url' => Phpfox::getLib('url')->makeUrl('event.add', array('module' => 'organization', 'item' => $aOrganization['organization_id']))
                 )
             );
-        }    
+        }   
+        
+        // check can view organization
+        public function canViewOrganizationSection($iOrganization)
+        {        
+            if (!Phpfox::getService('organization')->hasPerm($iOrganization, 'event.view_browse_events'))
+            {
+                return false;
+            }
+
+            return true;
+        } 
     }
 
 ?>
