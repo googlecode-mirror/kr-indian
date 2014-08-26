@@ -310,7 +310,6 @@ class Photo_Component_Controller_Frame extends Phpfox_Component
 			{				
 				if (Phpfox::getService('pages.process')->setCoverPhoto($aVals['page_id'], $iId, true))
 				 {
-					//echo '<script type="text/javascript">parent.window.location.href = "' . Phpfox::permalink('pages', $aVals['page_id'], '') . '";</script>';
 					$aVals['is_cover_photo'] = 1;
 				 }
 				 else
@@ -323,7 +322,18 @@ class Photo_Component_Controller_Frame extends Phpfox_Component
             {              
                 if (Phpfox::getService('organization.process')->setCoverPhoto($aVals['organization_id'], $iId, true))
                  {
-                    //echo '<script type="text/javascript">parent.window.location.href = "' . Phpfox::permalink('pages', $aVals['page_id'], '') . '";</script>';
+                    $aVals['is_cover_photo'] = 1;
+                 }
+                 else
+                 {
+                    echo '<script type="text/javascript">alert("Something went wrong: ' . implode(Phpfox_Error::get()) . '");</script>';
+                    
+                 }                 
+            }
+            if (isset($aVals['fevent_id']) && $aVals['fevent_id'] > 0)
+            {              
+                if (Phpfox::getService('fevent.process')->setCoverPhoto($aVals['fevent_id'], $iId, true))
+                 {
                     $aVals['is_cover_photo'] = 1;
                  }
                  else
@@ -364,7 +374,7 @@ class Photo_Component_Controller_Frame extends Phpfox_Component
 					echo 'window.parent.';
 				}
 
-				echo '$.ajaxCall(\'photo.process\', \''. ((isset($aVals['page_id']) && !empty($aVals['page_id'])) ? 'is_page=1' : ''). ((isset($aVals['organization_id']) && $aVals['organization_id'] > 0) ? '&organization_id='.$aVals['organization_id'] : '') .'&js_disable_ajax_restart=true' . $sExtra . '&twitter_connection=' . ((isset($aVals['connection']) && isset($aVals['connection']['twitter'])) ? $aVals['connection']['twitter'] : '0') . '&facebook_connection=' . (isset($aVals['connection']['facebook']) ? $aVals['connection']['facebook'] : '0') . '&custom_pages_post_as_page=' . $this->request()->get('custom_pages_post_as_page') . '&photos=' . urlencode(json_encode($aImages)) . '&action=' . $sAction . '' . (isset($iFeedId) ? '&feed_id=' . $iFeedId : '') . '' . ($aCallback !== null ? '&callback_module=' . $aCallback['module'] . '&callback_item_id=' . $aCallback['item_id'] : '') . '&parent_user_id=' . (isset($aVals['parent_user_id']) ? (int) $aVals['parent_user_id'] : 0) . '&is_cover_photo=' . (isset($aVals['is_cover_photo']) ? '1' : '0') . ((isset($aVals['page_id']) && $aVals['page_id'] > 0) ? '&page_id='.$aVals['page_id'] : '') .((isset($aVals['organization_id']) && $aVals['organization_id'] > 0) ? '&organization_id='.$aVals['organization_id'] : '') . '\');';
+				echo '$.ajaxCall(\'photo.process\', \''. ((isset($aVals['page_id']) && !empty($aVals['page_id'])) ? 'is_page=1&' : ''). ((isset($aVals['organization_id']) && $aVals['organization_id'] > 0) ? 'organization_id=1&' : ''). ((isset($aVals['fevent_id']) && $aVals['fevent_id'] > 0) ? 'fevent_id=1&' : '') .'&js_disable_ajax_restart=true' . $sExtra . '&twitter_connection=' . ((isset($aVals['connection']) && isset($aVals['connection']['twitter'])) ? $aVals['connection']['twitter'] : '0') . '&facebook_connection=' . (isset($aVals['connection']['facebook']) ? $aVals['connection']['facebook'] : '0') . '&custom_pages_post_as_page=' . $this->request()->get('custom_pages_post_as_page') . '&photos=' . urlencode(json_encode($aImages)) . '&action=' . $sAction . '' . (isset($iFeedId) ? '&feed_id=' . $iFeedId : '') . '' . ($aCallback !== null ? '&callback_module=' . $aCallback['module'] . '&callback_item_id=' . $aCallback['item_id'] : '') . '&parent_user_id=' . (isset($aVals['parent_user_id']) ? (int) $aVals['parent_user_id'] : 0) . '&is_cover_photo=' . (isset($aVals['is_cover_photo']) ? '1' : '0') . ((isset($aVals['page_id']) && $aVals['page_id'] > 0) ? '&page_id='.$aVals['page_id'] : '') .((isset($aVals['organization_id']) && $aVals['organization_id'] > 0) ? '&organization_id='.$aVals['organization_id'] : ''). ((isset($aVals['fevent_id']) && $aVals['fevent_id'] > 0) ? '&fevent_id='.$aVals['fevent_id'] : ''). '\');';
 				if (!defined('PHPFOX_HTML5_PHOTO_UPLOAD'))
 				{
 					echo '</script>';
