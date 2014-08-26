@@ -110,4 +110,7 @@ $_CONF['core.url_thumb'] = 'thumb/';
 $_CONF['organization.dir_image'] = $_CONF['core.dir_pic'] . 'organization' . PHPFOX_DS;
 $_CONF['organization.url_image'] = $_CONF['core.url_pic'] . 'organization/';
 
+$_CONF['fevent.dir_image'] = $_CONF['core.dir_pic'] . 'fevent' . PHPFOX_DS;
+$_CONF['fevent.url_image'] = $_CONF['core.url_pic'] . 'fevent/';
+
 ?>
