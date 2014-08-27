@@ -41,9 +41,9 @@
 
             $aBrowseParams = array(
                 'module_id' => 'community',
-                'alias' => 'blog',
-                'field' => 'blog_id',
-                'table' => Phpfox::getT('blog'),
+                'alias' => 'community',
+                'field' => 'community_id',
+                'table' => Phpfox::getT('community'),
                 'hide_view' => array('pending', 'my')                
             );    
 
