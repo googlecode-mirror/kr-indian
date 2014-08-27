@@ -37,5 +37,23 @@
             ->where('city_id='.(int)$iCityId)
             ->execute('getRow');
         }
+        
+        public function getCityFromLocation($iCountryIso,$iCountryChildId = 0)
+        {
+            if(!$iCountryChildId)
+            {
+                return $this->database()->select('*')
+                ->from(Phpfox::getT('community_city'))
+                ->where("country_iso='".$iCountryIso."'")
+                ->execute('getRows');
+            }
+            else
+            {
+                return $this->database()->select('*')
+                ->from(Phpfox::getT('community_city'))
+                ->where("country_child_id=".$iCountryChildId)
+                ->execute('getRows');
+            }
+        }
     }
 ?>

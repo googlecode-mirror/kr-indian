@@ -33,7 +33,8 @@
                 'time_stamp' => PHPFOX_TIME
             );
             $aVals['name'] = $aVals['title'];
-            $this->addCity($aVals);
+            $iCityId = $this->addCity($aVals);
+            $aInsert['city_id'] = $iCityId;
             return $this->database()->insert(Phpfox::getT('community'),$aInsert);
         }
         

@@ -23,6 +23,13 @@
 			</div>			
 		</div>
 	{/if}	
+    {literal}
+    <style type="text/css">
+        #js_country_child_id{
+            display: inline-block;
+        }
+    </style>
+    {/literal}
 	{if Phpfox::getParam('core.registration_enable_location')}
 		<div class="table">
 			<div class="table_left">
@@ -31,22 +38,25 @@
 			<div class="table_right">
 				{select_location}
 				{module name='core.country-child' country_force_div=true}
+                <span class="loading_city" style="display: none;margin-top:10px;"><img src="http://fr.com/theme/frontend/default/style/default/image/ajax/small.gif"> </span>
 			</div>			
 		</div>		
 	{/if}
 	{if Phpfox::getParam('core.city_in_registration')}
-		<div class="table">
+		<div class="table" id="js_city_location">
 			<div class="table_left">
 				<label for="city_location">{required}{phrase var='user.city'}:</label>
 			</div>
 			<div class="table_right">
                 {if count($aCitys)}
-                <select name="val[city_location]">
+                <select name="val[city_location]" id="cb_city_location">
                 <option value="0">Choose a City</option>
                 {foreach from=$aCitys item=aCity}
                     <option value="{$aCity.city_id}">{$aCity.name}</option>
                 {/foreach}
                 </select>
+                <a href="" onclick="$('#new_city_location').show();return false;">Enter your city</a>
+                <input style="margin-top:10px;display: none;" type="text" name="val[new_city_location]" id="new_city_location" value="{value type='input' id='city_location'}" size="30"/>
                 {else}
 				<input type="text" name="val[new_city_location]" id="new_city_location" value="{value type='input' id='city_location'}" size="30" />
                 {/if}
