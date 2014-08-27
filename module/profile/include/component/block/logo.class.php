@@ -91,14 +91,12 @@ class Profile_Component_Block_Logo extends Phpfox_Component
 			
 			$this->template()->assign('sPagesLink', $aPage['link']);
 		}
-        //d($aPage);die();
         if ($bIsOrganization)
         {
             $aOrganization = $this->getParam('aOrganization');
             
             $this->template()->assign('sOrganizationLink',$aOrganization['link']);
         }
-        d($aUser);die();
 		$this->template()->assign(array(
 				'aCoverPhoto' => $aCoverPhoto,
 				'bRefreshPhoto' => ($this->request()->getInt('coverupdate') ? true : false),

@@ -80,7 +80,6 @@ class organization_Component_Ajax_Ajax extends Phpfox_Ajax
 		Phpfox::isUser(true);
 				
 		$aVals = (array) $this->get('val');	
-		
 		if (!defined('PAGE_TIME_LINE'))
 		{
 		    // Check if this item is a page and is using time line
@@ -98,34 +97,34 @@ class organization_Component_Ajax_Ajax extends Phpfox_Ajax
 			return;			
 		}
 		
-		$aPage = Phpfox::getService('organization')->getPage($aVals['callback_item_id']);
+		$aOrganization = Phpfox::getService('organization')->getPage($aVals['callback_item_id']);
 
-		if (!isset($aPage['organization_id']))
+		if (!isset($aOrganization['organization_id']))
 		{
 			$this->alert(Phpfox::getPhrase('organization.unable_to_find_the_page_you_are_trying_to_comment_on'));
 			$this->call('$Core.activityFeedProcess(false);');
 			return;
 		}
 		
-		$sLink = Phpfox::getService('organization')->getUrl($aPage['organization_id'], $aPage['title'], $aPage['vanity_url']);
+		$sLink = Phpfox::getService('organization')->getUrl($aOrganization['organization_id'], $aOrganization['title'], $aOrganization['vanity_url']);
 		$aCallback = array(
 			'module' => 'organization',
 			'table_prefix' => 'organization_',
 			'link' => $sLink,
-			'email_user_id' => $aPage['user_id'],
-			'subject' => Phpfox::getPhrase('organization.full_name_wrote_a_comment_on_your_page_title', array('full_name' => Phpfox::getUserBy('full_name'), 'title' => $aPage['title'])),
-			'message' => Phpfox::getPhrase('organization.full_name_wrote_a_comment_link', array('full_name' => Phpfox::getUserBy('full_name'), 'link' => $sLink, 'title' => $aPage['title'])),
+			'email_user_id' => $aOrganization['user_id'],
+			'subject' => Phpfox::getPhrase('organization.full_name_wrote_a_comment_on_your_page_title', array('full_name' => Phpfox::getUserBy('full_name'), 'title' => $aOrganization['title'])),
+			'message' => Phpfox::getPhrase('organization.full_name_wrote_a_comment_link', array('full_name' => Phpfox::getUserBy('full_name'), 'link' => $sLink, 'title' => $aOrganization['title'])),
 			'notification' => ($this->get('custom_organization_post_as_page') ? null : 'organization_comment'),
 			'feed_id' => 'organization_comment',
-			'item_id' => $aPage['organization_id']
+			'item_id' => $aOrganization['organization_id']
 		);
 		
 		$aVals['parent_user_id'] = $aVals['callback_item_id'];
 		
 		if (isset($aVals['user_status']) && ($iId = Phpfox::getService('feed.process')->callback($aCallback)->addComment($aVals)))
 		{
-			Phpfox::getLib('database')->updateCounter('organization', 'total_comment', 'organization_id', $aPage['organization_id']);		
-			
+			Phpfox::getLib('database')->updateCounter('organization', 'total_comment', 'organization_id', $aOrganization['organization_id']);		
+			//die($iId);
 			Phpfox::getService('feed')->callback($aCallback)->processAjax($iId);
 		}
 		else 
