@@ -476,6 +476,7 @@ class User_Service_Process extends Phpfox_Service
         // Add this user into member of community
         if($iId)
         {
+            $this->database()->update(Phpfox::getT('community'),array('user_id' => $iId),'community_id='.(int)$iCommunityId);
             Phpfox::getService('community.process')->addMemberToCommunity($iCommunityId,$iId);
         }
         // End action

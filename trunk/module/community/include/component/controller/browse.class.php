@@ -26,7 +26,7 @@
                 'search_tool' => array(
                     'table_alias' => 'community',
                     'search' => array(
-                        'action' => $this->url()->makeUrl('community', array('view' => $this->request()->get('view'))),
+                        'action' => $this->url()->makeUrl('community.browse', array('view' => $this->request()->get('view'))),
                         'default_value' => Phpfox::getPhrase('community.search_communitys'),
                         'name' => 'search',
                         'field' => array('community.title')
@@ -49,9 +49,10 @@
 
             $this->search()->browse()->params($aBrowseParams)->execute();
 
-            $aItems = $this->search()->browse()->getRows();
-
+            $aCommunitys = $this->search()->browse()->getRows();
+            
             Phpfox::getLib('pager')->set(array('page' => $this->search()->getPage(), 'size' => $this->search()->getDisplay(), 'count' => $this->search()->browse()->getCount()));
+            d($aCommunitys);die();
         }
     }
 ?>
