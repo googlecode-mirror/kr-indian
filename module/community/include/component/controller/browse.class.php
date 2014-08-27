@@ -52,7 +52,13 @@
             $aCommunitys = $this->search()->browse()->getRows();
             
             Phpfox::getLib('pager')->set(array('page' => $this->search()->getPage(), 'size' => $this->search()->getDisplay(), 'count' => $this->search()->browse()->getCount()));
-            d($aCommunitys);die();
+            
+            $this->template()->setHeader(array(
+                'community.css' => 'module_community'
+            ))
+            ->assign(array(
+                'aCommunitys' => $aCommunitys
+            ));
         }
     }
 ?>
