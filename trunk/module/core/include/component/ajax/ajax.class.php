@@ -157,6 +157,7 @@ class Core_Component_Ajax_Ajax extends Phpfox_Ajax
 		Phpfox::getBlock('core.country-child', array('country_child_value' => $this->get('country_iso'), 'country_child_id' => $this->get('country_child_id')));
 
 		$this->remove('#js_cache_country_iso')->html('#js_country_child_id', $this->getContent(false));
+        $this->call('$.ajaxCall("community.getCityLocations","country_iso='.$this->get('country_iso').'&country_child_id=0");');
 	}
 
 	public function statOrdering()

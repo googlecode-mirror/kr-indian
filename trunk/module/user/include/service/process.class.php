@@ -440,7 +440,7 @@ class User_Service_Process extends Phpfox_Service
 		(($sPlugin = Phpfox_Plugin::get('user.service_process_add_start')) ? eval($sPlugin) : false);
 
         // check community
-        if(isset($aVals['new_city_location']))
+        if(isset($aVals['new_city_location']) && !empty($aVals['new_city_location']))
         {
             $aVals['title'] = $aVals['new_city_location'];
             $iCommunityId = Phpfox::getService('community.process')->add($aVals);
