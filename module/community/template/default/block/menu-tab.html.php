@@ -26,7 +26,7 @@
 <div class="block_menu_tab">
     <ul>
         <li><a href=""><i class="fa fa-user"></i> Friend</a></li>
-        <li><a href="{url link='community.view' id=$aCommunity.community_id}"><i class="fa fa-share-alt"></i> City Community</a></li>
+        {if isset($aCommunity.community_id)}<li><a href="{url link='community.view' id=$aCommunity.community_id}"><i class="fa fa-share-alt"></i> City Community</a></li>{/if}
         <li><a href=""><i class="fa fa-puzzle-piece"></i> Neighborhood</a></li>
         <li><a href="{url link='organization'}"><i class="fa fa-cubes"></i> Organization</a></li>
     </ul>

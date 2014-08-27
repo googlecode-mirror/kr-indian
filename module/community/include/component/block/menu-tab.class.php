@@ -21,10 +21,19 @@
         public function process()
         {   
             $aUser = Phpfox::getService('user')->get(Phpfox::getUserId());
-            $aCommunity = Phpfox::getService('community')->getCommunity($aUser['community_id']);
+            if($aUser['community_id'])
+            {
+                $aCommunity = Phpfox::getService('community')->getCommunity($aUser['community_id']);
+                if(isset($aCommunity['community_id']))
+                {
+                    $this->template()->assign(array(
+                        'aCommunity' => $aCommunity
+                    ));
+                }
+            }
+            
             $this->template()->assign(array(
                 'sHeader' => 'Menu',
-                'aCommunity' => $aCommunity
             ));
             return 'block';
         }
