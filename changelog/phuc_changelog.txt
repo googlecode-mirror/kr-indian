@@ -5,4 +5,5 @@ ALTER TABLE `phpfox_organization` ADD `website` VARCHAR( 300 ) NULL ;
 ALTER TABLE `phpfox_organization` ADD `phone` VARCHAR( 50 ) NULL ;
 
 ALTER TABLE `phpfox_user` ADD `community_id` INT( 10 ) NOT NULL DEFAULT '0' AFTER `user_id` ;
-ALTER TABLE `community` ADD `city_id` INT( 10 ) NOT NULL DEFAULT '0' AFTER `title` ;
+ALTER TABLE `phpfox_community` ADD `city_id` INT( 10 ) NOT NULL DEFAULT '0' AFTER `title` ;
+Phpfox::getUserParam('organization.can_claim_organization')
