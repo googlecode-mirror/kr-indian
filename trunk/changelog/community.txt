@@ -1,0 +1,31 @@
+CREATE TABLE IF NOT EXISTS `phpfox_community` (
+  `community_id` int(10) NOT NULL AUTO_INCREMENT,
+  `title` varchar(200) NOT NULL,
+  `city_id` int(10) NOT NULL DEFAULT '0',
+  `country_iso` varchar(10) DEFAULT NULL,
+  `country_child_id` int(10) NOT NULL,
+  `description` mediumtext,
+  `avatar` varchar(500) DEFAULT NULL,
+  `cover_photo` varchar(500) DEFAULT NULL,
+  `total_member` int(10) NOT NULL DEFAULT '0',
+  `time_stamp` int(10) NOT NULL,
+  PRIMARY KEY (`community_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+
+CREATE TABLE IF NOT EXISTS `phpfox_community_city` (
+  `city_id` int(10) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `country_iso` varchar(10) NOT NULL DEFAULT '0',
+  `country_child_id` int(10) NOT NULL DEFAULT '0',
+  `time_stamp` int(10) NOT NULL,
+  PRIMARY KEY (`city_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS `phpfox_community_member` (
+  `member_id` int(10) NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) NOT NULL DEFAULT '0',
+  `community_id` int(10) NOT NULL DEFAULT '0',
+  `time_stamp` int(10) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`member_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
