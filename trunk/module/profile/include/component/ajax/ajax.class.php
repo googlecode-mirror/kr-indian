@@ -28,7 +28,7 @@ class Profile_Component_Ajax_Ajax extends Phpfox_Ajax
 	}
 	
 	public function loadProfileBlock()
-	{
+	{die('sdsdg');
 		exit();
 		
 		$sProfileUrl = str_replace('profile_', '', $this->get('url'));

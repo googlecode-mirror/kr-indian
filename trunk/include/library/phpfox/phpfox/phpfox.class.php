@@ -507,6 +507,52 @@ class Phpfox
 				}
 			}
 		}
+        
+        if (/*$bChecked === false &&*/ isset($_REQUEST['custom_organization_post_as_organization']) && (int) $_REQUEST['custom_organization_post_as_organization'] > 0)
+        {
+            //$bChecked = true;
+            $aOrganization = Phpfox::getLib('database')->getRow('
+                SELECT p.organization_id, p.user_id AS owner_user_id, u.user_id
+                FROM ' . Phpfox::getT('organization') . ' AS p
+                JOIN ' . Phpfox::getT('user') . ' AS u ON(u.profile_organization_id = p.organization_id)
+                WHERE p.organization_id = ' . (int) $_REQUEST['custom_organization_post_as_organization'] . '
+            ');
+            
+            $iActualUserId = Phpfox::getService('user.auth')->getUserId();
+
+            if(!defined('PHPFOX_POSTING_AS_ORGANIZATION'))
+            {
+                define('PHPFOX_POSTING_AS_ORGANIZATION', true);
+            }
+
+            if (isset($aOrganization['organization_id']))
+            {
+                $bPass = false;
+                if ($aOrganization['owner_user_id'] == $iActualUserId)
+                {
+                    $bPass = true;
+                }
+                
+                if (!$bPass)
+                {
+                    $aAdmin = Phpfox::getLib('database')->getRow('
+                        SELECT organization_id
+                        FROM ' . Phpfox::getT('organization_admin') . '
+                        WHERE organization_id = ' . (int) $aPage['organization_id'] . ' AND user_id = ' . (int) $iActualUserId . '
+                    ');
+                    
+                    if (isset($aAdmin['organization_id']))
+                    {
+                        $bPass = true;
+                    }
+                }
+                
+                if ($bPass)
+                {
+                    return $aOrganization['user_id'];
+                }
+            }
+        }
 		
         if ($sPlugin = Phpfox_Plugin::get('library_phpfox_phpfox_getuserid__1')){eval($sPlugin);}
         

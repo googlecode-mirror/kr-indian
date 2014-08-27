@@ -4,8 +4,8 @@
 		<product_id>organization</product_id>
 		<is_core>0</is_core>
 		<is_active>1</is_active>
-		<is_menu>0</is_menu>
-		<menu />
+		<is_menu>1</is_menu>
+		<menu><![CDATA[a:3:{s:40:"organization.admin_menu_add_organization";a:1:{s:3:"url";a:2:{i:0;s:12:"organization";i:1;s:3:"add";}}s:41:"organization.admin_menu_manage_categories";a:1:{s:3:"url";a:1:{i:0;s:12:"organization";}}s:37:"organization.admin_menu_manage_claims";a:1:{s:3:"url";a:2:{i:0;s:12:"organization";i:1;s:5:"claim";}}}]]></menu>
 		<phrase_var_name>module_organization</phrase_var_name>
 	</data>
 	<menus>
@@ -126,26 +126,43 @@
 		<phrase module_id="organization" version_id="3.7.7" var_name="click_here_to_change_this_photo" added="1408879129"><![CDATA[Click <a href="#" id="js_pages_add_change_photo">here</a> to change this photo.]]></phrase>
 		<phrase module_id="organization" version_id="3.7.7" var_name="likes" added="1408882091">Likes</phrase>
 		<phrase module_id="organization" version_id="3.7.7" var_name="person_likes_this" added="1408882566">Person likes this</phrase>
-		<phrase module_id="organization" version_id="3.7.7" var_name="liked_the_organization_link_title_title" added="1408889767"><![CDATA[liked the organization"<a href="{link}" title="{link_title}">{title}</a>".]]></phrase>
-		<phrase module_id="organization" version_id="3.7.7" var_name="permissions" added="1408899031">Permissions</phrase>
-		<phrase module_id="organization" version_id="3.7.7" var_name="organization_s_successfully_deleted" added="1408976184">Organization (s) successfully deleted.</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="liked_the_organization_link_title_title" added="1408889767">Liked the organization link title title</phrase>
 		<phrase module_id="organization" version_id="3.7.7" var_name="position_set_correctly" added="1408975353">Position set correctly</phrase>
 		<phrase module_id="organization" version_id="3.7.7" var_name="edit_organization" added="1408975870">Edit organization</phrase>
 		<phrase module_id="organization" version_id="3.7.7" var_name="remove_membership" added="1408975932">Remove membership</phrase>
 		<phrase module_id="organization" version_id="3.7.7" var_name="claim_page" added="1408975988">Claim page</phrase>
 		<phrase module_id="organization" version_id="3.7.7" var_name="claim_organization" added="1408976050">Claim organization</phrase>
-		<phrase module_id="organization" version_id="3.7.7" var_name="url" added="1408976965">Url</phrase>
-		<phrase module_id="organization" version_id="3.7.7" var_name="unlike" added="1408977315">Unlike</phrase>
 		<phrase module_id="organization" version_id="3.7.7" var_name="1_like" added="1408976573">1 like</phrase>
 		<phrase module_id="organization" version_id="3.7.7" var_name="item_phrase" added="1408977196">Item phrase</phrase>
 		<phrase module_id="organization" version_id="3.7.7" var_name="people_like_this" added="1408977254">People like this</phrase>
-		<phrase module_id="organization" version_id="3.7.7" var_name="events" added="1408981349">Events</phrase>
-		<phrase module_id="organization" version_id="3.7.7" var_name="menu_organization_organization_fad58de7366495db4650cfefac2fcd61" added="1408983084">Organization</phrase>
-		<phrase module_id="organization" version_id="3.7.7" var_name="menu_organization_create_a_new_organization_423ea2b12320fb597754149d4b35eae7" added="1408983250">Create New Organization</phrase>
 		<phrase module_id="organization" version_id="3.7.7" var_name="full_name_wrote_a_comment_on_your_page_title" added="1408978741">Full name wrote a comment on your page title</phrase>
 		<phrase module_id="organization" version_id="3.7.7" var_name="full_name_wrote_a_comment_link" added="1408978786">Full name wrote a comment link</phrase>
 		<phrase module_id="organization" version_id="3.7.7" var_name="total_like_likes" added="1408978862">Total like likes</phrase>
 		<phrase module_id="organization" version_id="3.7.7" var_name="more" added="1408981281">More</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="organization_s_successfully_deleted" added="1408976184">Organization (s) successfully deleted.</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="events" added="1408981349">Events</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="menu_organization_organization_fad58de7366495db4650cfefac2fcd61" added="1408983084">Organization</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="menu_organization_create_a_new_organization_423ea2b12320fb597754149d4b35eae7" added="1408983250">Create New Organization</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="admin_menu_add_organization" added="1408986104">Add Organization</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="admin_menu_manage_categories" added="1408986104">Manage Categories</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="admin_menu_manage_claims" added="1408986104">Manage Claims</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="manage_categories" added="1408986185">Manage Categories</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="add_category" added="1408986212">Add Category</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="category_details" added="1408986726">Category Details</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="parent_category" added="1408986744">Parent Category</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="none" added="1408986789">None</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="is_a_group" added="1408986830">Is a group</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="submit" added="1408986942">Submit</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="successfully_created_a_new_category" added="1408986971">successfully created a new category</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="categories" added="1408988229">Categories</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="active" added="1408988243">Active</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="edit" added="1408988319">Edit</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="manage_sub_categories_total" added="1408988352">Manage Sub-Categories ({total})</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="deactivate" added="1408988368">Deactivate</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="activate" added="1408988379">Activate</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="manage_sub_categories" added="1408988461">Manage Sub-Categories ({total})</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="successfully_deleted_the_category" added="1408988599">Successfully deleted the category</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="fevents" added="1409065640">Fevents</phrase>
 	</phrases>
 	<user_group_settings>
 		<setting is_admin_setting="0" module_id="organization" type="boolean" admin="1" user="1" guest="0" staff="1" module="organization" ordering="0">can_moderate_organization</setting>

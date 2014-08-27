@@ -128,7 +128,7 @@ class fevent_Component_Controller_Add extends Phpfox_Component
 					}					
 					
 					if (Phpfox_Error::isPassed())
-					{	
+					{
 						if ($iId = Phpfox::getService('fevent.process')->add($aVals, ($aCallback !== false ? $sModule : 'fevent'), ($aCallback !== false ? $iItem : 0)))
 						{
 							$afevent = Phpfox::getService('fevent')->getForEdit($iId);

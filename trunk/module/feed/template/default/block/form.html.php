@@ -124,7 +124,7 @@ defined('PHPFOX') or exit('NO DICE!');
 			</div>
 			<div class="activity_feed_form_button_position">
 				
-				{if ((defined('PHPFOX_IS_PAGES_VIEW') && $aPage.is_admin) || ((Phpfox::isModule('share') && !defined('PHPFOX_IS_USER_PROFILE') && !defined('PHPFOX_IS_PAGES_VIEW') && !defined('PHPFOX_IS_EVENT_VIEW') && ((Phpfox::getParam('share.share_on_facebook') && Phpfox::getParam('facebook.facebook_app_id') && Phpfox::getParam('facebook.facebook_secret')) || Phpfox::getParam('share.share_on_twitter'))) || (defined('PHPFOX_IS_USER_PROFILE') && isset($aUser.user_id) && $aUser.user_id == Phpfox::getUserId() && Phpfox::getService('profile')->timeline() && Phpfox::getParam('feed.can_add_past_dates'))))}
+				{if ((defined('PHPFOX_IS_ORGANIZATION_VIEW') && $aOrganization.is_admin)||(defined('PHPFOX_IS_PAGES_VIEW') && $aPage.is_admin) || ((Phpfox::isModule('share') && !defined('PHPFOX_IS_USER_PROFILE') && !defined('PHPFOX_IS_PAGES_VIEW') && !defined('PHPFOX_IS_EVENT_VIEW')&& !defined('PHPFOX_IS_ORGANIZATION_VIEW') && !defined('PHPFOX_IS_EVENT_VIEW')&& ((Phpfox::getParam('share.share_on_facebook') && Phpfox::getParam('facebook.facebook_app_id') && Phpfox::getParam('facebook.facebook_secret')) || Phpfox::getParam('share.share_on_twitter'))) || (defined('PHPFOX_IS_USER_PROFILE') && isset($aUser.user_id) && $aUser.user_id == Phpfox::getUserId() && Phpfox::getService('profile')->timeline() && Phpfox::getParam('feed.can_add_past_dates'))))}
 					
 					<div id="activity_feed_share_this_one">
 						<ul>
@@ -146,15 +146,27 @@ defined('PHPFOX') or exit('NO DICE!');
 									</select>							
 								</div>
 							</li>
-							{/if}						
+							{/if}
+                            {if defined('PHPFOX_IS_ORGANIZATION_VIEW') && $aOrganization.is_admin && $aOrganization.organization_id != Phpfox::getUserBy('profile_organization_id')}
+                            <li>
+                                <div class="parent">
+                                    <select name="custom_organization_post_as_organization">
+                                        <option value="{$aOrganization.organization_id}">{phrase var='feed.post_as'}...</option>
+                                        <option value="{$aOrganization.organization_id}">{$aOrganization.full_name|clean|shorten:20:'...'}</option>
+                                        <option value="0">{$sGlobalUserFullName|shorten:20:'...'}</option>
+                                    </select>                            
+                                </div>
+                            </li>
+                            {/if}						
 							{if $bLoadCheckIn}
 								{template file='feed.block.checkin'}						
 							{/if}
 						</ul>
 						<div class="clear"></div>
 					</div>
-				
+                
 				{else}
+               
 					{if $bLoadCheckIn}						
 						<div id="activity_feed_share_this_one">
 							<ul>

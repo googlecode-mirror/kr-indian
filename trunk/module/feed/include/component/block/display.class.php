@@ -20,28 +20,50 @@ class Feed_Component_Block_Display extends Phpfox_Component
 	 */
 	public function process()
 	{
+        
 		if (defined('PHPFOX_IS_PAGES_WIDGET'))
 		{
 			return false;
 		}
+        if (defined('PHPFOX_IS_ORGANIZATION_WIDGET'))
+        {
+            return false;
+        }
 		
 		if (defined('PHPFOX_IS_PAGES_VIEW') && ($this->request()->get('req3') == 'info' || $this->request()->get('req2') == 'info')) 
 		{
 		    return false;
 		}
+        if (defined('PHPFOX_IS_ORGANIZATION_VIEW') && ($this->request()->get('req3') == 'info' || $this->request()->get('req2') == 'info')) 
+        {
+            return false;
+        }
 		
 		$iUserId = $this->getParam('user_id');
-		$aPage = $this->getParam('aPage');
+		$aPage = $this->getParam('aPage');  
+        $aOrganization = $this->getParam('aOrganization');
         
 		// Dont display the feed if approving users
 		if (isset($aPage['page_id']) && $this->request()->get('req3') == 'pending')
 		{
 			return false;
 		}
+        if (isset($aOrganization['organization_id']) && $this->request()->get('req3') == 'pending')
+        {
+            return false;
+        }
         if (isset($aPage['landing_page']) && $aPage['landing_page'] == 'info' && 
             ( 
                 (empty($aPage['vanity_url']) && $this->request()->get('req3') == '') || 
                 (!empty($aPage['vanity_url']) && ($this->request()->get('req2') == 'info' || $this->request()->get('req2') == ''))
+            ))
+        {
+            return false;
+        }
+        else if (isset($aOrganization['landing_page']) && $aOrganization['landing_page'] == 'info' && 
+            ( 
+                (empty($aOrganization['vanity_url']) && $this->request()->get('req3') == '') || 
+                (!empty($aOrganization['vanity_url']) && ($this->request()->get('req2') == 'info' || $this->request()->get('req2') == ''))
             ))
         {
             return false;
@@ -81,6 +103,39 @@ class Feed_Component_Block_Display extends Phpfox_Component
 			$aBlocks = array_merge($aBlocks, $aExtraBlocks);
 			$this->template()->assign(array('aLoadBlocks' => $aBlocks));
 		}
+        else if (isset($aOrganization['organization_user_id']))
+        {
+            $bHasPerm = Phpfox::getService('organization')->hasPerm($aOrganization['organization_id'], 'organization.view_browse_updates');
+            if ($bHasPerm == false)
+            {
+                return false;
+            }
+            $iUserId = $aOrganization['organization_user_id'];
+            
+            /* Get all blocks for location 2 and 3 */
+            
+            $oBlock = Phpfox::getLib('module');
+            $aExtraBlocks = array();
+            $aBlocks = $oBlock->getModuleBlocks(1, true);
+            $aBlocks = array_merge($aBlocks, $oBlock->getModuleBlocks(3, true));
+            foreach ($aBlocks as $iKey => $sBlock)
+            {
+                switch($sBlock)
+                {
+                    case 'organization.menu':
+                    case 'organization.photo':        
+                        if ($sBlock == 'organization.menu')
+                        {
+                            $aExtraBlocks[] = $sBlock;
+                        }            
+                        unset($aBlocks[$iKey]);
+                        break;
+                }
+                
+            }
+            $aBlocks = array_merge($aBlocks, $aExtraBlocks);
+            $this->template()->assign(array('aLoadBlocks' => $aBlocks));
+        }
 		$bIsCustomFeedView = false;
 		$sCustomViewType = null;
 		
@@ -129,9 +184,14 @@ class Feed_Component_Block_Display extends Phpfox_Component
 		if (defined('PHPFOX_IS_PAGES_VIEW') && !Phpfox::getService('pages')->hasPerm(null, 'pages.share_updates'))
 		{
 			$aFeedCallback['disable_share'] = true;
-		}		
+		}
+        else if (defined('PHPFOX_IS_ORGANIZATION_VIEW') && !Phpfox::getService('organization')->hasPerm(null, 'organization.share_updates'))
+        {
+            $aFeedCallback['disable_share'] = true;
+        }		
 
 		$iFeedPage = $this->request()->get('page', 0);
+        $iFeedOrganization = $this->request()->get('organization', 0);
 		
 		if ($this->request()->getInt('status-id') 
 			|| $this->request()->getInt('comment-id') 
@@ -176,6 +236,7 @@ class Feed_Component_Block_Display extends Phpfox_Component
 		}
 
 		$bForceReloadOnPage = (PHPFOX_IS_AJAX ? false : Phpfox::getParam('feed.force_ajax_on_load'));
+        $bForceReloadOnOrganization = (PHPFOX_IS_AJAX ? false : Phpfox::getParam('feed.force_ajax_on_load'));
 		$aRows = array();
 		if (PHPFOX_IS_AJAX || !$bForceReloadOnPage || $bIsCustomFeedView)
 		{
@@ -187,6 +248,16 @@ class Feed_Component_Block_Display extends Phpfox_Component
 				$aRows = Phpfox::getService('feed')->callback($aFeedCallback)->get(($bIsProfile > 0 ? $iUserId : null), ($this->request()->get('feed') ? $this->request()->get('feed') : null), $iFeedPage);
 			}
 		}
+        else if (PHPFOX_IS_AJAX || !$bForceReloadOnOrganization || $bIsCustomFeedView)
+        {
+            $aRows = Phpfox::getService('feed')->callback($aFeedCallback)->get(($bIsProfile > 0 ? $iUserId : null), ($this->request()->get('feed') ? $this->request()->get('feed') : null), $iFeedOrganization);
+            
+            if (empty($aRows))
+            {
+                $iFeedOrganization++;
+                $aRows = Phpfox::getService('feed')->callback($aFeedCallback)->get(($bIsProfile > 0 ? $iUserId : null), ($this->request()->get('feed') ? $this->request()->get('feed') : null), $iFeedOrganization);
+            }
+        }
 		/*
 		else
 		{
@@ -238,6 +309,10 @@ class Feed_Component_Block_Display extends Phpfox_Component
 		{
 			$bLoadCheckIn = true;
 		}
+        else if (!defined('PHPFOX_IS_ORGANIZATION_VIEW') && Phpfox::getParam('feed.enable_check_in') && (Phpfox::getParam('core.ip_infodb_api_key') || Phpfox::getParam('core.google_api_key') ) )
+        {
+            $bLoadCheckIn = true;
+        }
 
 		$oFeed = Phpfox::getService('feed');
 		foreach ($aRows as $iKey => $aRow)
@@ -269,12 +344,16 @@ class Feed_Component_Block_Display extends Phpfox_Component
 		}
 
 		$this->template()->assign(array(
-				'bForceReloadOnPage' => $bForceReloadOnPage,				
+				'bForceReloadOnPage' => $bForceReloadOnPage,
+                'bForceReloadOnOrganization' => $bForceReloadOnOrganization,				
 				'bHideEnterComment' => true,
 				'aFeeds' => $aRows,
 				'iFeedNextPage' => ($bForceReloadOnPage ? 0 : ($iFeedPage + 1)),
+                'iFeedNextOrganization' => ($bForceReloadOnOrganization ? 0 : ($iFeedOrganization + 1)),
 				'iFeedCurrentPage' => $iFeedPage,
+                'iFeedCurrentOrganization' => $iFeedOrganization,
 				'iTotalFeedPages' => 1,
+                'iTotalFeedOrganization' => 1,
 				'aFeedVals' => $this->request()->getArray('val'),
 				'sCustomViewType' => $sCustomViewType,
 				'aFeedStatusLinks' => Phpfox::getService('feed')->getShareLinks(),

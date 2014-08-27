@@ -1216,8 +1216,8 @@ class Feed_Service_Feed extends Phpfox_Service
 			Phpfox::getLib('template')->assign(array('aFeed' => $aFeeds[0]))->getTemplate('feed.block.entry');				
 		}	
 		
-		$sId = 'js_tmp_comment_' . md5('feed_' . uniqid() . Phpfox::getUserId()) . '';
-		
+		//$sId = 'js_tmp_comment_' . md5('feed_' . uniqid() . Phpfox::getUserId()) . '';
+		$sId = 'js_tmp_comment_feed_' . Phpfox::getUserId() . '';
 		$sNewContent =  '<div id="' . $sId . '" class="js_temp_new_feed_entry js_feed_view_more_entry_holder">' . $oAjax->getContent(false) . '</div>';
 		
 		if (Phpfox::getService('profile')->timeline())
