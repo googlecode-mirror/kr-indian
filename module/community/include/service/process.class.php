@@ -26,7 +26,6 @@
                 return false;
             }
             $aInsert = array(
-                'user_id' => $aVals['user_id'],
                 'title' => $aVals['title'],
                 'country_iso' => $aVals['country_iso'],
                 'country_child_id' => (isset($aVals['country_child_id']) ? $aVals['country_child_id'] : 0),
