@@ -10,7 +10,7 @@
             <div class="member_item_avatar">
                 {img user=$aUser suffix='_120_square'}
             </div>
-            <p><a style="font-size:12px;" href="{url link=$aUser.user_name}">{$aUser.full_name}</a></p>
+            <p><a style="font-size:12px;" href="{url link=$aUser.user_name}">{$aUser.full_name|ucwords}</a></p>
         </div>
         {/foreach}
         <div style="clear: both;"></div>
