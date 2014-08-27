@@ -20,7 +20,14 @@
         */
         public function process()
         {    
-            
+            $aCommunity = $this->getParam('aCommunity',false);
+            if(!$aCommunity)
+            {
+                return false;
+            }
+            $this->template()->assign(array(
+                'aCommunity' => $aCommunity
+            ));
         }
     }
 ?>

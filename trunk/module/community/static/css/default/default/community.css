@@ -1,5 +1,37 @@
 
 
 .community_header{
-    min-height: 200px;
+    height: 300px;
+    position:relative;
+    -o-box-shadow: 0 0 10px #CCC;
+    box-shadow: 0 0 10px #CCC;
+    -moz-box-shadow: 0 0 10px #CCC;
+    -webkit-box-shadow: 0 0 10px #CCC;
+}
+
+.community_header_left{
+    position:absolute;
+    left:10px;
+    top:10px;
+}
+
+.community_header_content{
+    margin-left:290px;
+    padding:10px;
+}
+
+.member_item{
+    width:140px;
+    float: left;
+    height:160px;
+    margin-left: 10px;
+}
+
+.community_member{
+    -o-box-shadow: 0 0 10px #CCC;
+    box-shadow: 0 0 10px #CCC;
+    -moz-box-shadow: 0 0 10px #CCC;
+    -webkit-box-shadow: 0 0 10px #CCC;
+    padding:10px;
+    margin-top:10px;
 }

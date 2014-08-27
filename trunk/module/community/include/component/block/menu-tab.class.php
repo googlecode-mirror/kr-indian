@@ -13,14 +13,20 @@
     * @package          Module_Blog
     * @version         $Id: index.class.php 7264 2014-04-09 21:00:49Z Fern $
     */
-    class Community_Component_Controller_Index extends Phpfox_Component
+    class Community_Component_Block_Menu_Tab extends Phpfox_Component
     {
         /**
         * Class process method wnich is used to execute this component.
         */
         public function process()
-        {    
-            
+        {   
+            $aUser = Phpfox::getService('user')->get(Phpfox::getUserId());
+            $aCommunity = Phpfox::getService('community')->getCommunity($aUser['community_id']);
+            $this->template()->assign(array(
+                'sHeader' => 'Menu',
+                'aCommunity' => $aCommunity
+            ));
+            return 'block';
         }
     }
 ?>

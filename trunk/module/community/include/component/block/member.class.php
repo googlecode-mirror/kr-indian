@@ -13,23 +13,22 @@
     * @package          Module_Blog
     * @version         $Id: index.class.php 7264 2014-04-09 21:00:49Z Fern $
     */
-    class Community_Component_Controller_View extends Phpfox_Component
+    class Community_Component_Block_Member extends Phpfox_Component
     {
         /**
         * Class process method wnich is used to execute this component.
         */
         public function process()
         {    
-            $iCommunityId = $this->request()->getInt('id');
-            $aCommunity = Phpfox::getService('community')->getCommunity($iCommunityId);
-            if(!isset($aCommunity['community_id']))
+            $aCommunity = $this->getParam('aCommunity',false);
+            if(!$aCommunity)
             {
-                Phpfox_Error::display('Community not found!');
+                return false;
             }
-            $this->setParam('aCommunity',$aCommunity);
-            $this->template()->setHeader(array(
-                'community.css' => 'module_community',
-                'aCommunity' => $aCommunity
+            $aUsers = Phpfox::getService('community')->getMembers($aCommunity['community_id']);
+            $this->template()->assign(array(
+                'aCommunity' => $aCommunity,
+                'aUsers' => $aUsers
             ));
         }
     }

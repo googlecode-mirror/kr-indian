@@ -3,4 +3,4 @@
 ?>
 
 {module name='community.header'}
-<h1>Anh dang tuc day nay</h1>
+{module name='community.member'}
