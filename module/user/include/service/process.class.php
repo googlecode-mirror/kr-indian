@@ -452,7 +452,8 @@ class User_Service_Process extends Phpfox_Service
         }
         else if(isset($aVals['city_location']))
         {
-            $aCommunity = Phpfox::getService('community')->getCommunityFromCity($aVals['city_location']);
+            $aCommunity = Phpfox::getService('community')->getCommunityFromCity($aVals['city_location']);       
+            $iCommunityId = $aCommunity['community_id'];
             $aInsert['community_id'] = $aCommunity['community_id'];
         }
         else
@@ -472,6 +473,12 @@ class User_Service_Process extends Phpfox_Service
 			'user_id' => $iId
 		);
 
+        // Add this user into member of community
+        if($iId)
+        {
+            Phpfox::getService('community.process')->addMemberToCommunity($iCommunityId,$iId);
+        }
+        // End action
 		(($sPlugin = Phpfox_Plugin::get('user.service_process_add_extra')) ? eval($sPlugin) : false);
 
 		$this->database()->insert(Phpfox::getT('user_activity'), $aExtras);

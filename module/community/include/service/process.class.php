@@ -58,5 +58,38 @@
             );
             return $this->database()->insert(Phpfox::getT('community_city'),$aInsert);
         }
+        
+        public function addMemberToCommunity($iCommunityId,$iUserId)
+        {
+            $aCommunity = $this->database()->select('*')
+            ->from(Phpfox::getT('community'))
+            ->where('community_id='.(int)$iCommunityId)
+            ->execute('getRow');
+            if(!isset($aCommunity['community_id']))
+            {
+                return false;
+            }
+            
+            $aMember = $this->database()->select('*')
+            ->from(Phpfox::getT('community_member'))
+            ->where('community_id='.(int)$iCommunityId.' AND user_id = '.(int)$iUserId)
+            ->execute('getRow');
+            if(isset($aMember['member_id']))
+            {
+                return true;
+            }
+            $iMemberId = $this->database()->insert(Phpfox::getT('community_member'),array(
+                'user_id' => $iUserId,
+                'community_id' => $iCommunityId,
+                'time_stamp' => PHPFOX_TIME
+            ));
+            if($iMemberId)
+            {
+                $this->database()->update(Phpfox::getT('community'),array(
+                    'total_member' => $aCommunity['total_member'] + 1
+                ),'community_id='.(int)$iCommunityId);
+            }
+            return $iMemberId;
+        }
     }
 ?>

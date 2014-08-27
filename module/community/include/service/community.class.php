@@ -55,5 +55,25 @@
                 ->execute('getRows');
             }
         }
+        
+        public function getCommunity($iCommunityId)
+        {
+            return $this->database()->select('co.*, c.name AS country_name, cc.name AS country_child_name')
+            ->from(Phpfox::getT('community'),'co')
+            ->leftJoin(Phpfox::getT('country'),'c','c.country_iso=co.country_iso')
+            ->leftJoin(Phpfox::getT('country_child'),'cc','cc.child_id=co.country_child_id')
+            ->where('community_id='.(int)$iCommunityId)
+            ->execute('getRow');
+        }
+        
+        public function getMembers($iCommunitiId)
+        {
+            $aUsers = $this->database()->select('*')
+            ->from(Phpfox::getT('community_member'),'c')
+            ->join(Phpfox::getT('user'),'u','u.user_id = c.user_id')
+            ->where('u.profile_page_id = 0 AND u.profile_organization_id = 0 AND c.community_id ='.(int)$iCommunitiId)
+            ->execute('getRows');
+            return $aUsers;
+        }
     }
 ?>
