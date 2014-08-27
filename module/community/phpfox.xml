@@ -1,0 +1,30 @@
+<module>
+	<data>
+		<module_id>community</module_id>
+		<product_id>community</product_id>
+		<is_core>0</is_core>
+		<is_active>1</is_active>
+		<is_menu>0</is_menu>
+		<menu></menu>
+		<phrase_var_name>module_community</phrase_var_name>
+	</data>
+	<menus>
+		<menu module_id="community" parent_var_name="" m_connection="main" var_name="menu_community_community_fad58de7366495db4650cfefac2fcd61" ordering="132" url_value="community.browse" version_id="3.7.7" disallow_access="" module="community" />
+	</menus>
+	<blocks>
+		<block type_id="0" m_connection="core.index-member" module_id="community" component="menu-tab" location="1" is_active="1" ordering="1" disallow_access="" can_move="0">
+			<title>Menu Tab</title>
+			<source_code />
+			<source_parsed />
+		</block>
+	</blocks>
+	<components>
+		<component module_id="community" component="menu-tab" m_connection="" module="community" is_controller="0" is_block="1" is_active="1" />
+	</components>
+	<phrases>
+		<phrase module_id="community" version_id="3.7.7" var_name="module_community" added="1408861339">Community</phrase>
+		<phrase module_id="community" version_id="3.7.7" var_name="menu_community_community_fad58de7366495db4650cfefac2fcd61" added="1409161003">Community</phrase>
+		<phrase module_id="community" version_id="3.7.7" var_name="search_communitys" added="1409161329">Search Communitys...</phrase>
+		<phrase module_id="community" version_id="3.7.7" var_name="latest" added="1409161406">Latest</phrase>
+	</phrases>
+</module>
