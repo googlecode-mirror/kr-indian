@@ -414,7 +414,7 @@ class organization_Component_Ajax_Ajax extends Phpfox_Ajax
     
     public function inviteFriend()
     { 
-        if(Phpfox::getService('organization.process')->inviteFriend($this->get('user_id'),$this->get('page_id')))
+        if(Phpfox::getService('organization.process')->inviteFriend($this->get('user_id'),$this->get('organization_id')))
         {
             $this->call('$("#friend_item_'.$this->get('user_id').'").find(".button").val("Invited");');
         }
