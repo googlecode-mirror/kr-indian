@@ -213,6 +213,10 @@ class User_Service_Process extends Phpfox_Service
 
 	public function add($aVals, $iUserGroupId = null)
 	{
+        if(isset($aVals['type_register']) && $aVals['type_register'] == 'organization')
+        {
+            return Phpfox::getService('organization.user')->add($aVals);
+        }
 		if (!defined('PHPFOX_INSTALLER') && defined('PHPFOX_IS_HOSTED_SCRIPT'))
 		{
 			$iTotalMembersMax = (int) Phpfox::getParam('core.phpfox_grouply_members');

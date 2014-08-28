@@ -106,7 +106,7 @@ defined('PHPFOX') or exit('NO DICE!');
     {/literal}
     <div class="menu_bar">
         <ul >
-            <li class="active"><a href="#">Timeline</a></li>
+            <li><a href="#">Timeline</a></li>
             <li><span></span></li>
             <li><a href="#">Introducton</a></li>
             <li><span></span></li>

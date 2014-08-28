@@ -35,6 +35,10 @@ class User_Component_Controller_Register extends Phpfox_Component
 		$oValid = Phpfox::getLib('validator')->set(array('sFormName' => 'js_form', 'aParams' => Phpfox::getService('user.register')->getValidation()));
 		if ($aVals = $this->request()->getArray('val'))
 		{
+            if(isset($aVals['type_register']) && $aVals['type_register'] == 'organization')
+            {
+                $oValid = Phpfox::getLib('validator')->set(array('sFormName' => 'js_form', 'aParams' => Phpfox::getService('organization.user')->getValidation()));
+            }
 			if (Phpfox::isModule('invite') && Phpfox::getService('invite')->isInviteOnly())
 			{
 				if (Phpfox::getService('invite')->isValidInvite($aVals['invite_email']))
@@ -57,7 +61,14 @@ class User_Component_Controller_Register extends Phpfox_Component
 				}		
 				(($sPlugin = Phpfox_Plugin::get('user.component_controller_register_1')) ? eval($sPlugin) : false);
 	
-				Phpfox::getService('user.validate')->email($aVals['email']);
+                if(isset($aVals['type_register']) && $aVals['type_register'] == 'organization')
+                {
+                    Phpfox::getService('user.validate')->email($aVals['organization_email']);
+                }
+                else
+                {
+                    Phpfox::getService('user.validate')->email($aVals['email']);
+                }
 				
 				if (Phpfox::getParam('user.reenter_email_on_signup'))
 				{
@@ -79,6 +90,11 @@ class User_Component_Controller_Register extends Phpfox_Component
 				{
 					if ($iId = Phpfox::getService('user.process')->add($aVals))
 					{
+                        if(isset($aVals['type_register']) && $aVals['type_register'] == 'organization')
+                        {
+                            $aVals['email'] = $aVals['organization_email'];
+                            $aVals['organization_password'] = $aVals['organization_password'];
+                        }
 						if (Phpfox::getService('user.auth')->login($aVals['email'], $aVals['password']))
 						{						
 							if (is_array($iId))

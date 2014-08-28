@@ -6,7 +6,7 @@
     function uploadAvatarSuccess(url){
         $('#ic_loading').removeClass('ic_loading_active');
          $('.image_avatar>img').attr('src',url);
-         tb_remove();
+            tb_remove();
     }
     
     function uploadAvatarStar(){
