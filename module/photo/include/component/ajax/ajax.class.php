@@ -634,7 +634,6 @@
                         }
                     }
                 }
-
                 // this next if is the one you will have to bypass if they come from sharing a photo in the activity feed.
                 if ( ($this->get('page_id') > 0) )
                 {
