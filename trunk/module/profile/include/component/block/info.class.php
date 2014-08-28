@@ -32,7 +32,6 @@ class Profile_Component_Block_Info extends Phpfox_Component
 			$this->template()->assign('aUser', $aUser);
 		}
 		*/
-		
 		if (!Phpfox::getService('user.privacy')->hasAccess($aUser['user_id'], 'profile.basic_info'))
 		{
 			return false;

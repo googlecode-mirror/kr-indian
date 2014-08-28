@@ -21,9 +21,9 @@ defined('PHPFOX') or exit('NO DICE!');
 			<input type="hidden" name="val[page_id]" value="{$iPageId}" />
 		</div>
 	{/if}
-    {if isset($IOrganization) && !empty($IOrganization)}
+    {if isset($iOrganization) && !empty($iOrganization)}
         <div>
-            <input type="hidden" name="val[organization_id]" value="{$IOrganization}" />
+            <input type="hidden" name="val[organization_id]" value="{$iOrganization}" />
         </div>
     {/if}
     {if isset($iFevent) && !empty($iFevent)}

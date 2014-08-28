@@ -20,6 +20,9 @@ class Profile_Component_Block_Header extends Phpfox_Component
 	 */
 	public function process()
 	{	
+        
+        if(Phpfox::getLib('module')->getFullControllerName())
+            return false;
 		(($sPlugin = Phpfox_Plugin::get('profile.component_block_header_process')) ? eval($sPlugin) : false);
 		if (defined('PHPFOX_IS_PAGES_ADD'))
 		{
