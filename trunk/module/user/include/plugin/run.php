@@ -9,4 +9,12 @@
     Phpfox::getLib('template')->setHeader(array(
         'font-awesome-4.2.0/css/font-awesome.min.css' => 'module_community'
     ));
+    if(Phpfox::getLib('module')->getFullControllerName() == 'profile.index')
+    {
+        $aCurrentUser = Phpfox::getService('user')->get(Phpfox::getUserId());
+        if($aCurrentUser['profile_organization_id'] != 0)
+        {
+            Phpfox::getLib('url')->send('organization'.'.'.$aCurrentUser['profile_organization_id']);
+        }
+    }
 ?>

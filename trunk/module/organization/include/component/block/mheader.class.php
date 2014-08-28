@@ -84,7 +84,7 @@
             {
                 //return false;
             }
-
+            
             $bRefreshPhoto = ($this->request()->getInt('coverupdate') ? true : false);
             $this->template()->assign(array(
                 'aCoverPhoto' => $aCoverPhoto,
