@@ -16,17 +16,17 @@
 		<name module_id="organization" version_id="3.7.7" var_name="setting_group_canmoderateorganization">canmoderateorganization</name>
 	</setting_groups>
 	<blocks>
-		<block type_id="0" m_connection="organization.view" module_id="organization" component="photo" location="1" is_active="1" ordering="1" disallow_access="" can_move="0">
+		<block type_id="0" m_connection="organization.view" module_id="organization" component="photo" location="1" is_active="0" ordering="1" disallow_access="" can_move="0">
 			<title>Photo</title>
 			<source_code />
 			<source_parsed />
 		</block>
-		<block type_id="0" m_connection="organization.view" module_id="organization" component="like" location="1" is_active="1" ordering="4" disallow_access="" can_move="0">
+		<block type_id="0" m_connection="organization.view" module_id="organization" component="like" location="1" is_active="0" ordering="4" disallow_access="" can_move="0">
 			<title>Pages Likes/Members</title>
 			<source_code />
 			<source_parsed />
 		</block>
-		<block type_id="0" m_connection="organization.view" module_id="organization" component="menu" location="1" is_active="1" ordering="2" disallow_access="" can_move="0">
+		<block type_id="0" m_connection="organization.view" module_id="organization" component="menu" location="1" is_active="0" ordering="2" disallow_access="" can_move="0">
 			<title>Pages Mini Menu</title>
 			<source_code />
 			<source_parsed />

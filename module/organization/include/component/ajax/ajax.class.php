@@ -405,6 +405,25 @@ class organization_Component_Ajax_Ajax extends Phpfox_Ajax
 			$sErr = implode($aErr);
 		}
 	}
+    //New Code
+    public function formUploadAvatar()
+    {
+        $this->setTitle('Upload Profile Image');
+        Phpfox::getComponent('organization.uploadAvatar',array('organization_id' => $this->get('organization_id'),'type'=>'type'),'block');
+    }
+    
+    public function inviteFriend()
+    { 
+        if(Phpfox::getService('organization.process')->inviteFriend($this->get('user_id'),$this->get('page_id')))
+        {
+            $this->call('$("#friend_item_'.$this->get('user_id').'").find(".button").val("Invited");');
+        }
+        else
+        {
+            $this->call('alert("fail");');
+        }
+    }
+    
 }
 
 ?>

@@ -11,7 +11,7 @@
 defined('PHPFOX') or exit('NO DICE!'); 
 
 ?>
-
+{*
 {if $aOrganization.view_id == '1'}
 	<div class="message js_moderation_off" id="js_approve_message">
 		{phrase var='organization.this_organization_is_pending_an_admins_approval_before_it_can_be_displayed_publicly'}
@@ -85,4 +85,4 @@ defined('PHPFOX') or exit('NO DICE!');
 		{/if}
 	</div>
 {/if}
-
+*}

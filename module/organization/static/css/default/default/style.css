@@ -1,0 +1,220 @@
+#m_header{
+    background-color: #fff;
+    border: 1px solid #d3d6db;
+    border-radius: 3px;
+    padding-bottom: 50px;
+    min-height: 200px;
+}
+#cover_photo{
+    position:relative;
+    min-height: 200px;
+    background-color: #333;
+}
+
+.image_avatar{
+    text-align: center;
+    vertical-align: middle;
+    line-height: 160px;
+    position:absolute;
+    left: 15px;
+    bottom: -40px;
+    width:160px;
+    height: 160px;
+    padding: 4px;
+    background-color: #FFF;
+    border: 1px solid #d3d6db;
+    border-radius: 3px;
+}
+.image_avatar > img{
+    vertical-align: middle;
+    max-height: 100%;
+    max-width:  100%;
+    margin-top:-3px;
+}
+#ic_loading{
+    position:absolute;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    -o-box-sizing:border-box;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    line-height: 160px;
+    background-color: rgba(0,0,0,0.8);
+    transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -webkit-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+    opacity: 0;
+}
+.ic_loading_active{
+    opacity:1 !important;
+}
+#ic_loading img{
+    vertical-align: middle;
+}
+#update_tooltip{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    width: 100%;
+    height: 45px;
+    line-height: 0px;
+    text-align: left;
+    cursor: pointer;
+    opacity: 0;
+    transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -webkit-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+}
+.image_avatar:hover #update_tooltip{
+    opacity: 1;
+}
+#update_tooltip > img{
+    margin-left: 5px;
+    margin-top: 5px;
+}
+#update_tooltip span{
+    margin-left: 0px;
+    position: relative;
+    top: -10px;
+    color: #FFF;
+    font-size: 12px;
+
+}
+#add_button{
+    position:absolute;
+    right: 15px;
+    bottom: 15px;
+    background-color: #fff;
+    color:#333;
+    border: 1px solid #d3d6db;
+    padding: 5px 10px;
+}
+#add_button :hover{
+    /*background-color: #;*/
+}
+.m_header_infor{
+    position:absolute;
+    left: 200px;
+    bottom: 15px;
+    color:#fff;
+}
+.m_header_infor a{
+    color:#fff;
+    font-size: 24px;
+    text-shadow: 2px 2px 2px #272729;
+}
+.m_header_infor a:hover{
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.menu_bar{
+    position:absolute;
+    left:200px;
+}
+.menu_bar ul{
+    list-style-type: none;
+    text-align: center;
+}
+.menu_bar ul li{
+    float: left;
+    font-size: 18px;
+    padding: 0px 10px;
+}
+.menu_bar ul li span{
+    width: 1px;
+    display: block;
+    margin-top: 15px;
+    height: 25px;
+    background-color: #d3d6db;
+}
+.menu_bar ul li a{
+    text-decoration: none;
+    display: block;
+    height: 47px;
+    line-height: 47px;
+}
+.menu_bar ul li a:hover,
+.menu_bar ul li a .active {
+    border-bottom: 3px solid #3B5998;
+}
+.menu_bar ul .active{
+     border-bottom: 3px solid #3B5998;
+}
+/* block introduction*/
+.left_block{
+    border: 1px solid #d3d6db;
+    border-radius: 3px;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+.left_block_title{
+    background-color: #F6F7F8;
+    font-size: 15px;
+    color:#141823;
+    font-weight: bold;
+    padding: 10px 15px;
+    margin-bottom: 1px;
+    border-bottom: 1px solid #E5E5E5;
+}
+.left_block_content{
+    padding:5px 15px 5px 15px ;
+}
+
+#left{
+    width: 300px;
+    border: none;
+}
+#main_content{
+    margin-left: 300px;
+}
+/* block */
+
+.left_block_content ul li{
+    height: 40px;
+    position: relative;
+    width: 300px;
+    margin: 10px 0px;
+}
+.left_block_content #search_friend_bar{  
+    width: 100%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -o-box-sizing: border-box;
+}
+.left_block_content ul li .left{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    left:0;
+    top:0;
+}
+
+.left_block_content ul li .right{
+    margin-left: 50px;
+    left: 100px;
+    top: 0px;
+    height: 40px;
+    margin-right: 45px;;
+}
+.left_block_content ul li .right a{
+    line-height: 40px; 
+    font-weight: bold;
+    cursor: pointer;
+}
+.left_block_content ul li .right a:hover{
+    text-decoration: none;
+}
+.friend_full_name_active{
+    display: inline-block;
+}
+.friend_full_name_hidden{
+    display: none;
+}

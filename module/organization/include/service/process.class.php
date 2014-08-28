@@ -466,7 +466,7 @@ class organization_Service_Process extends Phpfox_Service
 			$oImage->createThumbnail(Phpfox::getParam('organization.dir_image') . sprintf($sFileName, ''), Phpfox::getParam('organization.dir_image') . sprintf($sFileName, '_' . $iSize), $iSize, $iSize);			
 			$iFileSizes += filesize(Phpfox::getParam('organization.dir_image') . sprintf($sFileName, '_' . $iSize));
 			
-			define('PHPFOX_organization_IS_IN_UPDATE', true);
+			define('PHPFOX_ORGANIZATION_IS_IN_UPDATE', true);
 			
 			Phpfox::getService('user.process')->uploadImage($aUser['user_id'], true, Phpfox::getParam('organization.dir_image') . sprintf($sFileName, ''));
 			
@@ -519,8 +519,6 @@ class organization_Service_Process extends Phpfox_Service
 					continue;
 				}
 				
-				
-
 				$sMessage = Phpfox::getPhrase('organization.full_name_invited_you_to_the_organization_title', array('full_name' => Phpfox::getUserBy('full_name'), 'title' => $aNewPage['title']));
 				$sMessage .= "\n" . Phpfox::getPhrase('organization.to_view_this_organization_click_the_link_below_a_href_link_link_a', array('link' => $sLink)) . "\n";
 			
@@ -1079,6 +1077,176 @@ class organization_Service_Process extends Phpfox_Service
 
 		return true;	
 	}	
+    
+            // add new
+        public function uploadAvatar($aOrganization)
+        {
+            if (isset($_FILES['image']['name']) && ($_FILES['image']['name'] != ''))
+            {
+                $aImage = Phpfox::getLib('file')->load('image', array('jpg','gif','png'), (Phpfox::getUserParam('pages.max_upload_size_pages') === 0 ? null : (Phpfox::getUserParam('pages.max_upload_size_pages') / 1024))
+                );
+
+                if ($aImage === false)
+                {
+                    return false;
+                }
+
+                $this->_bHasImage = true;
+            }
+
+            if ($this->_bHasImage)
+            {            
+                if (!empty($aOrganization['image_path']))
+                {
+                    $this->deleteImage($aOrganization);
+                }
+
+                $oImage = Phpfox::getLib('image');
+
+                $sFileName = Phpfox::getLib('file')->upload('image', Phpfox::getParam('organization.dir_image'), $aOrganization['organization_id']);
+                $iFileSizes = filesize(Phpfox::getParam('organization.dir_image') . sprintf($sFileName, ''));            
+
+                $aUpdate['image_path'] = $sFileName;
+                $aUpdate['image_server_id'] = Phpfox::getLib('request')->getServer('PHPFOX_SERVER_ID');
+
+                $iSize = 50;            
+                $oImage->createThumbnail(Phpfox::getParam('organization.dir_image') . sprintf($sFileName, ''), Phpfox::getParam('organization.dir_image') . sprintf($sFileName, '_' . $iSize), $iSize, $iSize);            
+                $iFileSizes += filesize(Phpfox::getParam('organization.dir_image') . sprintf($sFileName, '_' . $iSize));            
+
+                $iSize = 120;            
+                $oImage->createThumbnail(Phpfox::getParam('organization.dir_image') . sprintf($sFileName, ''), Phpfox::getParam('organization.dir_image') . sprintf($sFileName, '_' . $iSize), $iSize, $iSize);            
+                $iFileSizes += filesize(Phpfox::getParam('organization.dir_image') . sprintf($sFileName, '_' . $iSize));
+
+                $iSize = 160;            
+                $oImage->createThumbnail(Phpfox::getParam('organization.dir_image') . sprintf($sFileName, ''), Phpfox::getParam('organization.dir_image') . sprintf($sFileName, '_' . $iSize), $iSize, $iSize);            
+                $iFileSizes += filesize(Phpfox::getParam('organization.dir_image') . sprintf($sFileName, '_' . $iSize));
+
+                $iSize = 200;            
+                $oImage->createThumbnail(Phpfox::getParam('organization.dir_image') . sprintf($sFileName, ''), Phpfox::getParam('organization.dir_image') . sprintf($sFileName, '_' . $iSize), $iSize, $iSize);            
+                $iFileSizes += filesize(Phpfox::getParam('organization.dir_image') . sprintf($sFileName, '_' . $iSize));
+
+                $aUser = $this->database()->select('*')
+                ->from(Phpfox::getT('user'))
+                ->where('profile_organization_id = ' . (int) $aOrganization['organization_id'])
+                ->execute('getSlaveRow');
+
+                define('PHPFOX_ORGANIZATION_IS_IN_UPDATE', true);
+                $aResult = Phpfox::getService('user.process')->uploadImage($aUser['user_id'], true, Phpfox::getParam('organization.dir_image') . sprintf($sFileName, ''));
+
+                Phpfox::getService('user.space')->update($aOrganization['user_id'], 'organization', $iFileSizes);
+
+                $aUser = $this->database()->select('*')
+                ->from(Phpfox::getT('user'))
+                ->where('profile_organization_id = ' . (int) $aOrganization['organization_id'])
+                ->execute('getSlaveRow');
+
+                $sUrl = Phpfox::getLib('image.helper')->display(array(
+                    'return_url' => true,
+                    'path' => 'core.url_user',
+                    'suffix' => '_160_square',
+                    'server_id' => Phpfox::getLib('request')->getServer('PHPFOX_SERVER_ID'),
+                    'file' => $aUser['user_image'],
+                ));
+                return $sUrl.'#'.PHPFOX_TIME;
+            }        
+            return false;
+        }
+
+        public function getUser(){
+            $aUser = $this->database()->select('*')
+            ->from(Phpfox::getT('user'))
+            ->where('profile_page_id = 0')
+            ->execute('getSlaveRows');
+            return $aUser;
+        }
+
+        public function getFriend()
+        {
+            $aRows = $this->database()->select('f.*, ' . Phpfox::getUserField())
+            ->from(Phpfox::getT('friend'), 'f')
+            ->join(Phpfox::getT('user'), 'u', 'u.user_id = f.friend_user_id')
+            ->where('f.is_page = 0 AND f.user_id = ' . Phpfox::getUserId())
+            ->order('u.full_name ASC')
+            ->execute('getSlaveRows');
+
+            foreach ($aRows as $iKey => $aRow)
+            {        
+                if (Phpfox::getUserId() == $aRow['user_id'])
+                {
+                    unset($aRows[$iKey]);
+
+                    continue;
+                }
+
+                $aRows[$iKey]['full_name'] = html_entity_decode(Phpfox::getLib('parse.output')->split($aRow['full_name'], 20), null, 'UTF-8');                        
+                $aRows[$iKey]['user_profile'] = ($aRow['profile_page_id'] ? Phpfox::getService('pages')->getUrl($aRow['profile_page_id'], '', $aRow['user_name']) : Phpfox::getLib('url')->makeUrl($aRow['user_name']));
+                $aRows[$iKey]['is_page'] = ($aRow['profile_page_id'] ? true : false);
+                $aRows[$iKey]['user_image'] = Phpfox::getLib('image.helper')->display(array(
+                    'user' => $aRow,
+                    'suffix' => '_50_square',
+                    'max_height' => 50,
+                    'max_width' => 50,
+                    'return_url' => true
+                    )
+                );
+            }        
+
+            return $aRows;
+        }
+
+        //invite
+        public function inviteFriend($iUserId, $iPageId)
+        {
+
+            $aNewPage = Phpfox::getService('pages')->getForEdit($iPageId);
+            if(!isset($aNewPage['page_id']))
+            {
+                return false;
+            }
+
+            $aUser = Phpfox::getService('user')->get($iUserId);
+            if(!isset($aUser['user_id']))
+            {
+                return false;
+            }
+
+            $bSent = false;
+            $sLink = Phpfox::getService('pages')->getUrl($aNewPage['page_id'], $aNewPage['title'], $aNewPage['vanity_url']);
+
+            if (isset($aCachedEmails[$aUser['email']]))
+            {
+                return false;
+            }    
+
+            if (isset($aInvited['user'][$aUser['user_id']]))
+            {
+                return false;
+            }
+
+            $sMessage = Phpfox::getPhrase('pages.full_name_invited_you_to_the_page_title', array('full_name' => Phpfox::getUserBy('full_name'), 'title' => $aNewPage['title']));
+            $sMessage .= "\n" . Phpfox::getPhrase('pages.to_view_this_page_click_the_link_below_a_href_link_link_a', array('link' => $sLink)) . "\n";
+
+            $bSent = Phpfox::getLib('mail')->to($aUser['user_id'])                        
+            ->subject(array('pages.full_name_sent_you_a_page_invitation', array('full_name' => Phpfox::getUserBy('full_name'))))
+            ->message($sMessage)                    
+            ->send();
+
+            if ($bSent)
+            {                    
+                $iInviteId = $this->database()->insert(Phpfox::getT('pages_invite'), array(
+                    'page_id' => $iPageId,                                
+                    'user_id' => Phpfox::getUserId(),
+                    'invited_user_id' => $aUser['user_id'],
+                    'time_stamp' => PHPFOX_TIME
+                    )
+                );
+
+                (Phpfox::isModule('request') ? Phpfox::getService('request.process')->add('pages_invite', $iPageId, $aUser['user_id']) : null);
+                return true;
+            }
+            return false;
+
+        }
 }
 
 ?>
