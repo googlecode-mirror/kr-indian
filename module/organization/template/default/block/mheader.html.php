@@ -76,10 +76,10 @@ defined('PHPFOX') or exit('NO DICE!');
                 {/if}
             {/if}
                 <div id="ic_loading">
-                    <img src="{param var='core.path'}module/pages/static/image/ic_loading.gif">
+                    <img src="{param var='core.path'}module/organization/static/image/ic_loading.gif">
                 </div>
                 <div id="update_tooltip">
-                    <img src="{param var='core.path'}module/pages/static/image/ic_picture.png" alt="">
+                    <img src="{param var='core.path'}module/organization/static/image/ic_picture.png" alt="">
                     <span>Update image profile</span>
                 </div>
             </div>
