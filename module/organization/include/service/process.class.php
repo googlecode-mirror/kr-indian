@@ -1195,11 +1195,11 @@ class organization_Service_Process extends Phpfox_Service
         }
 
         //invite
-        public function inviteFriend($iUserId, $iPageId)
+        public function inviteFriend($iUserId, $iOrganizationId)
         {
 
-            $aNewPage = Phpfox::getService('pages')->getForEdit($iPageId);
-            if(!isset($aNewPage['page_id']))
+            $aNewOrganization = Phpfox::getService('organization')->getForEdit($iOrganizationId);
+            if(!isset($aNewOrganization['organization_id']))
             {
                 return false;
             }
@@ -1211,7 +1211,7 @@ class organization_Service_Process extends Phpfox_Service
             }
 
             $bSent = false;
-            $sLink = Phpfox::getService('pages')->getUrl($aNewPage['page_id'], $aNewPage['title'], $aNewPage['vanity_url']);
+            $sLink = Phpfox::getService('organization')->getUrl($aNewOrganization['organization_id'], $aNewOrganization['title'], $aNewOrganization['vanity_url']);
 
             if (isset($aCachedEmails[$aUser['email']]))
             {
@@ -1223,7 +1223,7 @@ class organization_Service_Process extends Phpfox_Service
                 return false;
             }
 
-            $sMessage = Phpfox::getPhrase('pages.full_name_invited_you_to_the_page_title', array('full_name' => Phpfox::getUserBy('full_name'), 'title' => $aNewPage['title']));
+            $sMessage = Phpfox::getPhrase('pages.full_name_invited_you_to_the_page_title', array('full_name' => Phpfox::getUserBy('full_name'), 'title' => $aNewOrganization['title']));
             $sMessage .= "\n" . Phpfox::getPhrase('pages.to_view_this_page_click_the_link_below_a_href_link_link_a', array('link' => $sLink)) . "\n";
 
             $bSent = Phpfox::getLib('mail')->to($aUser['user_id'])                        
@@ -1233,15 +1233,15 @@ class organization_Service_Process extends Phpfox_Service
 
             if ($bSent)
             {                    
-                $iInviteId = $this->database()->insert(Phpfox::getT('pages_invite'), array(
-                    'page_id' => $iPageId,                                
+                $iInviteId = $this->database()->insert(Phpfox::getT('organization_invite'), array(
+                    'organization_id' => $iOrganizationId,                                
                     'user_id' => Phpfox::getUserId(),
                     'invited_user_id' => $aUser['user_id'],
                     'time_stamp' => PHPFOX_TIME
                     )
                 );
 
-                (Phpfox::isModule('request') ? Phpfox::getService('request.process')->add('pages_invite', $iPageId, $aUser['user_id']) : null);
+                (Phpfox::isModule('request') ? Phpfox::getService('request.process')->add('organization_invite', $iOrganizationId, $aUser['user_id']) : null);
                 return true;
             }
             return false;

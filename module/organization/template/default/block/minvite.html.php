@@ -28,7 +28,7 @@ defined('PHPFOX') or exit('NO DICE!');
                 <div class="right">
                     <a class='friend_full_name' >{$aFriend.full_name}</a>
                      <div style="float: right;">
-                    <input type="button" value="Invite" class="button" onclick="$.ajaxCall('pages.inviteFriend','user_id={$aFriend.user_id}&page_id={$aOrganization.organization_id}');" style="position:relative; top:10px">
+                    <input type="button" value="Invite" class="button" onclick="$.ajaxCall('organization.inviteFriend','user_id={$aFriend.user_id}&organization_id={$aOrganization.organization_id}');" style="position:relative; top:10px">
                     </div>
                 </div>
             </li>
