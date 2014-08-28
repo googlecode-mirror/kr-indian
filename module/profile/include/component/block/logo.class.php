@@ -22,6 +22,10 @@ class Profile_Component_Block_Logo extends Phpfox_Component
 	{	
         $bIsPages = ((defined('PHPFOX_IS_PAGES_VIEW') && Phpfox::isModule('pages')) ? true : false);
 		$bIsOrganization = ((defined('PHPFOX_IS_ORGANIZATION_VIEW') && Phpfox::isModule('organization')) ? true : false);
+        if($bIsOrganization)
+            return false;
+/*        if($bIsOrganization)
+            return false;*/
 		// Used in the template to set the ajax call
 		$sModule = 'user';
 		$aUser = $this->getParam('aUser');
