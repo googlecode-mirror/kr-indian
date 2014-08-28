@@ -1070,7 +1070,7 @@ class User_Service_Process extends Phpfox_Service
 					$aAlbum = Phpfox::getService('photo.album')->getForProfileView($iId, true);
 				}
 				
-				if (!Phpfox::getUserBy('profile_page_id') && !defined('PHPFOX_PAGES_IS_IN_UPDATE') && $iId == Phpfox::getUserId())
+				if (!Phpfox::getUserBy('profile_page_id') && !defined('PHPFOX_PAGES_IS_IN_UPDATE') && !defined('PHPFOX_ORGANIZATION_IS_IN_UPDATE') && $iId == Phpfox::getUserId())
 				{
 					(Phpfox::isModule('feed') ? Phpfox::getService('feed.process')->delete('user_photo', $iId) : null);
 					if(isset($aAlbum['photo_id']) && !empty($aAlbum['photo_id']))
