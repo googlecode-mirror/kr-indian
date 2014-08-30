@@ -269,3 +269,7 @@ input.button_register {
 #header_menu_page_holder{
     display: none;
 }
+
+.user_welcome_images{
+	padding-bottom:40px;
+}
