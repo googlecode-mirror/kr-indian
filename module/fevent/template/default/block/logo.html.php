@@ -12,7 +12,15 @@
 
 ?>
 <div id="js_is_user_profile">
-    <button class="button" onclick="$Core.box('profile.logo',500,'fevent_id={$afevent.fevent_id}');">dfghjk</button>
+    {if $iAdmin == true}
+    <div id="ButtonChangeCover" onclick="$Core.box('profile.logo',500,'fevent_id={$afevent.fevent_id}');">
+        <label style="font-size: 14px; font-weight: bold; line-height: 22px; margin-left: 20px; margin-right: 10px;">Change cover</label>
+    {/if}
+    </div>
+    <div id="feventTime">
+        <div id="feventMonth">{$tMonth}</div>
+        <div id="feventDay">{$tDay}</div>
+    </div>
     {if $bRefreshPhoto}
     <div class="cover_photo_link">
         {else}

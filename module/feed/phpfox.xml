@@ -9,8 +9,8 @@
 		<phrase_var_name>module_feed</phrase_var_name>
 	</data>
 	<blocks>
-		<block type_id="0" m_connection="organization.view" module_id="feed" component="time" location="1" is_active="1" ordering="3" disallow_access="" can_move="0">
-			<title>Feed Timeline</title>
+		<block type_id="0" m_connection="fevent.view" module_id="feed" component="display" location="4" is_active="1" ordering="2" disallow_access="" can_move="0">
+			<title>Activity Feed</title>
 			<source_code />
 			<source_parsed />
 		</block>

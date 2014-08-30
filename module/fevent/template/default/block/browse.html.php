@@ -15,7 +15,11 @@ defined('PHPFOX') or exit('NO DICE!');
 <div style="padding-bottom:5px;">
 	<select name="rsvp" onchange="$.ajaxCall('fevent.browseList', 'id={$afevent.fevent_id}&amp;rsvp=' + this.value + '&amp;page=1', 'GET');">
 	{foreach from=$aLists key=sPhrase item=iListId}
-		<option value="{$iListId}">{$sPhrase}</option>
+            {if $iIndex==$iListId}
+            <option selected="" value="{$iListId}">{$sPhrase}</option>
+            {else}
+            <option value="{$iListId}">{$sPhrase}</option>
+            {/if}
 	{/foreach}
 	</select>
 </div>
