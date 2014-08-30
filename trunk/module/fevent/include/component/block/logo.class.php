@@ -34,6 +34,15 @@ class Fevent_Component_Block_Logo extends Phpfox_Component
 		{
 			return false;
 		}
+        $iAdmin = false;
+        if($aFevent['user_id'] == Phpfox::getUserId())
+        {
+            $iAdmin =true;
+        }
+        $dTime =$php_timestamp_date = date("d F Y", $aFevent['end_time']);
+        $aTime = explode(" ", $dTime);
+        $iMonthEvent = $aTime[1];
+        $iDayEvent = $aTime[0]; 
         $FeventLink=Phpfox::getLib('url')->permalink('fevent', $aFevent['fevent_id'],"");	
         $this->template()->assign('sFeventLink', $FeventLink);
 		$this->template()->assign(array(
@@ -41,8 +50,13 @@ class Fevent_Component_Block_Logo extends Phpfox_Component
 				'bRefreshPhoto' => ($this->request()->getInt('coverupdate') ? true : false),
 				'bNewCoverPhoto' => ($this->request()->getInt('newcoverphoto') ? true : false),
 				'sLogoPosition' => $cover_photo_top,
+                'tMonth' => $iMonthEvent,
+                'tDay' => $iDayEvent,
+                'iAdmin' =>$iAdmin
+                
 			)
 		);
+        
 	}
 	
 	/**

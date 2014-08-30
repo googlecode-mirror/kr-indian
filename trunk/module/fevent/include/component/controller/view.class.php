@@ -151,6 +151,7 @@ class fevent_Component_Controller_View extends Phpfox_Component
 					'feed.js' => 'module_feed',
                     'fevent.js' => 'module_fevent',
 					'profile.css' => 'style_css',
+                    'attending.css' => 'module_fevent',
 				)
 			)
 			->assign(array(

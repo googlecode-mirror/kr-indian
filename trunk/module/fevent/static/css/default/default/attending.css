@@ -1,0 +1,117 @@
+.fevevtAttending 
+{
+    float: left;
+}
+
+.fevevtAttending img
+{
+    height: 50px;
+    width: 50px;
+    margin: 5px;
+}
+
+#Attendingline
+{
+    background-color: black;
+    height: 1px;
+    opacity: 0.2;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#attendingGust
+{
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #9197a3;
+    margin-left: 10px;
+}
+.attendtext
+{
+    color: #9197a3; 
+    padding-left: 10px;
+    margin-bottom: 5px;
+}
+.attendingpoup .attendtext :hover
+{
+    color: #3b5998; 
+}
+.attendtextcount
+{
+    color: #4e5665;
+    padding-left: 10px;
+    font-size: 24px;
+}
+
+.div_parent_attending
+{
+    border: 1px solid #9197a3;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 2px;
+    box-shadow: 1px 2px 2px #9197a3;
+}
+.attendingpoup
+{
+    width: 33%; float: left;
+    cursor: pointer;
+}
+
+#js_block_border_fevent_attendevent .bottom{
+    display: none;
+
+}
+
+
+#ButtonChangeCover{
+    border: 1px solid #9197a3;
+    box-shadow: 1px 1px 1px #9197a3;
+    float: right;
+    min-width: 30px;
+    position  :absolute;
+    background-color: white;
+    z-index: 3;
+    margin-left: 830px;
+    margin-top: 260px;
+
+}
+#feventTime {
+    border: 2px solid #ffffff;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 8px;
+    box-shadow: 1px 1px 1px #9197a3;
+    float: right;
+    min-width: 70px;
+    min-height: 70px;
+    position  :absolute;
+    z-index: 3;
+    margin-left: 20px;
+    margin-top: 210px;
+    background-color: rgba(255, 155, 143, 0.1);
+}
+
+#feventMonth{
+    font-size: 13px;
+    color: white; 
+    font-weight: bold;
+    line-height: 25px;
+    margin:auto; 
+    margin-left: 3px;
+    margin-right: 3px;
+    text-align: center;
+}
+#feventDay{
+    font-size: 30px;
+    color: white; 
+    line-height: 30px;
+    margin:auto; 
+    margin-left: 3px;
+    margin-top: 5px;
+    margin-right: 3px;
+    text-align: center;
+}

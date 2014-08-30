@@ -19,7 +19,7 @@ class fevent_Component_Block_Browse extends Phpfox_Component
 	 * Class process method wnich is used to execute this component.
 	 */
 	public function process()
-	{
+	{ 
 		$iRsvp = $this->request()->get('rsvp', 1);
 		$iPage = $this->request()->getInt('page');	
 		
@@ -43,12 +43,12 @@ class fevent_Component_Block_Browse extends Phpfox_Component
 			Phpfox::getPhrase('fevent.awaiting_reply') => '0',
 			Phpfox::getPhrase('fevent.not_attending') => '3'
 		);
-		
 		$this->template()->assign(array(
 				'afevent' => $afevent,
 				'aInvites' => $aInvites,
 				'bIsInBrowse' => ($iPage > 0 ? true : false),
-				'aLists' => $aLists
+				'aLists' => $aLists,
+                'iIndex' => $iRsvp
 			)
 		);
 	}
