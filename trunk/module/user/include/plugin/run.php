@@ -17,4 +17,8 @@
             Phpfox::getLib('url')->send('organization'.'.'.$aCurrentUser['profile_organization_id']);
         }
     }
+    if(Phpfox::getLib('module')->getFullControllerName() == 'user.register' && !PHPFOX_IS_AJAX)
+    {
+        Phpfox::getLib('url')->send('');
+    }
 ?>
