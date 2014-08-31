@@ -108,7 +108,7 @@ $Behavior.termsAndPrivacy = function()
 		<div id="js_signup_error_message" style="width:350px;"></div>
 		{if Phpfox::getParam('user.allow_user_registration')}
 			<div class="main_break" id="js_registration_holder">	
-				<form method="post" action="{url link='user.register'}" id="js_form" enctype="multipart/form-data">	
+				<form method="post" onsubmit="$(this).ajaxCall('user.registerAjax');return false;" action="{url link='user.register'}" id="js_form" enctype="multipart/form-data">	
 				{token}
 
 					<div id="js_signup_block">

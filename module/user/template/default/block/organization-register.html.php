@@ -7,7 +7,7 @@
 </div>
 <div class="table">
     <div class="table_left">
-        <label for="first_name"><span class="required">*</span>Name:</label>
+        <label for="first_name"><span class="required">*</span>Organization Name:</label>
     </div>
     <div class="table_right">
         <input type="text" name="val[organization_name]" id="organization_name" value="" size="30">
@@ -25,7 +25,7 @@
 
 <div class="table">
     <div class="table_left">
-        <label for="first_name"><span class="required">*</span>Mission:</label>
+        <label for="first_name"><span class="required">*</span>Mission Statement:</label>
     </div>
     <div class="table_right">
         <input type="text" name="val[organization_mission]" id="organization_mission" value="" size="30">

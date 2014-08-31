@@ -1035,6 +1035,11 @@
             Phpfox::getComponent('user.organization-register',array(),'block');
             $this->call('$(".organization_tab").append("'.$this->getContent().'");');
         }
+
+        public function registerAjax()
+        {
+            Phpfox::getComponent('user.register',null,'controller');
+        }
     }
 
 ?>

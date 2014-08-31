@@ -26,7 +26,7 @@
     border-top-left-radius: 0 !important;
     margin-top: 50px !important;
 	position:relative;
-	z-index:9999;
+	z-index:999;
 	margin-bottom:70px;
 }
 
@@ -194,9 +194,10 @@ div.extra_info {
 }
 
 div.header_menu_login_button input {
-    background-color: #9BBA10;
+    background-color: #9BBA10 !important;
     border: none;
     border-radius: 4px;
+    border: none !important;
 }
 
 div.header_menu_login_sub a {
@@ -272,4 +273,31 @@ input.button_register {
 
 .user_welcome_images{
 	padding-bottom:40px;
+}
+
+.header_menu_login_sub>a{
+    color:#2882bc !important;
+}
+
+.user_register_title{
+    color:#FFF;
+}
+
+.register_error_panel{
+    display: block;
+}
+
+.register_error_panel > div {
+    background-color: rgba(255, 0, 0, 0.5);
+    color: white;
+    line-height: 20px;
+    margin-top: 4px;
+    padding-left: 10px;
+}
+
+.register_error_panel {
+    display: block;
+    padding: 10px 20px;
+    padding-top: 3px;
+    display: none;
 }
