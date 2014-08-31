@@ -17,6 +17,24 @@
     {
         public function add($aVals)
         {
+            if(!isset($aVals['agree']))
+            {
+                Phpfox_Error::set('Check our agreement in order to join our site.');
+                return false;
+            }
+
+            if(!filter_var($aVals['organization_email'], FILTER_VALIDATE_EMAIL))
+            {
+                Phpfox_Error::set('Provide a valid email address.');
+                return false;
+            }
+
+            if(strlen($aVals['organization_password']) < 6)
+            {
+                Phpfox_Error::set('Not a valid password.');
+                return false;
+            }
+            
             $aInsert = array(
                 'view_id' => 0,
                 'type_id' => (isset($aVals['type_id']) ? (int) $aVals['type_id'] : 2),
@@ -102,7 +120,6 @@
                 'def' => 'organization_password',
                 'title' => Phpfox::getPhrase('user.provide_a_valid_password')
             );
-
 
             return $aValidation;
         }
