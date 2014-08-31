@@ -10,8 +10,8 @@ $(document).ready(function(e){
 
     $('.user_register_holder').append('<div class="swap_bg"><img class="bg_image" src="'+oParams.sJsHome+'/file/pic/background.jpg"/></div>')
     $('.user_register_intro h1').text('Advancing Future Communities');
-    $('.user_register_title').text('Sign up for free today!');
-    $('#js_signup_block').prepend('<ul class="register_tab"><li class="active_tab_register" rel="individual_tab">Individual</li><li rel="organization_tab">Organization</li></ul>');
+    $('.user_register_title').text('Register for free today!');
+    $('#js_signup_block').prepend('<ul class="register_tab"><li class="active_tab_register" rel="individual_tab">Individual</li><li rel="organization_tab">Organization</li></ul><span class="register_error_panel"></span>');
 	$('.user_register_intro').append('<div class="bg_video"><iframe src="//www.youtube.com/embed/UGuPtmxeCNQ?rel=0&controls=0&showinfo=0" frameborder="0" allowfullscreen></iframe></div>');
 	$('.swap_bg').css('min-height',($(window).height() - 50) + 'px');
 	$('#js_signup_block>div').addClass('register_panel').addClass('individual_tab');
@@ -30,4 +30,6 @@ $(document).ready(function(e){
 	});
     
     $.ajaxCall('user.addOrganizationBlock','');
+
+    $('#nb_copyright').html('Healthier Earth &copy; 2013. Website Created by kenriche');
 });

@@ -93,10 +93,10 @@ class User_Component_Controller_Register extends Phpfox_Component
                         if(isset($aVals['type_register']) && $aVals['type_register'] == 'organization')
                         {
                             $aVals['email'] = $aVals['organization_email'];
-                            $aVals['organization_password'] = $aVals['organization_password'];
+                            $aVals['password'] = $aVals['organization_password'];
                         }
 						if (Phpfox::getService('user.auth')->login($aVals['email'], $aVals['password']))
-						{						
+						{				
 							if (is_array($iId))
 							{
 								(($sPlugin = Phpfox_Plugin::get('user.component_controller_register_3')) ? eval($sPlugin) : false);
@@ -109,6 +109,11 @@ class User_Component_Controller_Register extends Phpfox_Component
 								if (!empty($sRedirect))
 								{
 									(($sPlugin = Phpfox_Plugin::get('user.component_controller_register_4')) ? eval($sPlugin) : false);
+									if(PHPFOX_IS_AJAX)
+									{
+										echo 'window.location.href="'.Phpfox::getLib('url')->makeUrl($sRedirect).'";';
+										die();		
+									}
 									$this->url()->send($sRedirect);
 								}
 								
@@ -128,6 +133,11 @@ class User_Component_Controller_Register extends Phpfox_Component
 									}
 									else
 									{
+										if(PHPFOX_IS_AJAX)
+										{
+											echo 'window.location.href="'.Phpfox::getLib('url')->makeUrl('').'";';
+											die();		
+										}
 										$this->url()->send('');
 									}
 								}
@@ -136,6 +146,17 @@ class User_Component_Controller_Register extends Phpfox_Component
 					}
 					else 
 					{
+						if(PHPFOX_IS_AJAX)
+						{
+							$aErrors = Phpfox_Error::get();
+							echo '$(".register_error_panel").html("");';
+							foreach ($aErrors as $key => $value) 
+							{
+								echo '$(".register_error_panel").append("<div>'.$value.'</div>");';
+							}
+							echo '$(".register_error_panel").fadeIn();';
+							die();			
+						}
 						if (Phpfox::getParam('user.multi_step_registration_form'))
 						{
 							$this->template()->assign('bIsPosted', true);
@@ -144,7 +165,19 @@ class User_Component_Controller_Register extends Phpfox_Component
 					}				
 				}
 				else
-				{				
+				{		
+					if(PHPFOX_IS_AJAX)
+					{
+						$aErrors = Phpfox_Error::get();
+						echo '$(".register_error_panel").html("");';
+						foreach ($aErrors as $key => $value) 
+						{
+							echo '$(".register_error_panel").append("<div>'.$value.'</div>");';
+						}
+						echo '$(".register_error_panel").fadeIn();';
+						die();			
+					}
+					
 					$this->template()->assign(array(
 							'bCorrectUsername' => (!Phpfox::getParam('user.profile_use_id') && !Phpfox::getParam('user.disable_username_on_sign_up') ? Phpfox::getService('user.validate')->user($aVals['user_name']) : ''),
 							'sUsername' => ((!Phpfox::getParam('user.profile_use_id') && !Phpfox::getParam('user.disable_username_on_sign_up')) ? $aVals['user_name'] : ''),
