@@ -1040,6 +1040,11 @@
         {
             Phpfox::getComponent('user.register',null,'controller');
         }
+        
+        public function loginAjax()
+        {
+            Phpfox::getComponent('user.login',null,'controller');
+        }
     }
 
 ?>
