@@ -280,7 +280,7 @@ class Event_Component_Controller_Index extends Phpfox_Component
 					'sApproveLink' => $this->url()->makeUrl('event', array('view' => 'pending'))
 				)
 			);
-			
+		
 		if ($sCategory !== null)
 		{
 			$aCategories = Phpfox::getService('event.category')->getParentBreadcrumb($sCategory);			
