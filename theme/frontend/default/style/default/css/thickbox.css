@@ -20,22 +20,26 @@
 .js_box
 {
 	position: absolute;
-	background:url('../image/layout/thickbox_bg.png');
+	/*background:url('../image/layout/thickbox_bg.png');*/
 	z-index:5002;
 	color:#000000;
 	display:none;
 	text-align:left;
 	top:50%;
 	left:50%;
-	-moz-border-radius:10px;
+	/*-moz-border-radius:10px;
 	-webkit-border-radius:10px;
-  	border-radius:10px;  	
-	padding:14px;	
+  	border-radius:10px;
+	padding:14px;*/
+    box-shadow: 0 0 10px #333;	
+    -moz-box-shadow: 0 0 10px #333;    
+    -webkit-box-shadow: 0 0 10px #333;    
 }
 
 .js_box_title
 {
-	background:#333;
+	/*background:#333;*/
+    background-color:#4875B0 !important;
 	position:relative;
 	font-size:14px;
 	color:#fff;
@@ -85,9 +89,9 @@
 	padding:0px 8px 0px 8px;	
 	background:url('../image/layout/js_box_close.png') repeat-x;
 	border:1px #BFBFBF solid;
-	-moz-border-radius:10px;
+	/*-moz-border-radius:10px;
 	-webkit-border-radius:10px;
-  	border-radius:10px;		
+  	border-radius:10px;	*/
 }
 
 .js_box_history,
