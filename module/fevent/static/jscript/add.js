@@ -32,5 +32,5 @@ $Behavior.addNewfevent = function()
 		});
 		
 		$('#js_mp_holder_' + $(this).val()).show();
-	});	
+	});	   
 }

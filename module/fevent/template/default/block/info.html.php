@@ -38,8 +38,24 @@ defined('PHPFOX') or exit('NO DICE!');
 		<div class="info_left">
 			{phrase var='fevent.location'}
 		</div>
-		<div class="info_right">				 	
-			<span itemprop="name">{$afevent.location|clean|split:60}</span>
+		<div class="info_right">	
+                <ul class="locationFevent">
+                    {if !empty($afevent.address)}
+                <li itemprop="name">{$afevent.location|clean|split:60},</li>
+                <li class="p_2" itemprop="streetAddress">{$afevent.address|clean},</li>
+                {/if}            
+                {if !empty($afevent.city)}
+                <li class="p_2" itemprop="addressLocality">{$afevent.city|clean},</li>
+                {/if}                    
+                {if !empty($afevent.postal_code)}
+                <li class="p_2" itemprop="postalCode">{$afevent.postal_code|clean},</li>
+                {/if}                                
+                {if !empty($afevent.country_child_id)}
+                <li class="p_2" itemprop="addressRegion">{$afevent.country_child_id|location_child},</li>
+                {/if}            
+                <li class="p_2" itemprop="addressCountry">{$afevent.country_iso|location}</li>
+                </ul>			 	
+			<!--<span itemprop="name">{$afevent.location|clean|split:60}</span>
 			<div itemscope itemtype="http://schema.org/PostalAddress">
 				{if !empty($afevent.address)}
 				<div class="p_2" itemprop="streetAddress">{$afevent.address|clean}</div>
@@ -54,7 +70,7 @@ defined('PHPFOX') or exit('NO DICE!');
 				<div class="p_2" itemprop="addressRegion">{$afevent.country_child_id|location_child}</div>
 				{/if}			
 				<div class="p_2" itemprop="addressCountry">{$afevent.country_iso|location}</div>
-			</div>
+			</div>-->
 			{if isset($afevent.map_location)}						
 			<div style="width:390px; height:170px; position:relative;">
 				<div style="margin-left:-8px; margin-top:-8px; position:absolute; background:#fff; border:8px blue solid; width:12px; height:12px; left:50%; top:50%; z-index:200; overflow:hidden; text-indent:-1000px; border-radius:12px;">Marker</div>

@@ -279,8 +279,7 @@ class fevent_Component_Controller_Index extends Phpfox_Component
 					'sParentLink' => ($aCallback !== false ? $aCallback['url_home'][0] . '.' . implode('.', $aCallback['url_home'][1]) . '.fevent' : 'fevent'),
 					'sApproveLink' => $this->url()->makeUrl('fevent', array('view' => 'pending'))
 				)
-			);
-			
+			);  
 		if ($sCategory !== null)
 		{
 			$aCategories = Phpfox::getService('fevent.category')->getParentBreadcrumb($sCategory);			

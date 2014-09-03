@@ -22,7 +22,7 @@ defined('PHPFOX') or exit('NO DICE!');
 	|| ($afevent.user_id == Phpfox::getUserId() && Phpfox::getUserParam('fevent.can_edit_own_fevent')) || Phpfox::getUserParam('fevent.can_edit_other_fevent')
 	|| ($afevent.user_id == Phpfox::getUserId() && Phpfox::getUserParam('fevent.can_delete_own_fevent')) || Phpfox::getUserParam('fevent.can_delete_other_fevent')
 }
-<div class="item_bar">
+<!--<div class="item_bar">
 	<div class="item_bar_action_holder">
 	{if (Phpfox::getUserParam('fevent.can_approve_fevents') && $afevent.view_id == '1')}
 		<a href="#" class="item_bar_approve item_bar_approve_image" onclick="return false;" style="display:none;" id="js_item_bar_approve_image">{img theme='ajax/add.gif'}</a>			
@@ -33,6 +33,6 @@ defined('PHPFOX') or exit('NO DICE!');
 			{template file='fevent.block.menu'}
 		</ul>			
 	</div>
-</div>
+</div>-->
 {/if}
 {plugin call='fevent.template_default_controller_view_extra_info'}

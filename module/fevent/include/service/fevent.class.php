@@ -15,6 +15,13 @@ defined('PHPFOX') or exit('NO DICE!');
  */
 class fevent_Service_fevent extends Phpfox_Service 
 {
+    public function CheckSendInvite($user_id)
+    {
+        return $this->database()->select('*')
+        ->from(Phpfox::getT('fevent_invite'))
+        ->where ('invited_user_id='.(int)$user_id)
+        ->execute('getRow');
+    }
 	private $_aCallback = false;
 	
 	/**

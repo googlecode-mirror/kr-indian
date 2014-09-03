@@ -19,7 +19,7 @@ class Fevent_Component_Block_Logo extends Phpfox_Component
 	 * Class process method wnich is used to execute this component.
 	 */
 	public function process()
-	{	
+	{ 
         //$aCoverPhoto = Phpfox::getService('photo')->getCoverPhoto($aUser['cover_photo']);
         //'sLogoPosition' => $aUser['cover_photo_top'],
         $aFevent = $this->getParam('afevent',false);
@@ -30,10 +30,7 @@ class Fevent_Component_Block_Logo extends Phpfox_Component
         $cover_photo= $aFevent['cover_photo_id'];
 		$aCoverPhoto = Phpfox::getService('photo')->getCoverPhoto($cover_photo);
 		$cover_photo_top = $aFevent['cover_photo_position'];
-		if (!isset($aCoverPhoto['photo_id']))
-		{
-			return false;
-		}
+
         $iAdmin = false;
         if($aFevent['user_id'] == Phpfox::getUserId())
         {

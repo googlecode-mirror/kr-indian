@@ -11,10 +11,11 @@
     defined('PHPFOX') or exit('NO DICE!'); 
 
 ?>
+<div class="cover_photo_fevent">
 <div id="js_is_user_profile">
     {if $iAdmin == true}
     <div id="ButtonChangeCover" onclick="$Core.box('profile.logo',500,'fevent_id={$afevent.fevent_id}');">
-        <label style="font-size: 14px; font-weight: bold; line-height: 22px; margin-left: 20px; margin-right: 10px;">Change cover</label>
+        <input type="button" value="Change Cover" class="button">
     {/if}
     </div>
     <div id="feventTime">
@@ -24,9 +25,10 @@
     {if $bRefreshPhoto}
     <div class="cover_photo_link">
         {else}
-        <a href="{permalink module='photo' id=$aCoverPhoto.photo_id title=$aCoverPhoto.title}userid_{$aCoverPhoto.user_id}/" class="thickbox photo_holder_image cover_photo_link" rel="{$aCoverPhoto.photo_id}">
+        {if isset($aCoverPhoto.photo_id)}
+        <a href="{permalink module='photo' id=$aCoverPhoto.photo_id title=$aCoverPhoto.title}userid_{$aCoverPhoto.user_id}/" class="thickbox photo_holder_image cover_photo_link" rel="{$aCoverPhoto.photo_id}">{/if}
         {/if}
-
+        {if isset($aCoverPhoto.photo_id)}
         {if isset($bNoPrefix) && $bNoPrefix == true}
         {img id='js_photo_cover_position' server_id=$aCoverPhoto.server_id path='photo.url_photo' file=$aCoverPhoto.destination suffix='' width=980 title=$aCoverPhoto.title style='position:absolute; top:'$sLogoPosition'px; left:0px;' time_stamp=true}
         {else}
@@ -34,6 +36,7 @@
         {img id='js_photo_cover_position' server_id=$aCoverPhoto.server_id path='photo.url_photo' file=$aCoverPhoto.destination suffix='_1024' width=980 title=$aCoverPhoto.title style='position:absolute; top:'$sLogoPosition'px; left:0px;' time_stamp=true}
         {else}
         {img id='js_photo_cover_position' server_id=$aCoverPhoto.server_id path='photo.url_photo' file=$aCoverPhoto.destination suffix='_1024' width=980 title=$aCoverPhoto.title style='position:absolute; top:'$sLogoPosition'px; left:0px;'}
+        {/if}
         {/if}
         {/if}
         {if $bRefreshPhoto}
@@ -77,4 +80,5 @@
         </form>
     </div>
     {/if}
+</div>
 </div>

@@ -27,7 +27,7 @@
 			<source_code />
 			<source_parsed />
 		</block>
-		<block type_id="0" m_connection="fevent.view" module_id="fevent" component="rsvp" location="3" is_active="1" ordering="4" disallow_access="" can_move="0">
+		<block type_id="0" m_connection="fevent.view" module_id="fevent" component="rsvp" location="3" is_active="1" ordering="7" disallow_access="" can_move="0">
 			<title></title>
 			<source_code />
 			<source_parsed />
@@ -47,7 +47,7 @@
 			<source_code />
 			<source_parsed />
 		</block>
-		<block type_id="0" m_connection="fevent.view" module_id="fevent" component="image" location="1" is_active="1" ordering="6" disallow_access="" can_move="0">
+		<block type_id="0" m_connection="fevent.view" module_id="fevent" component="image" location="1" is_active="1" ordering="4" disallow_access="" can_move="0">
 			<title>Event Photo</title>
 			<source_code />
 			<source_parsed />
@@ -57,7 +57,7 @@
 			<source_code />
 			<source_parsed />
 		</block>
-		<block type_id="0" m_connection="fevent.view" module_id="fevent" component="attending" location="1" is_active="1" ordering="7" disallow_access="" can_move="0">
+		<block type_id="0" m_connection="fevent.view" module_id="fevent" component="attending" location="1" is_active="0" ordering="6" disallow_access="" can_move="0">
 			<title>Attending</title>
 			<source_code />
 			<source_parsed />
@@ -72,13 +72,28 @@
 			<source_code />
 			<source_parsed />
 		</block>
-		<block type_id="0" m_connection="fevent.view" module_id="fevent" component="logo" location="13" is_active="1" ordering="8" disallow_access="" can_move="0">
-			<title>Logo</title>
+		<block type_id="0" m_connection="fevent.view" module_id="fevent" component="logo" location="13" is_active="1" ordering="10" disallow_access="" can_move="0">
+			<title>Photo Cover</title>
 			<source_code />
 			<source_parsed />
 		</block>
-		<block type_id="0" m_connection="fevent.view" module_id="fevent" component="attendevent" location="3" is_active="1" ordering="3" disallow_access="" can_move="0">
+		<block type_id="0" m_connection="fevent.view" module_id="fevent" component="attendevent" location="3" is_active="1" ordering="8" disallow_access="" can_move="0">
 			<title>Attend Event</title>
+			<source_code />
+			<source_parsed />
+		</block>
+		<block type_id="0" m_connection="fevent.view" module_id="fevent" component="minvite" location="3" is_active="1" ordering="9" disallow_access="" can_move="0">
+			<title>Invite Block</title>
+			<source_code />
+			<source_parsed />
+		</block>
+		<block type_id="0" m_connection="fevent.view" module_id="fevent" component="menuhorizontal" location="13" is_active="0" ordering="11" disallow_access="" can_move="0">
+			<title>Menu Horizontal</title>
+			<source_code />
+			<source_parsed />
+		</block>
+		<block type_id="0" m_connection="fevent.view" module_id="fevent" component="menublock" location="1" is_active="1" ordering="3" disallow_access="" can_move="0">
+			<title>Menu Block</title>
 			<source_code />
 			<source_parsed />
 		</block>
@@ -103,6 +118,9 @@
 		<component module_id="fevent" component="featured" m_connection="" module="fevent" is_controller="0" is_block="1" is_active="1" />
 		<component module_id="fevent" component="logo" m_connection="" module="fevent" is_controller="0" is_block="1" is_active="1" />
 		<component module_id="fevent" component="attendevent" m_connection="" module="fevent" is_controller="0" is_block="1" is_active="1" />
+		<component module_id="fevent" component="minvite" m_connection="" module="fevent" is_controller="0" is_block="1" is_active="1" />
+		<component module_id="fevent" component="menuhorizontal" m_connection="" module="fevent" is_controller="0" is_block="1" is_active="1" />
+		<component module_id="fevent" component="menublock" m_connection="" module="fevent" is_controller="0" is_block="1" is_active="1" />
 	</components>
 	<phrases>
 		<phrase module_id="fevent" version_id="3.7.7" var_name="module_fevent" added="1409061644">Events</phrase>
