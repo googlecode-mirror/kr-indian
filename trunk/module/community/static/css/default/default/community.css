@@ -53,6 +53,11 @@
     -webkit-box-sizing: border-box;
     -o-box-sizing: border-box;
     position:relative;
+	border-radius:4px;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	-o-border-radius:4px;
+	overflow:hidden;
 }
 .item_item_avatar{
     
@@ -85,4 +90,18 @@
 .item_item_location{
     padding-left:10px;
     color:#EEE;
+}
+
+.item_item_avatar div{
+	box-shadow: 0 0 10px #666 inset;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.bt_suggestion_image{
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
 }
