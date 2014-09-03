@@ -107,6 +107,11 @@ class User_Component_Controller_Login extends Phpfox_Component
 					
 					if (isset($aUser['status_id']) && $aUser['status_id'] == 1)
 					{
+                        if(PHPFOX_IS_AJAX)
+                        {
+                            echo 'window.location.href = "'.Phpfox::getLib('url')->makeUrl($sReturn).'";';
+                            die();
+                        }
 						$this->url()->send($sReturn, null, Phpfox::getPhrase('user.you_still_need_to_verify_your_email_address'));
 					}
 					
@@ -119,10 +124,21 @@ class User_Component_Controller_Login extends Phpfox_Component
 							$sReturn = Phpfox::getParam('user.redirect_after_signup');
 						}
 					}
+                    if(PHPFOX_IS_AJAX)
+                    {
+                        echo 'window.location.href = "'.Phpfox::getLib('url')->makeUrl($sReturn).'";';
+                        die();
+                    }
 					$this->url()->send($sReturn);
 				}
 				else
 				{
+                    if(PHPFOX_IS_AJAX)
+                    {
+                        $aErrors = Phpfox_Error::get();
+                        Phpfox::getLib('ajax')->alert(implode(' ',$aErrors));
+                        die();
+                    }
 					if ($sPlugin = Phpfox_Plugin::get('user.controller_login_login_failed')){eval($sPlugin);}
 				}
 			}
