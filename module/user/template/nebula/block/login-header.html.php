@@ -17,7 +17,7 @@ defined('PHPFOX') or exit('NO DICE!');
 									{if isset($bCustomLogin)}
 									<div id="header_menu_login_holder">
 									{/if}
-										<form method="post" action="{url link='user.login'}">
+										<form method="post" onsubmit="$(this).ajaxCall('user.loginAjax');return false;" action="{url link='user.login'}">
 											<div class="header_menu_login_left">
 												<div><input type="text" name="val[login]" value="" class="header_menu_login_input" tabindex="1" placeholder="{if Phpfox::getParam('user.login_type') == 'user_name'}{phrase var='user.user_name'}{elseif Phpfox::getParam('user.login_type') == 'email'}{phrase var='user.email'}{else}{phrase var='user.login'}{/if}" /></div>
 												<div class="header_menu_login_sub">
