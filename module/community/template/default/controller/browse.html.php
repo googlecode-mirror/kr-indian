@@ -8,6 +8,7 @@
         <div class="item_item_inner">
             <div class="item_item_avatar">
                 <img src="{param var='core.path'}module/community/static/image/image1.jpg">
+				<div></div>
             </div>
             <div class="item_item_info">
                 <p class="item_item_title"><a href="{url link='community.view' id=$aCommunity.community_id}">{$aCommunity.title|ucwords}</a></p>
