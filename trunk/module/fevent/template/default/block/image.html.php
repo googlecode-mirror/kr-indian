@@ -11,6 +11,8 @@
 defined('PHPFOX') or exit('NO DICE!'); 
 
 ?>
-<div class="t_center" style="margin-bottom:10px;">
+<div class="left_block_image_fevent">
+<div class="t_center">
 	{img thickbox=true server_id=$afevent.server_id title=$afevent.title path='fevent.url_image' file=$afevent.image_path suffix='_200' max_width='200' max_height='200' itemprop='image'}
+</div>
 </div>
