@@ -31,6 +31,11 @@
 			<source_code />
 			<source_parsed />
 		</block>
+		<block type_id="0" m_connection="organization.view" module_id="organization" component="mheader" location="13" is_active="1" ordering="6" disallow_access="" can_move="0">
+			<title>Header</title>
+			<source_code />
+			<source_parsed />
+		</block>
 		<block type_id="0" m_connection="organization.view" module_id="organization" component="mintroduction" location="1" is_active="1" ordering="5" disallow_access="" can_move="0">
 			<title></title>
 			<source_code />
@@ -41,8 +46,18 @@
 			<source_code />
 			<source_parsed />
 		</block>
-		<block type_id="0" m_connection="organization.view" module_id="organization" component="mheader" location="13" is_active="1" ordering="7" disallow_access="" can_move="0">
-			<title></title>
+		<block type_id="0" m_connection="organization.info" module_id="organization" component="mheader" location="13" is_active="1" ordering="1" disallow_access="" can_move="0">
+			<title>Header</title>
+			<source_code />
+			<source_parsed />
+		</block>
+		<block type_id="0" m_connection="organization.photo" module_id="organization" component="mheader" location="13" is_active="1" ordering="1" disallow_access="" can_move="0">
+			<title>Header</title>
+			<source_code />
+			<source_parsed />
+		</block>
+		<block type_id="0" m_connection="organization.volunteer" module_id="organization" component="mheader" location="13" is_active="1" ordering="1" disallow_access="" can_move="0">
+			<title>Header</title>
 			<source_code />
 			<source_parsed />
 		</block>
@@ -61,6 +76,10 @@
 		<component module_id="organization" component="menu" m_connection="" module="organization" is_controller="0" is_block="1" is_active="1" />
 		<component module_id="organization" component="profile" m_connection="" module="organization" is_controller="0" is_block="1" is_active="1" />
 		<component module_id="organization" component="widget" m_connection="" module="organization" is_controller="0" is_block="1" is_active="1" />
+		<component module_id="organization" component="mheader" m_connection="" module="organization" is_controller="0" is_block="1" is_active="1" />
+		<component module_id="organization" component="info" m_connection="organization.info" module="organization" is_controller="1" is_block="0" is_active="1" />
+		<component module_id="organization" component="volunteer" m_connection="organization.volunteer" module="organization" is_controller="1" is_block="0" is_active="1" />
+		<component module_id="organization" component="photo" m_connection="organization.photo" module="organization" is_controller="1" is_block="0" is_active="1" />
 	</components>
 	<phrases>
 		<phrase module_id="organization" version_id="3.7.7" var_name="module_organization" added="1408848583">organization</phrase>
@@ -161,6 +180,31 @@
 		<phrase module_id="organization" version_id="3.7.7" var_name="full_name_wrote_a_comment_link" added="1408978786">Full name wrote a comment link</phrase>
 		<phrase module_id="organization" version_id="3.7.7" var_name="total_like_likes" added="1408978862">Total like likes</phrase>
 		<phrase module_id="organization" version_id="3.7.7" var_name="more" added="1408981281">More</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="fevents" added="1409145997">Fevents</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="admin_menu_add_organization" added="1408986104">Add Organization</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="admin_menu_manage_categories" added="1408986104">Manage Categories</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="admin_menu_manage_claims" added="1408986104">Manage Claims</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="manage_categories" added="1408986185">Manage Categories</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="add_category" added="1408986212">Add Category</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="category_details" added="1408986726">Category Details</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="parent_category" added="1408986744">Parent Category</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="none" added="1408986789">None</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="is_a_group" added="1408986830">Is a group</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="submit" added="1408986942">Submit</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="successfully_created_a_new_category" added="1408986971">successfully created a new category</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="categories" added="1408988229">Categories</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="active" added="1408988243">Active</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="edit" added="1408988319">Edit</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="manage_sub_categories_total" added="1408988352">Manage Sub-Categories ({total})</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="deactivate" added="1408988368">Deactivate</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="activate" added="1408988379">Activate</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="manage_sub_categories" added="1408988461">Manage Sub-Categories ({total})</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="successfully_deleted_the_category" added="1408988599">Successfully deleted the category</phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="full_name_liked_your_organization" added="1409240779"><![CDATA[{full_name} liked your organization "<a href="{link}">{title}</a>"
+To view this page follow the link below:
+<a href="{link}">{link}</a>]]></phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="full_name_liked_your_organization_title" added="1409240904"><![CDATA[{full_name} liked your organization "{title}"]]></phrase>
+		<phrase module_id="organization" version_id="3.7.7" var_name="users_invited_you_to_check_out_the_organization_title" added="1409753892"><![CDATA[{users} invited you to check out the organization "{title}"]]></phrase>
 	</phrases>
 	<user_group_settings>
 		<setting is_admin_setting="0" module_id="organization" type="boolean" admin="1" user="1" guest="0" staff="1" module="organization" ordering="0">can_moderate_organization</setting>
