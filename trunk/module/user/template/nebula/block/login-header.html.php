@@ -27,7 +27,7 @@ defined('PHPFOX') or exit('NO DICE!');
 											<div class="header_menu_login_right">
 												<div><input type="password" name="val[password]" value="" class="header_menu_login_input" tabindex="2" placeholder="{phrase var='user.password'}" /></div>
 												<div class="header_menu_login_sub">
-													<a href="{url link='user.password.request'}">{phrase var='user.forgot_your_password'}</a>
+													<a onclick="$Core.box('user.forgetPasswordForm',600,'');return false;" href="{url link='user.password.request'}">{phrase var='user.forgot_your_password'}</a>
 												</div>
 											</div>
 											<div class="header_menu_login_button">

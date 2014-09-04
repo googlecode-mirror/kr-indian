@@ -12,7 +12,7 @@ defined('PHPFOX') or exit('NO DICE!');
 
 ?>
 <div class="main_break">
-	<form method="post" action="{url link='user.password.request'}">
+	<form method="post" onsubmit="$(this).ajaxCall('user.forgetPasswordForm');return false;" action="{url link='user.password.request'}">
 		<div class="table">
 			<div class="table_left">
 				<label for="email">{phrase var='user.email'}</label>:

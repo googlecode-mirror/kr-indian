@@ -1045,6 +1045,12 @@
         {
             Phpfox::getComponent('user.login',null,'controller');
         }
+        
+        public function forgetPasswordForm()
+        {
+            $this->setTitle('Password Request');
+            Phpfox::getComponent('user.password.request',null,'controller');
+        }
     }
 
 ?>

@@ -114,6 +114,14 @@
     line-height: 0;
     position: absolute;
     top: 0;
+    background-image: url(../../../image/default_preview.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    width:264px;
+    height: 264px;
+    box-shadow: 0 0 10px #CCC;
+    -moz-box-shadow: 0 0 10px #CCC;
+    -webkit-box-shadow: 0 0 10px #CCC;
 }
 
 .preview_image_panel img{
