@@ -13,22 +13,23 @@
     * @package          Module_Blog
     * @version         $Id: index.class.php 7264 2014-04-09 21:00:49Z Fern $
     */
-    class Community_Component_Block_Header extends Phpfox_Component
+    class Community_Component_Controller_Upload extends Phpfox_Component
     {
         /**
         * Class process method wnich is used to execute this component.
         */
         public function process()
         {    
-            $aCommunity = $this->getParam('aCommunity',false);
-            if(!$aCommunity)
+            if($aVals = $this->request()->get('val'))
             {
-                return false;
+                $sFileName = Phpfox::getService('community.process')->uploadPhoto($aVals);
+                if($sFileName)
+                {
+                    echo '<script type="text/javascript">window.top.location.reload();</script>';
+                    die();
+                }
+                die();
             }
-            $this->template()->assign(array(
-                'aCommunity' => $aCommunity,
-                'aPreviews' => Phpfox::getService('community')->getPreview($aCommunity['community_id'])
-            ));
         }
     }
 ?>

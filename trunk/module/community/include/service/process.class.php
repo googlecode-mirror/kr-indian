@@ -91,5 +91,56 @@
             }
             return $iMemberId;
         }
+        
+        public function uploadPhoto($aVals)
+        {
+            if (isset($_FILES['image']['name']) && ($_FILES['image']['name'] != ''))
+            {
+                $aImage = Phpfox::getLib('file')->load('image', array('jpg','gif','png'),null);
+
+                if ($aImage === false)
+                {
+                    return false;
+                }
+
+                $this->_bHasImage = true;
+            }
+
+            if ($this->_bHasImage)
+            {            
+                $oImage = Phpfox::getLib('image');
+
+                $sFileName = Phpfox::getLib('file')->upload('image', Phpfox::getParam('community.dir_image'), $aImage['name']);
+
+                $aInsert = array(
+                    'community_id' => $aVals['community_id'],
+                    'user_id' => Phpfox::getUserId(),
+                    'server_id' => Phpfox::getLib('request')->getServer('PHPFOX_SERVER_ID'),
+                    'image_path' => $sFileName,
+                    'description' => (isset($aVals['description']) ? $aVals['description'] : ''),
+                    'time_stamp' => PHPFOX_TIME
+                );
+                
+                $iId = $this->database()->insert(Phpfox::getT('community_photo'),$aInsert);
+                
+                $iSize = 200;            
+                $oImage->createThumbnail(Phpfox::getParam('community.dir_image') . sprintf($sFileName, ''), Phpfox::getParam('community.dir_image') . sprintf($sFileName, '_' . $iSize), $iSize, $iSize);            
+                $oImage->createThumbnail(Phpfox::getParam('community.dir_image') . sprintf($sFileName, ''), Phpfox::getParam('community.dir_image') . sprintf($sFileName, '_' . 132), 132, 66,false);  
+                
+                $oImage->createThumbnail(Phpfox::getParam('community.dir_image') . sprintf($sFileName, ''), Phpfox::getParam('community.dir_image') . sprintf($sFileName, '_' . 66), 66, 132,false); 
+                
+                $oImage->createThumbnail(Phpfox::getParam('community.dir_image') . sprintf($sFileName, ''), Phpfox::getParam('community.dir_image') . sprintf($sFileName, '_' . '132_square'), 132, 132,false); 
+                  
+                $sUrl = Phpfox::getLib('image.helper')->display(array(
+                    'return_url' => true,
+                    'path' => 'community.url_image',
+                    'suffix' => '_200',
+                    'server_id' => Phpfox::getLib('request')->getServer('PHPFOX_SERVER_ID'),
+                    'file' => $sFileName,
+                ));
+                return $sUrl.'#'.PHPFOX_TIME;
+            }        
+            return false;
+        }
     }
 ?>

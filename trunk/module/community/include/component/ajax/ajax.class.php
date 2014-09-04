@@ -21,5 +21,11 @@
             $this->call('$("#js_city_location").html("'.$this->getContent().'");');
             $this->call('$(".loading_city").hide();');
         }
+        
+        public function uploadImageForm()
+        {
+            $this->setTitle('Suggestion Image');
+            Phpfox::getComponent('community.suggestion-image',null,'block');
+        }
     }
 ?>
