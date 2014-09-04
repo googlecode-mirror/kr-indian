@@ -11,6 +11,7 @@
         */
         public function process()
         {
+            $iFeventId = $this->request()->get('req2');
             $aFriend = Phpfox::getService('friend.friend')->getFromCache();        
             for($i = 0; $i< count($aFriend); $i++)
             {
@@ -23,8 +24,10 @@
             }
             
             $this->template()->assign(array(
-                'aFriends'=> $aFriend
+                'aFriends'=> $aFriend,
+                'idFevent'=>$iFeventId
             ));
+            
         }
 
         public function randomFriend(){

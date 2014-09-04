@@ -309,7 +309,24 @@ class fevent_Component_Ajax_Ajax extends Phpfox_Ajax
             $aErr = Phpfox_Error::get();
             $sErr = implode($aErr);
         }
-    }	
+    }
+     public function inviteFriend()
+     {
+        $idFevent = $this->get('id');
+        $iFrendId = $this->get('userId');
+        $sFullName = $this->get('name');
+        if (Phpfox::getService('fevent')->sendInviteEvent($idFevent,$iFrendId))
+        {  
+            $this->call("$('#friend_item_$iFrendId').hide();");
+            $this->call("$('.public_message').html('$sFullName has been invited');");
+            $this->call("$('.public_message').show();");
+        }
+        else
+        {
+            $this->call("$('.public_message').html('Error, Please again !');");
+            $this->call("$('.public_message').show();");
+        }
+     }	
 }
 
 ?>
