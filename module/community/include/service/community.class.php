@@ -82,6 +82,7 @@
             ->from(Phpfox::getT('community_photo'),'cp')
             ->where('community_id='.(int)$iCommunityId)
             ->limit(7)
+            ->order('time_stamp DESC')
             ->execute('getRows');
             if(isset($aPhotos[0]))
             {
