@@ -13,6 +13,8 @@
     position:absolute;
     left:10px;
     top:10px;
+    width:264px;
+    height:264px;
 }
 
 .community_header_content{
@@ -104,4 +106,16 @@
     position: absolute;
     right: 20px;
     bottom: 10px;
+}
+
+.preview_image_panel{
+    font-size: 0;
+    left: 0;
+    line-height: 0;
+    position: absolute;
+    top: 0;
+}
+
+.preview_image_panel img{
+    display: inline-block;
 }

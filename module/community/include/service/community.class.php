@@ -75,5 +75,78 @@
             ->execute('getRows');
             return $aUsers;
         }
+        
+        public function getPreview($iCommunityId)
+        {
+            $aPhotos = $this->database()->select('*')
+            ->from(Phpfox::getT('community_photo'),'cp')
+            ->where('community_id='.(int)$iCommunityId)
+            ->limit(7)
+            ->execute('getRows');
+            if(isset($aPhotos[0]))
+            {
+                $aPhotos[0]['suffix'] = '_132';
+            }
+            else
+            {
+                return $aPhotos;
+            }
+            
+            if(isset($aPhotos[1]))
+            {
+                $aPhotos[1]['suffix'] = '_132';
+            }
+            else
+            {
+                return $aPhotos;
+            }
+            
+            if(isset($aPhotos[2]))
+            {
+                $aPhotos[2]['suffix'] = '_66';
+            }
+            else
+            {
+                return $aPhotos;
+            }
+            
+            if(isset($aPhotos[3]))
+            {
+                $aPhotos[3]['suffix'] = '_132_square';
+            }
+            else
+            {
+                return $aPhotos;
+            }
+            
+            if(isset($aPhotos[4]))
+            {
+                $aPhotos[4]['suffix'] = '_66';
+            }
+            else
+            {
+                return $aPhotos;
+            }
+            
+            if(isset($aPhotos[5]))
+            {
+                $aPhotos[5]['suffix'] = '_132';
+            }
+            else
+            {
+                return $aPhotos;
+            }
+            
+            if(isset($aPhotos[6]))
+            {
+                $aPhotos[6]['suffix'] = '_132';
+            }
+            else
+            {
+                return $aPhotos;
+            }
+            
+            return $aPhotos;
+        }
     }
 ?>
