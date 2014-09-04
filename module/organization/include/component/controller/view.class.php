@@ -164,7 +164,7 @@ class organization_Component_Controller_View extends Phpfox_Component
 			)
 		);		
 		
-		if ($bCanViewPage && $sModule && Phpfox::isModule($sModule) && Phpfox::hasCallback($sModule, 'getOrganizationSubMenu') && !$this->request()->getInt('comment-id'))
+		if ($bCanViewPage && $sModule != 'photo' && $sModule && Phpfox::isModule($sModule) && Phpfox::hasCallback($sModule, 'getOrganizationSubMenu') && !$this->request()->getInt('comment-id'))
 		{
 			if (Phpfox::hasCallback($sModule, 'canViewOrganizationSection') && !Phpfox::callback($sModule . '.canViewOrganizationSection', $aOrganization['organization_id']))
 			{
@@ -177,7 +177,7 @@ class organization_Component_Controller_View extends Phpfox_Component
 			
 			Phpfox::getComponent($sModule . '.index', array('bNoTemplate' => true), 'controller');
 		}
-		elseif ($bCanViewPage && $sModule && Phpfox::getService('organization')->isWidget($sModule) && !$this->request()->getInt('comment-id'))
+		elseif ($bCanViewPage && $sModule != 'photo' && $sModule && Phpfox::getService('organization')->isWidget($sModule) && !$this->request()->getInt('comment-id'))
 		{
 			define('PHPFOX_IS_ORGANIZATION_WIDGET', true);
 			$this->template()->assign(array(
@@ -187,6 +187,19 @@ class organization_Component_Controller_View extends Phpfox_Component
 		}
 		else
 		{
+            $sSubController = $this->request()->get('req3');
+            if($sSubController == 'info')
+            {
+                return Phpfox::getComponent('organization.info',array('bNoTemplate' => true), 'controller');
+            }
+            else if($sSubController == 'volunteer')
+            {
+                return Phpfox::getComponent('organization.volunteer',array('bNoTemplate' => true), 'controller');
+            }
+            else if($sSubController == 'photo')
+            {
+                return Phpfox::getComponent('organization.photo',array('bNoTemplate' => true), 'controller');
+            }
 			$bCanPostComment = true;
 			if ($sCurrentModule == 'pending')
 			{
