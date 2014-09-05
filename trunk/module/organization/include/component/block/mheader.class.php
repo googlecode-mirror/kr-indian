@@ -69,7 +69,7 @@
             {
                 //return false;
             }        
-
+            
             $sOrganizationUrl = '';
             if ($bIsOrganization)
             {
@@ -85,7 +85,7 @@
                 //return false;
             }
             $iMember = Phpfox::getService('organization')->isMember($aOrganization['organization_id']);
-            d($iMember);
+            
             $bRefreshPhoto = ($this->request()->getInt('coverupdate') ? true : false);
             $this->template()->assign(array(
                 'aCoverPhoto' => $aCoverPhoto,
