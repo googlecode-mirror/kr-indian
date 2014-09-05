@@ -87,13 +87,23 @@ defined('PHPFOX') or exit('NO DICE!');
         </div>
 
          {if !$bRefreshPhoto}
-            <input type="button" class="button" style="position:absolute;right:15px;bottom:15px" value="Add a cover" onclick="$Core.box('profile.logo',500,'organization_id={$aOrganization.organization_id}&type=organization');">
-            {if $aOrganization.is_liked}
-            <input type="button" class="button" style="position:absolute;right:120px;bottom:15px" value="Join" onclick="$(this).hide();$.ajaxCall('like.add', 'type_id=organization&item_id=$aOrganization.organization_id'); return false;">
-            {/if}
+            <!---- Edit Button ---->
+            <div style="position:absolute;bottom:15px;right:10px;">
+                {if $aOrganization.organization_id == Phpfox::getUserId() || Phpfox::isAdmin()}
+                <a href="{url link='organization.add' id=$aOrganization.organization_id}" style="display: inline-block;font-weight: bold;" class="button_off_link">Manage</a>
+                
+                <input type="button" class="button" value="Add a cover" onclick="$Core.box('profile.logo',500,'organization_id={$aOrganization.organization_id}&type=organization');">
+                {/if}
+                
+                {if !$aOrganization.is_liked}
+                <input type="button" class="button" value="Join Organization" onclick="$.ajaxCall('like.add', 'type_id=organization&item_id={$aOrganization.organization_id}'); return false;">
+                {else}
+                <input type="button" class="button" value="Leave" onclick="$.ajaxCall('like.delete', 'type_id=organization&item_id={$aOrganization.organization_id}'); return false;">
+                {/if}
+            </div>
             <div class="m_header_infor" >
-            <a href="{$aOrganization.link}">{$aOrganization.title}</a><br>
-               <span style="font-size: 18px; text-shadow: 2px 2px 2px #272729;">
+                <a href="{$aOrganization.link}">{$aOrganization.title}</a><br>
+                <span style="font-size: 18px; text-shadow: 2px 2px 2px #272729;">
                     {if isset($aUser.category_name)}{$aUser.category_name|convert}{/if}
                 </span>
             </div>
@@ -109,7 +119,7 @@ defined('PHPFOX') or exit('NO DICE!');
             <li><span></span></li>
             <li><a href="{permalink module='organization' id=$aOrganization.organization_id}photo">Photo</a></li>
              <li><span></span></li>
-            <li><a href="#">Project</a></li>
+            <li><a href="{url link='fevent.add' module='organization' item=$aOrganization.organization_id}">Project</a></li>
         </ul>
     </div>
 </div>

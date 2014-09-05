@@ -26,7 +26,7 @@ defined('PHPFOX') or exit('NO DICE!');
 	<div class="profile_no_timeline">
 
 		{if isset($aOrganization.title)}
-		{template file='pages.block.joinpage'}
+		{template file='organization.block.joinorganization'}
 		{/if}
 
 	</div>
