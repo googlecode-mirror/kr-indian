@@ -218,3 +218,11 @@
 .friend_full_name_hidden{
     display: none;
 }
+.member_item{
+    margin-left: 10px;
+    margin-top: 10px;
+    display: block;
+    float:left;
+    width: 100px;
+    text-align: center;
+}
