@@ -89,7 +89,7 @@ defined('PHPFOX') or exit('NO DICE!');
          {if !$bRefreshPhoto}
             <input type="button" class="button" style="position:absolute;right:15px;bottom:15px" value="Add a cover" onclick="$Core.box('profile.logo',500,'organization_id={$aOrganization.organization_id}&type=organization');">
             {if $aOrganization.is_liked}
-            <input type="button" class="button" style="position:absolute;right:120px;bottom:15px" value="Like" onclick="$(this).hide(); ;$.ajaxCall('like.add', 'type_id=organization&item_id=$aOrganization.organization_id'); return false;">
+            <input type="button" class="button" style="position:absolute;right:120px;bottom:15px" value="Join" onclick="$(this).hide();$.ajaxCall('like.add', 'type_id=organization&item_id=$aOrganization.organization_id'); return false;">
             {/if}
             <div class="m_header_infor" >
             <a href="{$aOrganization.link}">{$aOrganization.title}</a><br>
