@@ -108,6 +108,8 @@ defined('PHPFOX') or exit('NO DICE!');
             <li><a href="{permalink module='organization' id=$aOrganization.organization_id}volunteer">Volunteer</a></li>
             <li><span></span></li>
             <li><a href="{permalink module='organization' id=$aOrganization.organization_id}photo">Photo</a></li>
+             <li><span></span></li>
+            <li><a href="#">Project</a></li>
         </ul>
     </div>
 </div>
