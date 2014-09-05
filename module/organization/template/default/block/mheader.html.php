@@ -88,6 +88,9 @@ defined('PHPFOX') or exit('NO DICE!');
 
          {if !$bRefreshPhoto}
             <input type="button" class="button" style="position:absolute;right:15px;bottom:15px" value="Add a cover" onclick="$Core.box('profile.logo',500,'organization_id={$aOrganization.organization_id}&type=organization');">
+            {if isset($aOrganization.is_liked)}
+            <input type="button" class="button" style="position:absolute;right:120px;bottom:15px" value="Like" onclick="$(this).hide(); ;$.ajaxCall('like.add', 'type_id=organization&item_id=$aOrganization.organization_id'); return false;">
+            {/if}
             <div class="m_header_infor" >
             <a href="{$aOrganization.link}">{$aOrganization.title}</a><br>
                <span style="font-size: 18px; text-shadow: 2px 2px 2px #272729;">
@@ -96,23 +99,15 @@ defined('PHPFOX') or exit('NO DICE!');
             </div>
         {/if}
     </div>
-
-    {literal}
-        <script type="text/javascript">
-           $Behavior.initHeader = function(){
-
-           }
-        </script>
-    {/literal}
     <div class="menu_bar">
-        <ul >
-            <li><a href="#">Timeline</a></li>
+        <ul>
+            <li><a href="">Timeline</a></li>
             <li><span></span></li>
-            <li><a href="#">Introducton</a></li>
+            <li><a href="{permalink module='organization' id=$aOrganization.organization_id}info">About</a></li>
             <li><span></span></li>
-            <li><a href="#">Members</a></li>
+            <li><a href="{permalink module='organization' id=$aOrganization.organization_id}volunteer">Volunteer</a></li>
             <li><span></span></li>
-            <li><a href="#">Album</a></li>
+            <li><a href="{permalink module='organization' id=$aOrganization.organization_id}photo">Photo</a></li>
         </ul>
     </div>
 </div>

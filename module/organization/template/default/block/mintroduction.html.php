@@ -13,7 +13,7 @@ defined('PHPFOX') or exit('NO DICE!');
 ?>
 <link rel="stylesheet" href="{param var='core.path'}module/organization/static/css/default/default/style.css" type="text/css">
 <div class="left_block">
-    <div class="left_block_title">Introduct</div>
-    <div class="left_block_content">Decode group a software outsourcing and consultant company based in Ho Chi Minh City, Vietnam.</div>
-    <div class="left_block_content"><a>http://decodegroups.com</a></div>
+    <div class="left_block_title">Introduction</div>
+    <div class="left_block_content">{$aOrganization.text}</div>
+    <div class="left_block_content"><a>{$aOrganization.website}</a></div>
 </div>

@@ -4,7 +4,7 @@
     */
 
     defined('PHPFOX') or exit('NO DICE!');
-    
+
     /**
     * 
     * 
@@ -21,7 +21,13 @@
         public function process()
         {       
             $aOrganization = $this->getParam('aOrganization',false);
-            d($aOrganization);
+            //d($aOrganization);
+            $aMembers = Phpfox::getService('organization')->getMembers($aOrganization['organization_id']);
+            d($aMembers);
+            $this->template()->assign(array(
+                'aOrganization' =>$aOrganization,
+                'aMembers' => $aMembers
+            ));
         }
     }
 ?>

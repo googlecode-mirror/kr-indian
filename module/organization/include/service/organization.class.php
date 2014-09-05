@@ -725,13 +725,13 @@ class organization_Service_organization extends Phpfox_Service
 		return $aInvites;
 	}
 	
-	public function getMembers($iPage)
+	public function getMembers($iOrganization)
 	{
 		if (!Phpfox::isModule('like'))
 		{
 			return false;
 		}
-		return Phpfox::getService('like')->getForMembers('organization', $iPage);
+		return Phpfox::getService('like')->getForMembers('organization', $iOrganization);
 	}
 	
 	public function getPerms($iPage)
