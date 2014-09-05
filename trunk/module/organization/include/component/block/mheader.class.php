@@ -84,7 +84,8 @@
             {
                 //return false;
             }
-            
+            $iMember = Phpfox::getService('organization')->isMember($aOrganization['organization_id']);
+            d($iMember);
             $bRefreshPhoto = ($this->request()->getInt('coverupdate') ? true : false);
             $this->template()->assign(array(
                 'aCoverPhoto' => $aCoverPhoto,
@@ -93,7 +94,8 @@
                 'sLogoPosition' => $aUser['cover_photo_top'],
                 'bIsOrganization' => $bIsOrganization,
                 'aOrganizationLinks' => Phpfox::getService('organization')->getMenu($aOrganization),
-                'aUser'   =>$aUser
+                'aUser'   =>$aUser,
+                'iMember' =>$iMember
                 )
             );
         }
