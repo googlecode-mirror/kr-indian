@@ -169,7 +169,6 @@ class Like_Service_Like extends Phpfox_Service
 			->where('l.type_id = \'' . $this->database()->escape($sType) . '\' AND l.item_id = ' . (int) $iItemId)
 			->order('u.full_name ASC')
 			->group('u.user_id')
-			->limit(5)
 			->execute('getRows');			
 					
 		return array($iCnt, $aLikes);		
