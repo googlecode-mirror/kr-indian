@@ -35,8 +35,10 @@ class User_Component_Controller_Register extends Phpfox_Component
 		$oValid = Phpfox::getLib('validator')->set(array('sFormName' => 'js_form', 'aParams' => Phpfox::getService('user.register')->getValidation()));
 		if ($aVals = $this->request()->getArray('val'))
 		{
+			$sTab = 'individual_tab';
             if(isset($aVals['type_register']) && $aVals['type_register'] == 'organization')
             {
+				$sTab = 'organization_tab';
                 $oValid = Phpfox::getLib('validator')->set(array('sFormName' => 'js_form', 'aParams' => Phpfox::getService('organization.user')->getValidation()));
             }
 			if (Phpfox::isModule('invite') && Phpfox::getService('invite')->isInviteOnly())
@@ -149,12 +151,13 @@ class User_Component_Controller_Register extends Phpfox_Component
 						if(PHPFOX_IS_AJAX)
 						{
 							$aErrors = Phpfox_Error::get();
-							echo '$(".register_error_panel").html("");';
+							echo '$(".'.$sTab.' .register_error_panel").html("");';
 							foreach ($aErrors as $key => $value) 
 							{
-								echo '$(".register_error_panel").append("<div>'.$value.'</div>");';
+								$value = str_replace('"',"'",$value);
+								echo '$(".'.$sTab.' .register_error_panel").append("<div>'.$value.'</div>");';
 							}
-							echo '$(".register_error_panel").fadeIn();';
+							echo '$(".'.$sTab.' .register_error_panel").fadeIn();';
 							die();			
 						}
 						if (Phpfox::getParam('user.multi_step_registration_form'))
@@ -169,12 +172,13 @@ class User_Component_Controller_Register extends Phpfox_Component
 					if(PHPFOX_IS_AJAX)
 					{
 						$aErrors = Phpfox_Error::get();
-						echo '$(".register_error_panel").html("");';
+						echo '$(".'.$sTab.' .register_error_panel").html("");';
 						foreach ($aErrors as $key => $value) 
 						{
-							echo '$(".register_error_panel").append("<div>'.$value.'</div>");';
+							$value = str_replace('"',"'",$value);
+							echo '$(".'.$sTab.' .register_error_panel").append("<div>'.$value.'</div>");';
 						}
-						echo '$(".register_error_panel").fadeIn();';
+						echo '$(".'.$sTab.' .register_error_panel").fadeIn();';
 						die();			
 					}
 					
