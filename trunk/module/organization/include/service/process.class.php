@@ -311,12 +311,7 @@ class organization_Service_Process extends Phpfox_Service
 		}
 			
 		if ($sPlugin = Phpfox_Plugin::get('organization.service_process_add_1')){eval($sPlugin);}
-		/*
-		if (!defined('PHPFOX_APP_CREATED') && empty($aVals['category_id']))
-		{
-			return Phpfox_Error::set(Phpfox::getPhrase('organization.please_select_a_category'));
-		}
-		*/	
+		
 		$aInsert = array(
 			'view_id' => $iViewId,
 			'type_id' => (isset($aVals['type_id']) ? (int) $aVals['type_id'] : 0),
@@ -372,7 +367,7 @@ class organization_Service_Process extends Phpfox_Service
 		$this->database()->insert(Phpfox::getT('user_space'), $aExtras);
 		$this->database()->insert(Phpfox::getT('user_count'), $aExtras);
 		
-		$this->cache()->remove(array('user', 'organization_' . Phpfox::getUserId())); // Seems to fix http://www.phpfox.com/tracker/view/8411/
+		$this->cache()->remove(array('user', 'organization_' . Phpfox::getUserId())); 
 		$this->cache()->remove('organization_' . Phpfox::getUserId());
 		$this->cache()->remove(array('organization', Phpfox::getUserId()));
 		

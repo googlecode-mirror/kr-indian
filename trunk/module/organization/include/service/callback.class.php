@@ -513,6 +513,37 @@ class organization_Service_Callback extends Phpfox_Service
 			'url_home_pages' => $sLink . 'event/'
 		);		
 	}
+    
+    public function ViewFevent($iItem)
+    {        
+        $aRow = $this->addFevent($iItem);        
+        
+        $sLink = Phpfox::getService('organization')->getUrl($aRow['organization_id'], $aRow['title'], $aRow['vanity_url']);
+            
+        return array(
+            'breadcrumb_title' => Phpfox::getPhrase('organization.organization'),
+            'breadcrumb_home' => Phpfox::getLib('url')->makeUrl('organization'),
+            'module_id' => 'organization',
+            'item_id' => $aRow['organization_id'],
+            'title' => $aRow['title'],
+            'url_home' => $sLink,
+            'url_home_pages' => $sLink . 'event/'
+        );        
+    }
+    
+    public function addFevent($iItem)
+    {        
+        Phpfox::getService('organization')->setIsInPage();
+        
+        $aRow = Phpfox::getService('organization')->getPage($iItem);
+        
+        if (!isset($aRow['organization_id']))
+        {
+            return false;
+        }
+        
+        return $aRow;
+    }
 	
 	public function getFeedDetails($iItemId)
 	{
