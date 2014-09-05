@@ -21,7 +21,7 @@
         public function process()
         {       
             $aOrganization = $this->getParam('aOrganization',false);
-            d($aOrganization);
+            //d($aOrganization);
             $this->template()->assign(array(
                 'aOrganization' =>$aOrganization
             ));
