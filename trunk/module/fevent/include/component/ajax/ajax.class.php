@@ -317,9 +317,10 @@ class fevent_Component_Ajax_Ajax extends Phpfox_Ajax
         $sFullName = $this->get('name');
         if (Phpfox::getService('fevent')->sendInviteEvent($idFevent,$iFrendId))
         {  
-            $this->call("$('#friend_item_$iFrendId').hide();");
+            $this->call("$('#friend_item_$iFrendId').remove();");
             $this->call("$('.public_message').html('$sFullName has been invited');");
             $this->call("$('.public_message').show();");
+            
         }
         else
         {
