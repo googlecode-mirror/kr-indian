@@ -33,9 +33,8 @@
     <div class="left_block_title">Invite</div>
     <div class="left_block_content">
         <input type="text" name="search" placeholder="Search" id="search_friend_bar" onkeyup="searchOnChange();">
-        <div class="public_message" id="public_message" style="display: none;">
-Position set invited</div>
-        <div>
+        <div class="public_message" id="public_message" style="display: none;"></div>
+        <div style="height: 231px; overflow: hidden;">
             {foreach from=$aFriends item=aFriend}
             <div class="friend_item" style="margin-bottom: 5px;" id="friend_item_{$aFriend.user_id}">
                 <div style="float: left;">
